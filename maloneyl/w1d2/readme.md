@@ -1,3 +1,5 @@
+! Still need to update with comments (blockers, successes, questions the student may have after homeworks)
+
 Tonight's Homework:
 
 Buidling on the Calc-It app you've done in class today, add the three following features:
