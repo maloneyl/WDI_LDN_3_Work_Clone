@@ -10,7 +10,8 @@ class Shelter
 
   # think about what you'll need for a business
   # start with _accessor; figure out if anything should be read- or write-only later
-  attr_accessor :name, :address, :animals, :clients 
+  attr_accessor :name, :address, :animals, :clients # the :stuff are arguments to the attr_accessor function; the arguments can be symbols or strings
+  # because it's outside def and inside class, Ruby will get to attr_accessor and write these set and get methods for us even before we do anything
 
   def initialize(name, address) # name and address will be gone after they're passed 
     @name = name # so you need an instance variable to store stuff from above

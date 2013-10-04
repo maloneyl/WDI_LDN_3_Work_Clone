@@ -47,7 +47,7 @@ def create_animal
   animal_toys = gets.chomp.split(",")
   animal_owner = $shelter.name
   $shelter.animals[animal_name.to_sym] = Animal.new(animal_name, animal_age, animal_gender, animal_species, animal_toys, animal_owner)
-  binding.pry
+  menu
 end
 
 def create_client
@@ -61,6 +61,7 @@ def create_client
   puts "Number of pets:"
   client_number_of_pets = gets.chomp
   $shelter.clients[client_name.to_sym] = Client.new(client_name, client_age, client_number_of_children, client_number_of_pets)
+  menu
 end
 
 def adopt_animal
@@ -71,9 +72,11 @@ def adopt_animal
   # animal chosen is then removed from the list of available animals
   $shelter.animals.delete(animal_adopted.to_sym)
   $shelter.display_animals
+  menu
 end
 
 def return_animal # for clients to put an animal up for adoption
   # ask 
+  menu
 end
 
