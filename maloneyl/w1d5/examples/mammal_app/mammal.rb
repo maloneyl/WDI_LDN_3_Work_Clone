@@ -1,0 +1,3 @@
+class Mammal
+  # could add methods common to ALL mammals here...
+end
