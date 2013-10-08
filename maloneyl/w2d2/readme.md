@@ -1,6 +1,8 @@
 COMMENTS AND QUESTIONS AFTER HOMEWORK
 =====================================
 
+- Not surprisingly, HTML and CSS are easier to understand, possibly because they don't seem as abstract and also because I've had more experience with them before
+- That said, it's not that I just know how the different position options work, what line-height means, etc. It's just that it's easier to try things out and see what changes and make updates that way.
 
 
 CLASS NOTES
