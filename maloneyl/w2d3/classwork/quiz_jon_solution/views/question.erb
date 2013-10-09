@@ -1,0 +1,8 @@
+<h1>
+  Question <%= @question_id %>
+</h1>
+<p><%= @question %></p>
+<div class="controls">
+  <a class="true" href=<%= @next_path + "?answered_question_id=#{@question_id}&answer=true" %>> TRUE </a>
+  <a class="false" href=<%= @next_path + "?answered_question_id=#{@question_id}&answer=false" %>> FALSE </a>
+</div>
