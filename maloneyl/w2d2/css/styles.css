@@ -1,0 +1,65 @@
+p {
+  color: orange;
+}
+
+div {
+  /* border: 1px solid black; */
+  border-width: 1px;
+  border-style: dotted;
+  border-color: black;
+
+/*  background-color: blue; */
+  color: white; /* text color */
+}
+
+div#div_1 { /* div#div_id */
+  background-color: green;
+  width: 100px;
+  height: 50px;
+  font-size: 12px;
+} 
+
+#div_2 { /* div#div_id */
+  background-color: white;
+  color: black;
+  margin-top: 20px;
+  margin-bottom: 15px;
+  margin-right: 10px;
+  margin-left: 10px;
+  border-width: 5px;
+  padding: 20px; /* that means 20px top, right, bottom, left*/
+} 
+
+/*div#div_2, div#div_3 {  can declare two things at a time comma-separated 
+  background-color: red;
+}*/
+
+div.bg_red {
+  background-color: red;
+}
+
+.text-right { /* the dot tells CSS this is a CSS class, not an html element (p or a div or anything), and this applies to all html elements */
+  text-align: right
+}
+
+.comic-sans {
+  font-family: 'Comic Sans MS';
+  font-size: 50px;
+}
+
+a {
+  text-decoration: none; /* no underline */
+}
+
+.hidden {
+  visibility: hidden; /* the space that the element occupied will still be there */
+}
+
+.gone {
+  display: none;  /* the space that the element occupied won't even be there */
+}
+
+#div_0 p {
+  color: blue;
+  text-align: center
+}

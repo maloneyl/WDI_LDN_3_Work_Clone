@@ -1,0 +1,32 @@
+div {
+  color: white;
+  background-color: blue;
+  padding: 10px;
+}
+
+#div_2 {
+  background-color: black;
+  position: relative; /* if you don't specify it, default is static; relative moves relative to default/original position */
+  top: 0px;
+  left: 0px;
+/*  position: absolute;  relatives moves relative to closest parent with absolute or relative */
+}
+
+#div_2_a {
+  background-color: red;
+  float: left;
+  width: 200px;
+/*  top: 0px;
+  left: 0px;
+  position: absolute;  relatives moves relative to closest parent with absolute or relative */
+}
+
+#div_2_b {
+  background-color: green;
+  float: right;
+  width: 200px;
+}
+
+#div_3 {
+  clear: both;
+}
