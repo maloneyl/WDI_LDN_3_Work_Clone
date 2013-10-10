@@ -19,7 +19,7 @@ get "/movies/:movie_id" do
   db = PG.connect(dbname: "movies", host: "localhost")
   begin
     movie_id = params[:movie_id].to_i
-    sql = "SELECT * FROM movies WHERE id = #{movie_id}" # pg gem will add semi-colons automatically
+    sql = "SELECT * FROM movies WHERE id = #{movie_id}"
     @movie = db.exec(sql).first # return array with only one value
   ensure
     db.close
@@ -35,7 +35,7 @@ end
 post "/new" do
   db = PG.connect(dbname: "movies", host: "localhost")
   begin
-    sql = "INSERT INTO movies (title, year, rated, poster, director, actors) VALUES ('#{params[:title]}', '#{params[:year]}', '#{params[:rated]}', '#{params[:poster]}', '#{params[:director]}', '#{params[:actors]}') RETURNING id"
+    sql = "INSERT INTO movies (title, year, rated, poster, director, actors) VALUES ('#{db.escape params[:title]}', '#{params[:year]}', '#{params[:rated]}', '#{params[:poster]}', '#{params[:director]}', '#{params[:actors]}') RETURNING id"
     @movie = db.exec(sql) # returns object ot type 'pg result', whose first hash is result of RETURNING id
     new_created_id = @movie[0]["id"] # up to [0] you get a hash back (id=>"X"). then you get the "X" with "id" key)
     redirect "/movies/#{new_created_id}"
