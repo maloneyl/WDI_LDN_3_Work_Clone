@@ -1,0 +1,56 @@
+body{
+  color: #fff;
+  text-align:center;
+  font-family: 'Arial';
+  font-size: 24px;
+  background-color: #111;
+}
+
+pre code {
+  background-color: #333;
+  border: 1px solid #555;
+  padding: 10px;;
+}
+
+h1 {
+  margin: 50px;
+}
+
+a {
+  color: #ddd;
+  text-decoration: none;
+  margin: 20px;
+  padding: 10px;
+}
+
+a:hover {
+  color: #fff;
+}
+
+.controls {
+  margin-top: 50px;
+}
+
+.action {
+  border: 3px #00d solid;
+  border-bottom: 3px #008 solid;
+  border-right: 3px #008 solid;
+  background: #00b;
+}
+
+.true {
+  border: 3px #0a0 solid;
+  border-bottom: 3px #040 solid;
+  border-right: 3px #040 solid;
+  background: #080;
+}
+.false {
+  border: 3px #c00 solid;
+  border-bottom: 3px #600 solid;
+  border-right: 3px #600 solid;
+  background: #a00;
+}
+.score {
+  font-weight: bold;
+  font-size: 40px;
+}

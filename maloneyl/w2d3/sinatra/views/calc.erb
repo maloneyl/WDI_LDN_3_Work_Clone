@@ -1,0 +1,12 @@
+You have used the calc <%= @calc_count %> times.
+
+<form method="POST" action="/calc">
+  <ul>
+    <li>First Number: <input type="text" name="first_number" /></li>
+    <li>Operator: <input type="text" name="operator" /></li>
+    <li>Second Number: <input type="text" name="second_number" /></li>
+    <input type="submit" />
+  </ul>
+</form>
+
+The result is <%= @result %>

@@ -1,0 +1,13 @@
+<form method="POST" action="/bmi">
+  <p><strong>Weight:</strong><br/>
+      <input type="text" name="weight_kg" />kg<br />
+        <i>or</i><br />
+        <input type="text" name="weight_lbs" />lbs</p>
+    <p><strong>Height:</strong><br/>
+      <input type="text" name="height_metres" />m<br/>
+        <i>or</i><br/>
+        <input type="text" name="height_ft" />ft <input type="text" name="height_in" />in</p>
+    <input type="submit" />
+</form>
+
+<span class="results">Your BMI is <%= @bmi %>.</span>
