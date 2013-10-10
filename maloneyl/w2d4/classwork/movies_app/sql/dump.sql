@@ -22,3 +22,5 @@ VALUES ('The Professional','1994', '5', 'Thriller', 'Luc Besson', 'Luc Besson','
 
 INSERT INTO movies (title, year, rated, genre, director, writers, actors, poster) 
 VALUES ('The Kings Speech','2010', '5', 'Biography', 'Tom Hooper', 'David Seidler','Colin Firth, Geoffrey Rush, Helena Bonham Carter', 'http://ia.media-imdb.com/images/M/MV5BMzU5MjEwMTg2Nl5BMl5BanBnXkFtZTcwNzM3MTYxNA@@._V1_SY317_CR1,0,214,317_.jpg');
+
+
