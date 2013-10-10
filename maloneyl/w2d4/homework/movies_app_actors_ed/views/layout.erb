@@ -1,0 +1,23 @@
+<html>
+<head>
+  <title>Movies App</title>
+</head>
+<body>
+  <header>
+    <a href="/">
+      <h1>Movies App</h1>
+    </a>
+    Find a movie, actor or actress:
+    <form method="post" action="/search">
+      <input type="text" name="query" />
+      <input type="submit" value="Search"/>
+    </form>
+    <a href="/new/movie">Add a movie</a> or <a href="/new/actor">add an actor/actress</a>
+  </header>
+  <section>
+    <%= yield %>
+  </section>
+  <footer>
+  </footer>
+</body>
+</html>
