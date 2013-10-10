@@ -1,6 +1,7 @@
 require 'sinatra'
 require 'sinatra/contrib/all'
 require 'pg'
+require 'pry'
 
 get "/" do
   db = PG.connect(dbname: "movies", host: "localhost")
@@ -84,7 +85,7 @@ post "/movies/:movie_id/update" do
   begin
     movie_id = params[:movie_id].to_i
     sql = "UPDATE movies SET
-      title = '#{params[:title]}',
+      title = '#{db.escape params[:title]}',
       year = '#{params[:year]}',
       rated = '#{params[:rated]}',
       poster = '#{params[:poster]}', 
