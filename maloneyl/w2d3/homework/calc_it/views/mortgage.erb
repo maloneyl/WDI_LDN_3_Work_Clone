@@ -1,0 +1,11 @@
+<form method="POST" action="/mortgage">
+  <p><strong>Principal amount:</strong><br />
+    $<input type="text" name="principal_amount" /></p>
+  <p><strong>Yearly interest rate:</strong><br />
+    <input type="text" name="interest_rate" />%</p>
+  <p><strong>Loan terms:</strong><br />
+    <input type="text" name="loan_terms" /> years</p>  
+  <p><input type="submit" /></p>
+</form>
+
+<span class="results">Your mortgage payment is $<%= @monthly_payment %> a month.</span>

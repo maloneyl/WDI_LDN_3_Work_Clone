@@ -1,0 +1,14 @@
+<form method="POST" action="/mileage">
+  <p><strong>Distance of your trip:</strong><br />
+    <input type="text" name="distance" /> miles</p>
+  <p><strong>Miles per gallon (MPG) of your car:</strong><br />
+    <input type="text" name="mpg" /> MPG</p>
+  <p><strong>Price of gas per gallon:</strong><br />
+    $<input type="text" name="gas_price" /></p>
+  <p><strong>Driving speed:</strong><br />
+    <input type="text" name="speed" /> MPH</p>
+  <p><input type="submit" /></p>
+</form>
+
+<span class="results">Your trip will take <%= @how_long %> hours and cost $<%= @how_much %>.<span.
+
