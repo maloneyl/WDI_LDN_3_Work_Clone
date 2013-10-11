@@ -3,10 +3,9 @@ require "sinatra/contrib/all"
 require "sinatra/reloader"
 require "pg"
 require "pry"
-
-require_relative "./model/movie.rb" # Ruby knows you're requiring an .rb file so will just look for one with that file type
+require_relative "./model/movie.rb"
 also_reload "./model/movie.rb"
-
+# Configuration
 before do
   @db = PG.connect(dbname: "movies", host: "localhost")
   @movie = Movie.new(@db)
@@ -16,13 +15,14 @@ after do
   @db.close
 end
 
+# Routes Handlers
 get "/" do
   @movies = @movie.all
   erb :index
 end
 
 get "/movies/:movie_id" do
-  @movie = @movie.find(params[:movie_id])
+  @movie = @movie.find params[:movie_id]
   erb :show
 end
 
@@ -31,46 +31,27 @@ get "/new" do
   erb :new
 end
 
-post "/new" do
-  new_created_id = @movie.create(params) # params is that hash that Sinatra gives you!
-  redirect "/movies/#{new_created_id}"
+post "/new" do 
+   new_created_id = @movie.create params
+   redirect "/movies/#{new_created_id}"
 end
 
 post "/search" do
-  @movies = @movie.search(params[:query])
+  @movies = @movie.search params[:query]
   erb :index
 end
-
+ 
 get "/movies/:movie_id/update" do
-  @movie = @movie.find(params[:movie_id])
+  @movie = @movie.find params[:movie_id]
   erb :new
 end
 
 post "/movies/:movie_id/update" do
-  @movie.update(params) # no need to assign it to @movie here because we don't need the value aftter
+  @movie.update params
   redirect "/movies/#{params[:movie_id]}"
 end
 
 post "/movies/:movie_id/delete" do
-  @movie.delete(params[:movie_id])
+  @movie.delete params[:movie_id]
   redirect "/"
 end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
