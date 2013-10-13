@@ -32,7 +32,9 @@ post "/search" do
 end
 
 get "/movies/:movie_id" do
+  @stars = @movie.actor(params[:movie_id]) # this must come first; otherwise it's undefined method for the resulting hash. not 100% getting it...
   @movie = @movie.find(params[:movie_id])
+  binding.pry
   erb :show_movie
 end
 

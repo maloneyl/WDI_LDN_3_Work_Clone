@@ -12,6 +12,10 @@ class Movie
     @connection.exec("SELECT * FROM movies WHERE id = #{id}").first
   end
 
+  def actor(id)
+    @connection.exec "SELECT * FROM actors INNER JOIN actors_movies ON actors_movies.actor_id = actors.id WHERE actors_movies.movie_id = #{id}"
+  end
+
   def create(params)
     @connection.exec("INSERT INTO movies (title, year, rated, genre, poster, director, writers, actors)
     VALUES ('#{@connection.escape params[:title]}', '#{params[:year]}', '#{params[:rated]}', '#{params[:genre]}', '#{params[:poster]}', '#{params[:director]}', '#{params[:writers]}', '#{params[:actors]}') RETURNING id")[0]["id"]
@@ -37,5 +41,5 @@ class Movie
   def delete(id)
     @connection.exec "DELETE FROM movies WHERE id = #{id}"
   end
-    
+
 end

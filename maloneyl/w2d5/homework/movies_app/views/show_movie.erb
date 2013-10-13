@@ -7,7 +7,16 @@
 <p>Genre: <%= @movie["genre"]%></p>
 <p>Director(s): <%= @movie["director"]%></p>
 <p>Writer(s): <%= @movie["writers"]%></p>
-<p>Starring: <%= @movie["actors"]%></p>
+<p>Starring: 
+  <ul>
+   <% @stars.each do |star| %>
+      <li><b><%= "#{star["first_name"]} #{star["last_name"]}" %></b><br />
+        <%= "b. #{star["dob"]}" %><br />
+        <img src="<%= "#{star["image_url"]}" %>" height="200" />
+      </li>
+    <% end %>
+  </ul>
+</p>
 
 <form method="POST" action="/movies/<%= @movie["id"]%>/delete" >
   <input type="submit" value="delete" />
