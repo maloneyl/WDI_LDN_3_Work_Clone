@@ -1,0 +1,13 @@
+<h3>Add/Update an Actor/Actress</h3>
+
+<% if @actor["id"] %>
+  <form method="post" action="/actors/<%= @actor["id"] %>/update">
+<% else %>
+  <form method="post" action="/new/actor">
+<% end %>
+    First Name: <input type="text" name="first_name" value="<%= @actor["first_name"] %>" /><br />
+    Last Name: <input type="text" name="last_name" value="<%= @actor["last_name"] %>"/><br />
+    Date of Birth (YYYY-MM-DD): <input type="text" name="dob" value="<%= @actor["dob"] %>"/><br />
+    Image URL: <input type="text" name="image_url" value="<%= @actor["image_url"] %>"/><br />
+    <input type="submit" /> 
+  </form>
