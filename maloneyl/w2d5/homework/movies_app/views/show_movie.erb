@@ -10,7 +10,7 @@
 <p>Starring: 
   <ul>
    <% @stars.each do |star| %>
-      <li><b><%= "#{star["first_name"]} #{star["last_name"]}" %></b><br />
+      <li><b><a href="/actors/<%= star["actor_id"]%>"><%= "#{star["first_name"]} #{star["last_name"]}" %></a></b><br />
         <%= "b. #{star["dob"]}" %><br />
         <img src="<%= "#{star["image_url"]}" %>" height="200" />
       </li>
@@ -19,6 +19,6 @@
 </p>
 
 <form method="POST" action="/movies/<%= @movie["id"]%>/delete" >
-  <input type="submit" value="delete" />
+  <input type="submit" value="Delete <%= @movie["title"]%>" />
 </form>
 <a href="/movies/<%= @movie["id"]%>/update"> Update <%= @movie["title"]%> </a>

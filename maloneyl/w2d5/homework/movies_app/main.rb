@@ -39,6 +39,7 @@ get "/movies/:movie_id" do
 end
 
 get "/actors/:actor_id" do
+  @films = @actor.movie(params[:actor_id])
   @actor = @actor.find(params[:actor_id])
   erb :show_actor
 end

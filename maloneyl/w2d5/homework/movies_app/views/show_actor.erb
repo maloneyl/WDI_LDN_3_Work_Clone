@@ -4,8 +4,17 @@
 
 <p>Name: <%= "#{@actor["first_name"]} #{@actor["last_name"]}" %></p>
 <p>Date of Birth: <%= @actor["dob"] %></p>
+<p>Filmography: 
+  <ul>
+   <% @films.each do |film| %>
+      <li><b><a href="/movies/<%= film["movie_id"]%>"><%= "#{film["title"]} (#{film["year"]})" %></a></b><br />
+        <img src="<%= "#{film["poster"]}" %>" height="200" />
+      </li>
+    <% end %>
+  </ul>
+</p>
 
 <form method="post" action="/actors/<%= @actor["id"] %>/delete">
-  <input type="submit" value="Delete this actor" />
+  <input type="submit" value="Delete <%= "#{@actor["first_name"]} #{@actor["last_name"]}" %>" />
 </form>
 <a href="/actors/<%= @actor["id"] %>/update">Update <%= "#{@actor["first_name"]} #{@actor["last_name"]}" %></a>
