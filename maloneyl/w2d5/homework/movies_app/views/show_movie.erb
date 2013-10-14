@@ -7,12 +7,12 @@
 <p>Genre: <%= @movie["genre"]%></p>
 <p>Director(s): <%= @movie["director"]%></p>
 <p>Writer(s): <%= @movie["writers"]%></p>
-<p>Starring: 
+<p>Stars: 
   <ul>
-   <% @stars.each do |star| %>
-      <li><b><a href="/actors/<%= star["actor_id"]%>"><%= "#{star["first_name"]} #{star["last_name"]}" %></a></b><br />
-        <%= "b. #{star["dob"]}" %><br />
-        <img src="<%= "#{star["image_url"]}" %>" height="200" />
+   <% @actors.each do |actor| %>
+      <li><b><a href="/actors/<%= actor["actor_id"]%>"><%= "#{actor["first_name"]} #{actor["last_name"]}" %></a></b><br />
+        <%= "b. #{actor["dob"]}" %><br />
+        <img src="<%= "#{actor["image_url"]}" %>" height="200" />
       </li>
     <% end %>
   </ul>

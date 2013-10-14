@@ -32,25 +32,26 @@ post "/search" do
 end
 
 get "/movies/:movie_id" do
-  @stars = @movie.actor(params[:movie_id]) # this must come first; otherwise it's undefined method for the resulting hash. not 100% getting it...
+  @actors = @movie.actor(params[:movie_id]) # this must come first; otherwise it's undefined method for the resulting hash. not 100% getting it...
   @movie = @movie.find(params[:movie_id])
-  binding.pry
   erb :show_movie
 end
 
 get "/actors/:actor_id" do
-  @films = @actor.movie(params[:actor_id])
+  @movies = @actor.movie(params[:actor_id])
   @actor = @actor.find(params[:actor_id])
   erb :show_actor
 end
 
 get "/new/movie" do
+  @actors = @actor.all  
+  @actors_in_db = @actor.all  
   @movie = {}
   erb :new_movie
 end
 
 post "/new/movie" do
-  new_created_id = @movie.create(params) # params is that hash that Sinatra gives you!
+  new_created_id = @movie.create(params)
   redirect "/movies/#{new_created_id}"
 end
 
@@ -65,6 +66,8 @@ post "/new/actor" do
 end
 
 get "/movies/:movie_id/update" do
+  @actors = @movie.actor(params[:movie_id])  
+  @actors_in_db = @actor.all
   @movie = @movie.find(params[:movie_id])
   erb :new_movie
 end
@@ -75,6 +78,7 @@ post "/movies/:movie_id/update" do
 end
 
 get "/actors/:actor_id/update" do
+  @movies = @movie.all
   @actor = @actor.find(params[:actor_id])
   erb :new_actor
 end

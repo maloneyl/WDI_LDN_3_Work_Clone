@@ -6,9 +6,9 @@
 <p>Date of Birth: <%= @actor["dob"] %></p>
 <p>Filmography: 
   <ul>
-   <% @films.each do |film| %>
-      <li><b><a href="/movies/<%= film["movie_id"]%>"><%= "#{film["title"]} (#{film["year"]})" %></a></b><br />
-        <img src="<%= "#{film["poster"]}" %>" height="200" />
+   <% @movies.each do |movie| %>
+      <li><b><a href="/movies/<%= movie["movie_id"]%>"><%= "#{movie["title"]} (#{movie["year"]})" %></a></b><br />
+        <img src="<%= "#{movie["poster"]}" %>" height="200" />
       </li>
     <% end %>
   </ul>

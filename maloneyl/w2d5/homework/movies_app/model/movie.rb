@@ -36,6 +36,7 @@ class Movie
      writers = '#{params[:writers]}',
      actors = '#{params[:actors]}' 
      WHERE id = #{params[:movie_id]}"
+    @connection.exec "INSERT INTO actors_movies (actor_id, movie_id) VALUES (#{params[:actor_to_add]}, #{params[:movie_id]})" unless params[:actor_to_add] == ''
   end
 
   def delete(id)

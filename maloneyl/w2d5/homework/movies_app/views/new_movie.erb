@@ -1,16 +1,29 @@
 <h3>Add/Update a Movie</h3>
-<% if @movie["id"]%>
-  <form method="post" action="/movies/<%= @movie["id"]%>/update">
+<% if @movie["id"] %>
+  <form method="post" action="/movies/<%= @movie["id"] %>/update">
 <% else %>
   <form method="post" action="/new/movie">
 <% end %>
-  Title: <input type="text" name="title" value="<%= @movie["title"]%>" />
-  Year: <input type="number" name="year" value="<%= @movie["year"]%>"/>
-  Rated: <input type="number" name="rated" value="<%= @movie["rated"]%>"/>
-  Poster: <input type="text" name="poster" value="<%= @movie["poster"]%>"/>
-  Genre: <input type="text" name="genre" value="<%= @movie["genre"]%>"/>  
-  Director(s): <input type="text" name="director" value="<%= @movie["director"]%>"/>
-  Writer(s): <input type="text" name="writers" value="<%= @movie["writers"]%>"/>  
-  Starring: <input type="text" name="actors" value="<%= @movie["actors"]%>"/>
+  Title: <input type="text" name="title" value="<%= @movie["title"]%>" /><br />
+  Year: <input type="number" name="year" value="<%= @movie["year"]%>"/><br />
+  Rated: <input type="number" name="rated" value="<%= @movie["rated"]%>"/><br />
+  Poster: <input type="text" name="poster" value="<%= @movie["poster"]%>"/><br />
+  Genre: <input type="text" name="genre" value="<%= @movie["genre"]%>"/><br />  
+  Director(s): <input type="text" name="director" value="<%= @movie["director"]%>"/><br />
+  Writer(s): <input type="text" name="writers" value="<%= @movie["writers"]%>"/><br /> 
+<!--   Stars: <input type="text" name="actors" value="<%= @movie["actors"]%>"/><br /> -->
+  <% if @movie["id"] %>
+  Stars:
+    <% @actors.each do |actor| %>
+      <li><%= "#{actor["first_name"]} #{actor["last_name"]}" %></li>
+      <% end %>
+  <% end %>    
+  Add an actor/actress:
+    <select name="actor_to_add">
+      <option value=""></option>
+        <% @actors_in_db.each do |actor|%>
+          <option value="<%= actor["id"] %>"><%= "#{actor["first_name"]} #{actor["last_name"]}" %></option>
+        <% end %>
+    </select><br />
   <input type="submit">
 </form>
