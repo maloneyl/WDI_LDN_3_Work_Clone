@@ -1,0 +1,24 @@
+<h3><%= @movie["title"]%></h3>
+
+<img src="<%= @movie["poster"] %>" height="300">
+
+<p>Year: <%= @movie["year"]%></p>
+<p>Rated: <%= @movie["rated"]%></p>
+<p>Genre: <%= @movie["genre"]%></p>
+<p>Director(s): <%= @movie["director"]%></p>
+<p>Writer(s): <%= @movie["writers"]%></p>
+<p>Stars: 
+  <ul>
+   <% @actors.each do |actor| %>
+      <li><b><a href="/actors/<%= actor["actor_id"]%>"><%= "#{actor["first_name"]} #{actor["last_name"]}" %></a></b><br />
+        <%= "b. #{actor["dob"]}" %><br />
+        <img src="<%= "#{actor["image_url"]}" %>" height="200" />
+      </li>
+    <% end %>
+  </ul>
+</p>
+
+<form method="POST" action="/movies/<%= @movie["id"]%>/delete" >
+  <input type="submit" value="Delete <%= @movie["title"]%>" />
+</form>
+<a href="/movies/<%= @movie["id"]%>/update"> Update <%= @movie["title"]%> </a>

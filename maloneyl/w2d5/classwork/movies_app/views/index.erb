@@ -1,0 +1,12 @@
+<h3>Movies index</h3>
+<ul>
+<% @movies.each do |movie| %>
+  <li>
+    <h4>
+      <a href="/movies/<%= movie["id"]%>">
+        <%= "#{movie["title"]} (#{movie["year"]})"%>
+      </a>
+    </h4>
+  </li>
+<% end %>
+</ul>
