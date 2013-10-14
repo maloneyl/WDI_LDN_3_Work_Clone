@@ -1,0 +1,14 @@
+<h3><%= @movie["title"] %></h3>
+
+<img src="<%= @movie["poster"] %>" height="300" />
+
+<p>Year: <%= @movie["year"] %></p>
+<p>Rated: <%= @movie["rated"] %></p>
+<p>Genre: <%= @movie["genre"] %></p>
+<p>Director: <%= @movie["director"] %></p>
+<p>Starring: <%= @movie["actors"] %></p>
+
+<form method="post" action="/movies/<%= @movie["id"] %>/delete">
+  <input type="submit" value="Delete this movie" />
+</form>
+<a href="/movies/<%= @movie["id"] %>/update">Update <%= @movie["title"] %></a>

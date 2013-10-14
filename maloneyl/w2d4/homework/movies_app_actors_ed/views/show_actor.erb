@@ -1,0 +1,11 @@
+<h3><%= @actor["first_name"] + " " + @actor["last_name"] %></h3>
+
+<img src="<%= @actor["image_url"] %>" height="300" />
+
+<p>Name: <%= @actor["first_name"] + " " + @actor["last_name"] %></p>
+<p>Date of Birth: <%= @actor["dob"] %></p>
+
+<form method="post" action="/actors/<%= @actor["id"] %>/delete">
+  <input type="submit" value="Delete this actor" />
+</form>
+<a href="/actors/<%= @actor["id"] %>/update">Update <%= @actor["first_name"] + " " + @actor["last_name"] %></a>
