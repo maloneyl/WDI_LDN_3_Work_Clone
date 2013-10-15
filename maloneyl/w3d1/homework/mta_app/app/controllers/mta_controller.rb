@@ -1,23 +1,3 @@
-# Ask user for the "from" and the "to" and store them
-# Calculate the distance in terms of the number of stops
-
-# As all lines intersect at Union Square, distance between anything cross-lines should be
-# number of stops from Union Sq on its own line + number of stops from Union Sq on the other line
-
-# If to-from are on the same line, then the distance is just their index differences
-
-# # For section readability
-# require 'rainbow'
-
-# Our 3 lines
-
-
-
-# n = [ "station1", "station2", … ]
-# l = [ "stationA", "stationB", … ]
-# mta[:n] = n
-# mta[:l] = l
-
 class MtaController < ApplicationController
 
     LINE_N = [ "Times Square", "34th", "28th", "23rd", "Union Square", "8th" ]
