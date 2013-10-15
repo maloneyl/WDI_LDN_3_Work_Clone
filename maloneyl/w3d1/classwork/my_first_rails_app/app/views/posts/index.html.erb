@@ -1,0 +1,13 @@
+<h1>Welcome to My Blog</h1>
+
+<% @posts.each do |post| %>
+  <h2><%= link_to post.title, post %></h2>
+  <p>
+    posted <%= time_ago_in_words post.created_at %> ago,
+    word count: <%= number_to_human post.word_count, :precision => 1 %>,
+    comments: <%= number_to_human post.comment_count %>
+  </p>
+  <p><%= truncate post.text, :length => 200 %></p>
+<% end %>
+
+<p><%= link_to "New post", new_post_path %></p>

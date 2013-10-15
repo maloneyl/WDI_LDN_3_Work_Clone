@@ -1,0 +1,44 @@
+<h1>MTA Journey Planner</h1>
+
+<form action="/mta" method="post">
+<h4>STARTING AT...</h4>
+Line:
+  <select name="from_line">
+    <option value="line_n">N</option>
+    <option value="line_l">L</option>
+    <option value="line_6">6</option>
+  </select> 
+Station:
+  <select name="from_stop">
+    <% @line_n.each do |station| %>
+      <option value="<%= "#{station}" %>"><%= "#{station}" %> [N]</option>
+    <% end %>
+    <% @line_l.each do |station| %>
+      <option value="<%= "#{station}" %>"><%= "#{station}" %> [L]</option>
+    <% end %> 
+    <% @line_6.each do |station| %>
+      <option value="<%= "#{station}" %>"><%= "#{station}" %> [6]</option>
+    <% end %>
+    </select> 
+<h4>GOING TO...</h4>
+Line:
+  <select name="to_line">
+    <option value="line_n">N</option>
+    <option value="line_l">L</option>
+    <option value="line_6">6</option>
+  </select> 
+Station:
+  <select name="to_stop">
+    <% @line_n.each do |station| %>
+      <option value="<%= "#{station}" %>"><%= "#{station}" %> [N]</option>
+    <% end %>
+    <% @line_l.each do |station| %>
+      <option value="<%= "#{station}" %>"><%= "#{station}" %> [L]</option>
+    <% end %> 
+    <% @line_6.each do |station| %>
+      <option value="<%= "#{station}" %>"><%= "#{station}" %> [6]</option>
+    <% end %>
+  </select>
+  <br /><br />
+  <input type="submit">
+</form>
