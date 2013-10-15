@@ -1,0 +1,217 @@
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  [1m[36m (0.2ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (1.7ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (1.5ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (0.1ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+Migrating to CreatePosts (20131014141901)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.8ms)[0m  CREATE TABLE "posts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "content" text, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20131014141901')[0m
+  [1m[35m (2.3ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+
+
+Started GET "/assets/rails.png" for 127.0.0.1 at 2013-10-14 16:28:50 +0100
+Connecting to database specified by database.yml
+Served asset /rails.png - 200 OK (7ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2013-10-14 16:28:54 +0100
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (0.6ms)[0m  [1mSELECT "posts".* FROM "posts" [0m
+  Rendered posts/index.html.erb within layouts/application (4.1ms)
+Compiled posts.css  (11ms)  (pid 34556)
+Compiled scaffolds.css  (25ms)  (pid 34556)
+Compiled application.css  (53ms)  (pid 34556)
+Compiled jquery.js  (11ms)  (pid 34556)
+Compiled jquery_ujs.js  (1ms)  (pid 34556)
+Compiled posts.js  (215ms)  (pid 34556)
+Compiled application.js  (340ms)  (pid 34556)
+Completed 200 OK in 557ms (Views: 472.5ms | ActiveRecord: 3.2ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2013-10-14 16:28:55 +0100
+Served asset /scaffolds.css - 304 Not Modified (28ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-10-14 16:28:55 +0100
+Served asset /jquery_ujs.js - 304 Not Modified (4ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-10-14 16:28:55 +0100
+Served asset /jquery.js - 304 Not Modified (80ms)
+
+
+Started GET "/assets/posts.css?body=1" for 127.0.0.1 at 2013-10-14 16:28:55 +0100
+Served asset /posts.css - 304 Not Modified (6ms)
+
+
+Started GET "/assets/posts.js?body=1" for 127.0.0.1 at 2013-10-14 16:28:55 +0100
+Served asset /posts.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-10-14 16:28:55 +0100
+Served asset /application.js - 304 Not Modified (13ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-10-14 16:28:55 +0100
+Served asset /application.css - 304 Not Modified (6ms)
+
+
+Started GET "/posts/new" for 127.0.0.1 at 2013-10-14 16:28:56 +0100
+Processing by PostsController#new as HTML
+  Rendered posts/_form.html.erb (31.7ms)
+  Rendered posts/_partial.html.erb (0.6ms)
+  Rendered posts/new.html.erb within layouts/application (42.7ms)
+Completed 200 OK in 68ms (Views: 55.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2013-10-14 16:28:56 +0100
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.js?body=1" for 127.0.0.1 at 2013-10-14 16:28:56 +0100
+Served asset /posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-10-14 16:28:56 +0100
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-10-14 16:28:56 +0100
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.css?body=1" for 127.0.0.1 at 2013-10-14 16:28:56 +0100
+Served asset /posts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-10-14 16:28:56 +0100
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-10-14 16:28:56 +0100
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started POST "/posts" for 127.0.0.1 at 2013-10-14 16:29:39 +0100
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"aODQ6eaKQU8cfzd89GsNLP+eGPV4b1kVckpkOjfQyio=", "post"=>{"title"=>"Hello there", "content"=>"Bacon ipsum dolor sit amet hamburger sirloin swine prosciutto drumstick leberkas pancetta chuck. Filet mignon short ribs ribeye chuck meatball. Bresaola brisket filet mignon ball tip biltong short ribs strip steak capicola leberkas beef ribs shankle. Turkey swine frankfurter sausage, beef ribs ham pork loin chicken pork chop turducken t-bone salami brisket jowl biltong. Leberkas beef brisket jowl corned beef kevin t-bone meatball rump shankle ground round capicola cow prosciutto. Leberkas swine prosciutto hamburger tongue t-bone pork belly meatloaf tri-tip cow doner ground round."}, "commit"=>"Create Post"}
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (7.2ms)[0m  [1mINSERT INTO "posts" ("content", "created_at", "title", "updated_at") VALUES (?, ?, ?, ?)[0m  [["content", "Bacon ipsum dolor sit amet hamburger sirloin swine prosciutto drumstick leberkas pancetta chuck. Filet mignon short ribs ribeye chuck meatball. Bresaola brisket filet mignon ball tip biltong short ribs strip steak capicola leberkas beef ribs shankle. Turkey swine frankfurter sausage, beef ribs ham pork loin chicken pork chop turducken t-bone salami brisket jowl biltong. Leberkas beef brisket jowl corned beef kevin t-bone meatball rump shankle ground round capicola cow prosciutto. Leberkas swine prosciutto hamburger tongue t-bone pork belly meatloaf tri-tip cow doner ground round."], ["created_at", Mon, 14 Oct 2013 15:29:39 UTC +00:00], ["title", "Hello there"], ["updated_at", Mon, 14 Oct 2013 15:29:39 UTC +00:00]]
+  [1m[35m (1.2ms)[0m  commit transaction
+Redirected to http://localhost:3000/posts/1
+Completed 302 Found in 57ms (ActiveRecord: 8.6ms)
+
+
+Started GET "/posts/1" for 127.0.0.1 at 2013-10-14 16:29:39 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.5ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", "1"]]
+  Rendered posts/show.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 18ms (Views: 12.6ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/posts.css?body=1" for 127.0.0.1 at 2013-10-14 16:29:39 +0100
+Served asset /posts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-10-14 16:29:39 +0100
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-10-14 16:29:39 +0100
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.js?body=1" for 127.0.0.1 at 2013-10-14 16:29:39 +0100
+Served asset /posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2013-10-14 16:29:39 +0100
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-10-14 16:29:39 +0100
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-10-14 16:29:39 +0100
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2013-10-14 16:29:43 +0100
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts" 
+  Rendered posts/index.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 15ms (Views: 12.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-10-14 16:29:43 +0100
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.css?body=1" for 127.0.0.1 at 2013-10-14 16:29:43 +0100
+Served asset /posts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-10-14 16:29:43 +0100
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.js?body=1" for 127.0.0.1 at 2013-10-14 16:29:43 +0100
+Served asset /posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-10-14 16:29:43 +0100
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2013-10-14 16:29:43 +0100
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-10-14 16:29:43 +0100
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/posts/new" for 127.0.0.1 at 2013-10-14 16:29:46 +0100
+Processing by PostsController#new as HTML
+  Rendered posts/_form.html.erb (12.8ms)
+  Rendered posts/_partial.html.erb (0.1ms)
+  Rendered posts/new.html.erb within layouts/application (17.4ms)
+Completed 200 OK in 27ms (Views: 26.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-10-14 16:29:46 +0100
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.js?body=1" for 127.0.0.1 at 2013-10-14 16:29:46 +0100
+Served asset /posts.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2013-10-14 16:29:46 +0100
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/posts.css?body=1" for 127.0.0.1 at 2013-10-14 16:29:46 +0100
+Served asset /posts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-10-14 16:29:46 +0100
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-10-14 16:29:46 +0100
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-10-14 16:29:46 +0100
+Served asset /application.css - 304 Not Modified (0ms)
