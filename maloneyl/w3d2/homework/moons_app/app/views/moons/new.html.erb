@@ -1,11 +1,11 @@
 <%= form_for @moon do |f| %>
-  Name:
+  <%= f.label :name %>:
   <%= f.text_field :name %><br />
-  Satellite of:
+  <%= f.label :associated_planet %>:
   <%= f.text_field :associated_planet %><br />  
-  Image (URL):
+  <%= f.label :image %> (URL):
   <%= f.text_field :image %><br />
-  Diameter (km):
+  <%= f.label :diameter %> (km):
   <%= f.text_field :diameter %><br />
   <%= f.submit "Create" %>
 <% end %>
