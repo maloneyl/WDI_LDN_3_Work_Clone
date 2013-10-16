@@ -1,0 +1,8 @@
+<h2>All Movies</h2>
+
+<ul>
+  <% @movies.each do |movie| %>
+    <li><strong><%= link_to movie.title, movie_path(movie) %></strong><br />
+      (Released: <%= movie.release_date.to_formatted_s(:rfc822) %>)</li>
+  <% end %>
+</ul>  

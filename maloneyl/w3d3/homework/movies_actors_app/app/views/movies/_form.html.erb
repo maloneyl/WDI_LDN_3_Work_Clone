@@ -1,0 +1,28 @@
+<%= form_for @movie do |f| %>
+  <fieldset>
+    <legend>Movie Details</legend>
+    <div class="field">
+      <%= f.label :title %>
+      <%= f.text_field :title %>
+    </div>
+    <div class="field">
+      <%= f.label :release_date %>
+      <%= f.date_select :release_date, start_year: 1950, include_blank: true %>
+    </div>
+    <div class="field">
+      <%= f.label :poster, "Poster (URL)" %>
+      <%= f.url_field :poster %>
+    </div>
+    <div class="field">
+      <%= f.label :director %>
+      <%= f.text_field :director %>
+    </div>
+    <div class="field">
+      <%= f.label :rating %>
+      <%= f.number_field :rating %>
+    </div>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+  </fieldset>
+<% end %>
