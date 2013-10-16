@@ -1,0 +1,9 @@
+<h1>Moons!</h1>
+
+<% @moons.each do |moon| %>
+  <h3><%= moon.name.upcase %></h3>
+    <p>
+      <img src="<%= moon.image %>" height="250"><br />
+      Satellite of <%= moon.associated_planet %>, with a diameter of <%= moon.diameter %> km<br />
+    </p>
+<% end %>
