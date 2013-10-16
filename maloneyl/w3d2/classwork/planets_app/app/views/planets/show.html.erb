@@ -1,0 +1,38 @@
+<h1><%= @planet.name %></h1>
+
+<% if @planet.image.present? %> <!-- i.e. empty strings won't count as true -->
+  <%= image_tag @planet.image, class: 'large-image' %>
+<% end %>  
+
+<table>
+  <tr>
+    <th>Orbit</th>
+    <td><%= @planet.orbit %> AU</td>
+  </tr>
+  <tr>
+    <th>Diameter</th>
+    <td><%= pluralize(@planet.diameter, 'Earth diameter') %></td>
+  </tr>
+  <tr>
+    <th>Mass</th>
+    <td><%= pluralize(@planet.mass, 'Earth mass') %></td>
+  </tr>  
+  <tr>
+    <th>Moons</th>
+    <td><%= @planet.moons %></td>
+  </tr> 
+  <tr>
+    <th>Planet Type</th>
+    <td><%= @planet.planet_type %></td>
+  </tr>
+  <tr>
+    <th>Rings</th>
+    <td><%= @planet.rings %></td>
+  </tr>     
+</table>
+
+<nav>
+  <%= link_to "Destroy this planet!", @planet, :method => :delete, :confirm => "Whoa there! Are you sure you want to destroy #{@planet.name}?" %> <!-- the link is just the object; rails can figure out the rest if you have the method specified, and the method here refers to the http verb (delete), not our controller's method (destroy) -->
+  <%= link_to "Edit this planet", edit_planet_path(@planet.id) %> <!-- or again, edit_planet_path(@planet) for rails to figure out that it's the id we need in the params -->
+
+</nav>

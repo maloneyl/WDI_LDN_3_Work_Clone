@@ -1,0 +1,44 @@
+<%= form_for @planet do |f| %>
+  <fieldset>
+    <legend>Planet details</legend>
+    <div class="field">
+      <%= f.label :name, 'Name' %>
+      <%= f.text_field :name %>
+    </div>
+    <div class="field">
+      <%= f.label :image, 'Image URL' %> <!-- if you don't pass the string, it'll just be the symbol with capitalize -->
+      <%= f.url_field :image %> <!-- not text_field here! -->
+    </div>    
+    <div class="field">
+      <%= f.label :orbit, 'Orbit (AU)' %>
+      <%= f.number_field :orbit, step: :any %> <!-- number_field requires a step size (default is 1 integer) -->
+    </div>
+    <div class="field">
+      <%= f.label :diameter, 'Diameter (multiples of Earths)' %>
+      <%= f.number_field :diameter, step: :any %>
+    </div>  
+    <div class="field">
+      <%= f.label :mass, 'Mass (multiples of Earths)' %>
+      <%= f.number_field :mass, step: :any %>
+    </div>    
+    <div class="field">
+      <%= f.label :moons, 'Moons (count)' %>
+      <%= f.number_field :moons %> <!-- should be an integer, so default step size is fine -->
+    </div>
+    <div class="field">
+      <%= f.label :planet_type, 'Planet Type' %>
+      <% ['rocky', 'gas-giant'].each do |type| %>
+        <%= f.radio_button :planet_type, type, checked: @planet.planet_type == type %>
+        <%= f.label "planet_planet_type_#{type}", type, class: 'checkbox-label' %> <!-- the label should match the radio_button id (which we can grab from Inspect Element); the class bit is for css -->
+      <% end %>
+    </div>
+    <div class="field">
+      <%= f.label :rings, 'Rings?' %>
+      <%= f.check_box :rings %>
+    </div>
+    <div class="actions">
+      <%= f.submit %>
+    </div>                        
+  </fieldset>
+
+<% end %>

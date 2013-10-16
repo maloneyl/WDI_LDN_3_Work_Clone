@@ -1,3 +1,4 @@
 <% @planets.each do |planet| %>
-  <p><%= planet.name %> has <%= pluralize(planet.moons, 'moon') %>.</p>
+  <p><%= link_to planet.name, planet_path(planet) %> has <%= pluralize(planet.moons, 'moon') %>.</p>
+<!--   <p><%= link_to planet_path(planet.id), planet.name %> has <%= pluralize(planet.moons, 'moon') %>.</p> planet.id is technically what we want there and we can use this, but rails' magic defaults to_params to the id -->
 <% end %>

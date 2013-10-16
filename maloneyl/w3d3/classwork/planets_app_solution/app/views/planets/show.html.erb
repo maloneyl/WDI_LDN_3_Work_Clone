@@ -1,0 +1,42 @@
+<%= debug @planet %>
+
+<h1><%= @planet.name %></h1>
+
+<% if @planet.image.present? %>
+  <%= image_tag @planet.image, class: 'large-image' %>
+<% end %>
+
+<table>
+  <tr>
+    <th>Orbit</th>
+    <td><%= @planet.orbit %> AU</td>
+  </tr>
+  <tr>
+    <th>Diameter</th>
+    <td><%= @planet.diameter %> Earth Diameters</td>
+  </tr>
+  <tr>
+    <th>Mass</th>
+    <td><%= @planet.mass %> Earth Masses</td>
+  </tr>
+  <tr>
+    <th>Moons</th>
+    <td><%= @planet.moons %></td>
+  </tr>
+  <tr>
+    <th>Type</th>
+    <td><%= @planet.planet_type %></td>
+  </tr>
+  <tr>
+    <th>Rings?</th>
+    <td><%= @planet.rings %></td>
+  </tr>
+</table>
+
+<br/>
+
+<nav>
+  <%= link_to 'Destory this planet', @planet, :method =>:delete, :confirm => "Whoa there! Are you sure you want to destory #{@planet.name}?" %>
+  |
+  <%= link_to 'Edit this planet', edit_planet_path(@planet) %>
+</nav>

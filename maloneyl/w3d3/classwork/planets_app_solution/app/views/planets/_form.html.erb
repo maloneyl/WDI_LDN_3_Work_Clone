@@ -1,0 +1,43 @@
+<%= form_for(@planet) do |f| %>
+  <fieldset>
+    <legend>Planet Details</legend>
+    <div class="field">
+      <%= f.label :name, 'Name' %>
+      <%= f.text_field :name %>
+    </div>
+    <div class="field">
+      <%= f.label :image, 'Image URL' %>
+      <%= f.url_field :image %>
+    </div>
+    <div class="field">
+      <%= f.label :orbit, 'Orbit (AU)' %>
+      <%= f.number_field :orbit, step: :any %>
+    </div>
+    <div class="field">
+      <%= f.label :diameter, "Diameter (multiples of Earth's)" %>
+      <%= f.number_field :diameter, step: :any %>
+    </div>
+    <div class="field">
+      <%= f.label :mass, "Mass (multiples of Earth's)" %>
+      <%= f.number_field :mass, step: :any %>
+    </div>
+    <div class="field">
+      <%= f.label :moons, 'Moons (count)' %>
+      <%= f.number_field :moons, step: :any %>
+    </div>
+    <div class="field">
+      <%= f.label :planet_type, 'Planet Type' %>
+      <% ['rocky', 'gas-giant'].each do |type| %>
+        <%= f.radio_button :planet_type, type, checked: @planet.planet_type == type %>
+        <%= f.label "planet_type_#{type}", type, class: "checkbox-label"%>
+      <% end %>
+    </div>
+    <div class="field">
+      <%= f.label :rings, 'Rings?' %>
+      <%= f.check_box :rings %>
+    </div>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+  </fieldset>
+<% end %>
