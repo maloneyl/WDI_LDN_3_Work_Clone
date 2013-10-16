@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  associated_planet: MyString
+  image: MyText
+  diameter: 1.5
+
+two:
+  name: MyString
+  associated_planet: MyString
+  image: MyText
+  diameter: 1.5
