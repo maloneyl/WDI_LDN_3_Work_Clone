@@ -20,11 +20,21 @@ class ActorsController < ApplicationController
 
   def edit
     @actor = Actor.find params[:id]
+    @movies = Movie.all
   end
 
   def update  
     actor = Actor.find params[:id]
-    actor.update_attributes params[:actor]
+    # if the second form (actor) is submitted, push that movie into the actor.movies array
+    if params[:movie_id]
+      actor.movies << Movie.find(params[:movie_id])
+      actor.save
+      # movie = Movie.find(params[:movie_id]) -- this is just saving the other way around
+      # movie.actors << actor -- (cont'd above)
+    else 
+      actor.update_attributes params[:actor]
+      # update_attributes includes save already, so we don't need to to actor.save here
+    end
     redirect_to actor
   end
 

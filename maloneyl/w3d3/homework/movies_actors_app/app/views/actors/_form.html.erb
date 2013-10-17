@@ -2,8 +2,10 @@
   <fieldset>
     <legend>Actor/Actress Details</legend>
     <div class="field">
-      <%= f.label :first_name, "First Name" %>
+      <%= f.label :first_name, "First Name" %> 
       <%= f.text_field :first_name %>
+<!--       Input name then becomes actor[first_name] -->
+<!--       Params[actor] {first_name: ... } -->
     </div>
     <div class="field">
       <%= f.label :last_name, "Last Name" %>
