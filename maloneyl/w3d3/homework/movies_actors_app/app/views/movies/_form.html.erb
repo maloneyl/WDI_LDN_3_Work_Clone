@@ -21,6 +21,10 @@
       <%= f.label :rating %>
       <%= f.number_field :rating %>
     </div>
+    <div class="field">
+      <%= f.label :actor_id, "Actor" %>
+      <%= f.collection_select(:id, Actor.all, :id, :last_name) %>
+    </div>
     <div class="actions">
       <%= f.submit %>
     </div>

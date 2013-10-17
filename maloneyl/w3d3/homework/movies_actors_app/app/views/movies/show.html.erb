@@ -4,10 +4,12 @@
 <p>Released: <%= @movie.release_date.to_formatted_s(:rfc822) %></p>
 <p>Director: <%= @movie.director %></p>  
 <p>Rating: <%= @movie.rating %></p>  
-<p>Starring:
-  <% @movie.actors.each do |actor| %>
-  <li><%= "#{actor.first_name} #{actor.last_name} (born #{actor.birthdate.to_formatted_s(:rfc822)})" %>
-    <% end %></li>
+<% if @movie.actors.present? %>
+  <p>Starring:
+    <% @movie.actors.each do |actor| %>
+    <li><%= link_to "#{actor.first_name} #{actor.last_name}", actor_path(actor) %></li>
+    <% end %>
+<% end %>
 </p>
 
 <nav>
