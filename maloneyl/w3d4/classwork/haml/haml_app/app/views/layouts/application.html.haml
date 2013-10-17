@@ -1,0 +1,46 @@
+!!! 5
+%html
+  %head
+    %title HamlQuiz (Haml Version)
+    = stylesheet_link_tag "application", media: "all"
+  %body
+    #wrapper
+      #header
+        %p I AM YOUR HEADER
+        %ul.menu
+          %li.menu-item Home
+          %li.menu-item Contact
+          %li.menu-item About
+      #sidebar
+        %div.favourites
+        %div.todo-list
+      #coπntent
+        %form{method: 'post', action: '/postform'}
+          %input{name: 'name', placeholder: 'Name', type: 'text'}
+          %input{name: 'email', placeholder: 'Email', type: 'text'}
+          %label Sex
+          %select
+            %option{value: 'f'} Female
+            %option{value: 'm'} Male
+      #footer
+        %p I AM YOUR FOOTER
+        %p.very-big i am big
+        %p#date Oct 17
+        %p
+          Copyright 2013
+          %ul.so-small    
+
+
+/ /<!DOCTYPE html> (which assumes html5) becomes !!! 5 
+/ !!! 5
+/ %html
+/   %head
+/     %title HamlApp (Haml Version)
+/     = stylesheet_link_tag "application", media: "all"
+/     = javascript_include_tag "application"
+/     = csrf_meta_tags
+
+/   %body
+/     = yield
+
+/   

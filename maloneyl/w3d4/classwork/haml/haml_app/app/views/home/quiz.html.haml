@@ -1,0 +1,25 @@
+!!! 5
+%html
+  %head
+    %title HamlQuiz
+  %body
+    %div#wrapper
+      %div#header
+        %ul.menu
+          %li.menu-item Home
+          %li.menu-item Contact
+          %li.menu-item About
+      %div#sidebar
+        %div.favourites
+        %div.todo-list
+      %div#content
+        %form{action: '/postform', method: 'post'}
+          %input{name: 'name', placeholder: 'Name', type: 'text'}
+          %input{name: 'email', placeholder: 'Email', type: 'text'}
+          %label Sex
+          %select
+            %option{value: 'f'} Female
+            %option{value: 'm'} Male
+      %div#footer
+        %p
+          Copyright 2013    
