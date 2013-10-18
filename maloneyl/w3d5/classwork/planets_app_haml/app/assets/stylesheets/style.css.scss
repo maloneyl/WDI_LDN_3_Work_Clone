@@ -1,0 +1,94 @@
+// put theme parameters here
+$color-1: rgb(141, 165, 181);
+$color-2: blue;
+$color-3: green;
+$color-4: lighten($color-1, 30%);
+$border-size: 1px solid;
+
+
+// page
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+
+#main { padding: 10px }
+
+
+// nav
+
+nav {
+  &.nav-top {
+    padding: 10px;
+    border-bottom: $border-size $color-1;
+    background-color: $color-4;
+  }
+  &.nav-bottom { margin-top: 5px }
+}
+
+
+// images
+
+.large-image {
+  margin: 20px 0;
+  max-height: 200px;
+}
+
+.thumbnail {
+  margin: 10px 0;
+  max-height: 75px;
+}
+
+// tables
+
+table, td, th { border: $border-size $color-1 }
+
+td, th { padding: 8px }
+
+th {
+  text-align: left;
+  color: $color-2;
+}
+
+
+// standard form
+
+.standard-form {
+  fieldset { max-width: 600px }
+
+  legend { font-size: 20px }
+
+  .field {
+    label {
+      text-align: right;
+      width: 250px;
+      float: left;
+      font-weight: bold;
+      margin-right: 10px;
+
+      &.checkbox-label {
+        width: auto;
+        font-weight: normal;
+      }
+    }
+
+    input {
+      width: 300px;
+      float: left;
+
+      &[type="number"] { width: 150px }
+
+      &[type="checkbox"] { width: auto }
+
+      &[type="radio"] { width: auto }
+    }
+  }
+
+  .actions {
+    margin-top: 10px;
+    float: right;
+    clear: both;    
+  }
+}

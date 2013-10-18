@@ -1,0 +1,16 @@
+<h2>Edit Actor/Actress</h2>
+
+<%= render 'form' %>
+
+<fieldset>
+<legend>Add a movie</legend>
+  <%= form_for(@actor) do |f| %>
+    <% select_tag 'movie_id', 
+       options_from_collection_for_select(@movies, 'id', 'title') %>
+    <%= f.submit %>
+  <% end %>
+</fieldset>
+
+<br/>
+<%= link_to "Back to current entry", @actor %> |
+<%= link_to "View another actor/actress", actors_path %>
