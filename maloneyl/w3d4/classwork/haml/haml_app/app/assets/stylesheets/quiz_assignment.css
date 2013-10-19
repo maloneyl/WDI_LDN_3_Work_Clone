@@ -1,0 +1,54 @@
+ul.menubar {
+  background: white;
+  list-style: none;
+  display: block;
+  padding: 0 10px;
+}
+
+ul.menubar li {
+  display: inline-block;
+  position: relative;
+}
+
+ul.menubar li a {
+  color: black;
+  display: block;
+  padding: 10px 14px;
+  text-decoration: none;
+}
+
+ul.menubar li a:hover {
+  background: #29a7f5  ;
+  color: white;
+}
+
+ul.menubar li ul {
+  list-style: none;
+  display: block;
+  position: absolute;
+  top: 100%;
+  background: white;
+  padding: 10px 0;
+}
+
+ul.menubar li ul li a {
+  color: #29a7f5  ;
+  display: block;
+  padding: 8px 20px;
+  text-decoration: none;
+}
+
+ul.menubar li ul li a:hover {
+  background: #29a7f5  ;
+  color: white;
+}
+
+ul.menubar li.is-selected a {
+  background: #29a7f5  ;
+  color: white;
+}
+
+ul.menubar li.is-selected ul {
+  list-style: none;
+  display: block;
+}

@@ -1,0 +1,118 @@
+$magic-color: #29a7f5;
+
+.non-styled-block-list {
+  list-style: none;
+  display: block;
+}
+
+.magic-colors {
+  background: #29a7f5;
+  color: white;  
+}
+
+ul.menubar {
+  @extend .non-styled-block-list;
+  li {
+    a {
+      &.hover {
+        background-color: $magic-color;
+      }
+    }
+    ul {
+      @extend .non-styled-block-list;
+      li a {
+        color: $magic-color;
+
+        &:hover {
+        }
+      }
+    }
+    &.is-selected {
+      a {
+        @extend .magic-colors;
+      }
+      ul {
+        @extend .non-styled-block-list;
+      }
+    }
+  }
+}
+
+
+
+// MY WORK BELOW, DAVID'S VERSION ABOVE
+
+// .common-list-display {
+//   display: inline-block;
+//   position: relative;  
+// }
+
+// .common-link-display {
+//   background: #29a7f5;
+//   color: white;
+// }
+
+// .common-display-and-list-style {
+//   display: block;
+//   list-style: none;
+// }
+
+// ul {
+
+//   &.menubar {
+//     background: white;
+//     @extend .common-display-and-list-style;
+//     padding: 0 10px;
+  
+//     li {
+//       @extend .common-list-display;
+
+//       a {
+//         color: black;
+//         display: block;
+//         padding: 10px 14px;
+//         text-decoration: none;
+
+//         &:hover {
+//           @extend .common-link-display;
+//         }
+//       }  
+
+//       ul {
+//         @extend .common-display-and-list-style;
+//         position: absolute;
+//         top: 100%;
+//         background: white;
+//         padding: 10px 0;
+
+//         li {
+
+//           a {
+//             color: #29a7f5  ;
+//             display: block;
+//             padding: 8px 20px;
+//             text-decoration: none;
+
+//             &:hover {
+//               @extend .common-link-display;
+//             }
+//           }
+//         }  
+//       }
+
+//       &.is-selected {
+
+//         a {
+//           @extend .common-link-display;
+//         }
+
+//         ul {
+//           @extend .common-display-and-list-style;
+//         }
+//       }
+    
+//     }
+
+//   }
+
+// }

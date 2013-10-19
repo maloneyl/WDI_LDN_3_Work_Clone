@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>HamlQuiz</title>
+  </head>
+  <body>
+    <div id='wrapper'>
+      <div id='header'>
+        <ul class='menu'>
+          <li class='menu-item'>Home</li>
+          <li class='menu-item'>Contact</li>
+          <li class='menu-item'>About</li>
+        </ul>
+      </div>
+      <div id='sidebar'>
+        <div class='favourites'></div>
+        <div class='todo-list'></div>
+      </div>
+      <div id='content'>
+        <form action='/postform' method='post'>
+          <input name='name' placeholder='Name' type='text'>
+          <input name='email' placeholder='Email' type='text'>
+          <label>Sex</label>
+          <select>
+            <option value='f'>Female</option>
+            <option value='m'>Male</option>
+          </select>
+        </form>
+      </div>
+      <div id='footer'>
+        <p>Copyright 2013</p>
+      </div>
+    </div>
+  </body>
+</html>
