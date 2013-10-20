@@ -1,0 +1,8 @@
+%h2 All Recipes
+
+%ul
+  - @recipes.each do |recipe|
+    %li
+      = link_to recipe.name, recipe_path(recipe)
+      %br>
+      = image_tag recipe.image, class: 'recipe-thumbs'

@@ -1,0 +1,25 @@
+%h2= @recipe.name
+
+= image_tag @recipe.image, class: "large-image"
+
+%h4 Ingredients:
+
+- if @recipe.ingredients.present?
+  %ul
+    - @recipe.ingredients.each do |ingredient|
+      %li
+        = link_to ingredient.name, ingredient_path(ingredient)
+        %br>
+        = image_tag ingredient.image, class: 'ingredient-thumbs'
+- else
+  %p= link_to 'Add an ingredient', edit_recipe_path(@recipe)
+
+
+%h4 Directions:
+
+%p= @recipe.content
+
+%nav.nav-bottom
+  = link_to 'Remove this recipe', @recipe, method: :delete, confirm: "Are you sure you want to remove #{@recipe.name} from the cookbook?"
+  |
+  = link_to 'Edit this recipe', edit_recipe_path(@recipe)

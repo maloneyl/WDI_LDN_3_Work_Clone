@@ -1,0 +1,56 @@
+.recipe-thumbs {
+  height: 300px;
+}
+
+.large-image {
+  height: 500px;
+}
+
+.medium-image {
+  height: 300px;
+}
+
+.ingredient-thumbs {
+  height: 80px;
+}
+
+.standard-form legend {
+  font-family: Helvetica;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+h1 {
+  font-family: Helvetica;
+  font-size: 32px;
+}
+
+h2 {
+  font-family: Helvetica;
+  font-size: 26px;
+}
+
+h4 {
+  font-family: Helvetica;
+  font-size: 18px;
+  color: purple;
+}
+
+body {
+  font-family: Georgia;
+  font-size: 14px;
+}
+
+nav {
+  font-family: Helvetica;
+  font-size: 12px;
+
+  a {
+    text-decoration: none;
+    color: gray;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
