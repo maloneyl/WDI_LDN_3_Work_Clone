@@ -5,6 +5,7 @@
     = stylesheet_link_tag "application", media: "all"
     = javascript_include_tag "application"
     = csrf_meta_tags
+
   %body
     %nav
       = link_to 'View all recipes', recipes_path
@@ -14,5 +15,7 @@
       = link_to 'View all ingredients', ingredients_path
       |
       = link_to 'Add an ingredient', new_ingredient_path
+
+    %h1 Pescetarian Goodness
 
     = yield

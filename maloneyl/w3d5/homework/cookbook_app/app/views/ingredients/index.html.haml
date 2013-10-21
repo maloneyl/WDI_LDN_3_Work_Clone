@@ -2,7 +2,7 @@
 
 %ul
   - @ingredients.each do |ingredient|
-    %li
-      = link_to ingredient.name, ingredient_path(ingredient)
+    %li.index-list
+      = link_to (image_tag ingredient.image, class: 'ingredient-thumbs'), ingredient_path(ingredient)
       %br>
-      = image_tag ingredient.image, class: 'ingredient-thumbs'
+      = link_to ingredient.name, ingredient_path(ingredient)
