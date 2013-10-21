@@ -1,0 +1,27 @@
+%ul.errors
+  - @book.errors.full_messages.each do |error|
+    %li= error
+
+= form_for(@book) do |f|
+  %fieldset
+    %legend Book Details
+    .field
+      = f.label :title
+      = f.text_field :title
+    .field
+      = f.label :author
+      = f.text_field :author
+    .field
+      = f.label :pages, 'Number of Pages'
+      = f.number_field :pages, step: 1
+    .field
+      = f.label :year, 'Year Published'
+      = f.number_field :year, step: 1
+    .field
+      = f.label :cover, 'Cover Image (URL)'
+      = f.url_field :cover
+    / .field
+    /   = f.label "@book.bookshelf[bookshelf_id]", 'Bookshelf'
+    /   = f.select "@book.bookshelf[bookshelf_id]", options_from_collection_for_select(Bookshelf.all, 'id', 'category')
+    .actions
+      = f.submit

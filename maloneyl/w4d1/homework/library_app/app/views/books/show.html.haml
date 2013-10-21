@@ -1,0 +1,15 @@
+%h2= @book.title
+
+= image_tag @book.cover, width: 300
+
+%p= "Author: #{@book.author}"
+%p= "Published: #{@book.year}"
+%p= "Number of Pages: #{@book.pages}"
+
+- if @book.bookshelf.present?
+  %p= link_to "Bookshelf: #{@book.bookshelf.category}", bookshelf_path(@book.bookshelf)
+  %p= "Library: #{@book.library.name}"
+
+= link_to 'Edit Book', edit_book_path(@book)
+|
+= link_to 'Delete Book', book_path(@book), method: :delete, confirm: "Are you sure you want to delete #{@book.title}?"

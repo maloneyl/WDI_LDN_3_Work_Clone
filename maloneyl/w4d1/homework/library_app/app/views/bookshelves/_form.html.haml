@@ -1,0 +1,12 @@
+%ul.errors
+  - @bookshelf.errors.full_messages.each do |error|
+    %li= error
+
+= form_for(@bookshelf) do |f|
+  %fieldset
+    %legend Bookshelf Details
+    .field
+      = f.label :category
+      = f.text_field :category
+    .actions
+      = f.submit
