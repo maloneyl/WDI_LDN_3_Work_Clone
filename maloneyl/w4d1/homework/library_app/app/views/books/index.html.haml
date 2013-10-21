@@ -2,4 +2,4 @@
 
 - @books.each do |book|
   %h3= link_to "#{book.title} (by #{book.author})", book_path(book)
-  = image_tag book.cover, width: 250
+  = image_tag book.cover, width: 200

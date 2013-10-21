@@ -3,10 +3,10 @@
 = render 'form'
 
 %fieldset
-- if @book.bookshelf.nil?
-  %legend Add Bookshelf Info
-- else
-  %legend Change Bookshelf Info
-= form_for(@book) do |f|
-  = select_tag 'bookshelf_id', options_from_collection_for_select(Bookshelf.all, 'id', 'category')
-  = f.submit
+  - if @book.bookshelf.nil?
+    %legend Add Bookshelf Info
+  - else
+    %legend Change Bookshelf Info
+  = form_for(@book) do |f|
+    = select_tag 'bookshelf_id', options_from_collection_for_select(Bookshelf.all, 'id', 'category')
+    = f.submit

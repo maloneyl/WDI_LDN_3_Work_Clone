@@ -2,9 +2,9 @@
 
 - @bookshelf.books.each do |book|
   %h4= link_to "#{book.title} (by #{book.author})", book_path(book)
-  = image_tag book.cover, width: 250
+  = image_tag book.cover, width: 200
 
-%br/
+%p
 
 = link_to 'Edit Bookshelf', edit_bookshelf_path(@bookshelf)
 |

@@ -1,3 +1,11 @@
 %h2 Edit #{@bookshelf.category} Bookshelf
 
 = render 'form'
+
+%fieldset
+  - if @bookshelf.books.present? == false
+    %legend Add a Book
+    = form_for(@bookshelf) do |f|
+      = select_tag 'book_id', options_from_collection_for_select(Book.all, 'id', 'title')
+      = f.submit
+

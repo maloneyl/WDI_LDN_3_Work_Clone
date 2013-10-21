@@ -28,7 +28,7 @@ class BooksController < ApplicationController
   def update
     @book = Book.find params[:id]
     if params[:bookshelf_id]
-      @book.bookshelf_id = params[:bookshelf_id].to_i
+      @book.bookshelf_id = params[:bookshelf_id].to_i # assumes only one copy of the book and can only be on one bookshelf
       @book.save
     else
       @book.update_attributes params[:book]

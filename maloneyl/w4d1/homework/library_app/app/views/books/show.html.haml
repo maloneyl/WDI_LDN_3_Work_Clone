@@ -8,7 +8,9 @@
 
 - if @book.bookshelf.present?
   %p= link_to "Bookshelf: #{@book.bookshelf.category}", bookshelf_path(@book.bookshelf)
-  %p= "Library: #{@book.library.name}"
+  / %p= "Library: #{@book.library.name}"
+
+%p
 
 = link_to 'Edit Book', edit_book_path(@book)
 |
