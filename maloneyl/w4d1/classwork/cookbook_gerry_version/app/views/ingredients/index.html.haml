@@ -1,0 +1,4 @@
+%h1 Ingredients
+- @ingredients.each do |ingredient|
+  %h3= ingredient.name
+  = image_tag ingredient.image, width: 100
