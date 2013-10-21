@@ -1,0 +1,5 @@
+%h1 Ingredients 
+
+- @ingredients.each do |ingredient|
+  %h3= link_to ingredient.name, ingredient_path(ingredient)
+  = image_tag ingredient.image, width: 100

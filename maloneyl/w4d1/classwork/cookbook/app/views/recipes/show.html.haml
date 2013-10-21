@@ -1,0 +1,14 @@
+%h2= @recipe.name
+
+= image_tag @recipe.image, width: 200
+
+- @recipe.quantities.each do |quantity|
+  %li= quantity.ingredient.name
+  %li= formatted_quantity quantity
+  %li= cost_in_pounds(quantity.price)
+
+%br/
+
+= link_to "Edit", edit_recipe_path(@recipe)
+= link_to "Add ingredient quantity", new_recipe_quantity_path(@recipe)
+= link_to "Delete", recipe_path(@recipe), method: :delete

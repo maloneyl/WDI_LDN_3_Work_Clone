@@ -1,0 +1,22 @@
+%ul.errors
+  - @quantity.errors.full_messages.each do |error|
+    %li= error
+
+/ referencing: /recipes/:recipe_id/quantities, we need to pass recipe_id and quantity to the form
+= form_for [@recipe, @quantity] do |f|
+  = f.label :ingredient_id, 'Ingredient'
+  = f.select :ingredient_id, options_from_collection_for_select(Ingredient.all, 'id', 'name')
+  %br/
+  = f.label :description
+  = f.text_field :description
+  %br/
+  = f.label :quantity
+  = f.number_field :quantity # number_field takes integer or float
+  %br/
+  = f.label :measurement
+  = f.text_field :measurement
+  %br/
+  = f.label :price
+  = f.number_field :price  
+  %br/
+  = f.submit

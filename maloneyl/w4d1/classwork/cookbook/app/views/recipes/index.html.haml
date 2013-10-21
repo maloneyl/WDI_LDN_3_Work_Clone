@@ -1,0 +1,5 @@
+%h1 Recipes
+- @recipes.each do |recipe|
+  %h3= link_to recipe.name, recipe # recipe instead of recipe_path(recipe) cuz rails is smart
+  = image_tag recipe.image, width: 100
+  = total_cost recipe
