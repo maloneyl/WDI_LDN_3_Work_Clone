@@ -1,7 +1,9 @@
 QUESTIONS AND COMMENTS AFTER HOMEWORK
 =======================================
 
-To come.
+OK for the most, but realizing that I'm not very good with CSS yet, especially positiong and floating and all that stuff.
+
+Also wondering how to treat line breaks for the directions. What if we want to store paragraphs?
 
 
 *********
