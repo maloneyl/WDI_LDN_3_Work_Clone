@@ -1,0 +1,32 @@
+= form_for(@planet, html: {class: 'standard-form'}) do |f|
+  %fieldset
+    %legend Planet Details
+    .field
+      = f.label :name, 'Name'
+      = f.text_field :name
+    .field
+      = f.label :image, 'Image URL'
+      = f.url_field :image
+    .field
+      = f.label :orbit, 'Orbit (AU)'
+      = f.number_field :orbit, step: :any
+    .field
+      = f.label :diameter, "Diameter (multiple of Earth's)"
+      = f.number_field :diameter, step: :any  
+    .field
+      = f.label :mass, "Mass (multiple of Earth's)"
+      = f.number_field :mass, step: :any
+    .field
+      = f.label :moons, "Moons (count)"
+      = f.number_field :moons, step: :any                      
+    .field
+      = f.label :planet_type, 'Planet Type'
+      - ['rocky', 'gas-giant'].each do |type|
+        = f.radio_button :planet_type, type, checked: @planet.planet_type == type
+        = f.label "planet_type_#{type}", type, class: "checkbox-label"
+    .field
+      = f.label :rings, 'Rings?'
+      = f.check_box :rings
+    .actions
+      = f.submit
+

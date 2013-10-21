@@ -1,0 +1,18 @@
+<h1>Edit</h1>
+
+<%= render 'form' %>
+
+<fieldset>
+  <legend>Add an actor/actress</legend>
+  <%= form_for(@movie) do |f| %>
+    <%= select_tag 'actor_id',
+        options_from_collection_for_select(@actors, 'id', 'full_name') %>
+<!--     3 arguments are: where it's populating from, field for value, field for text to display from -->
+<!--     full_name works here because we have a full_name method ( "#{self.first_name} #{self.last_name}") defined in Actor class now! -->
+    <%= f.submit %>
+  <% end %>
+</fieldset>
+
+<br/>
+<%= link_to "Back to current entry", @movie %> |
+<%= link_to "View another movie", movies_path %>

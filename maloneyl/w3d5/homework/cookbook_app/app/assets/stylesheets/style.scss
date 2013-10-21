@@ -1,0 +1,117 @@
+.recipe-thumbs {
+  height: 200px;
+  border: 1px solid gray;
+}
+
+.ingredient-thumbs {
+  height: 80px;
+  border: 1px solid gray;  
+}
+
+.large-image {
+  height: 500px;
+  border: 1px solid gray;
+}
+
+.medium-image {
+  height: 250px;
+  border: 1px solid gray;  
+}
+
+.standard-form legend {
+  font-family: Helvetica;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.index-list {
+  display: inline;
+  list-style-type: none;
+  padding-right: 20px;
+  float: left;
+}
+
+.internal-list {
+  display: inline;
+  list-style: none;
+  padding-right: 20px;
+  margin-bottom: 20px;
+  float: left;
+}
+
+.floatleft {
+  width: 40%;
+  float: left;
+}
+
+.floatright {
+  width: 60%;
+  float: right;
+  margin: 0;
+
+  h4 {
+   -webkit-margin-before: 1.33em;    
+  }
+}
+
+a {
+  text-decoration: none;
+  color: #330099;
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+}
+
+h1 {
+  font-family: Georgia;
+  font-size: 32px;
+  color: purple
+}
+
+h2 {
+  font-family: Helvetica;
+  font-size: 22px;
+}
+
+h4 {
+  -webkit-margin-before: 0em;
+  -webkit-margin-after: 1.33em;
+  -webkit-margin-start: 0em;
+  -webkit-margin-end: 0em;
+  font-family: Helvetica;
+  font-size: 18px;
+  color: purple;
+}
+
+body {
+  font-family: Georgia;
+  font-size: 14px;
+  background-color: #ffffcc;
+}
+
+nav {
+  font-family: Helvetica;
+  font-size: 12px;
+  background-color: black;
+  color: gray;
+  padding: 10px;
+  text-align: left;
+
+  a {
+    text-decoration: none;
+    color: white;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &.nav-bottom {
+    text-align: right;
+    background-color: purple;
+    clear: both;
+    margin-top: 20px;
+  }
+}

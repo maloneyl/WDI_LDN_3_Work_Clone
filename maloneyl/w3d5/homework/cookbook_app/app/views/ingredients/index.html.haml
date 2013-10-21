@@ -1,0 +1,8 @@
+%h2 All Ingredients
+
+%ul
+  - @ingredients.each do |ingredient|
+    %li.index-list
+      = link_to (image_tag ingredient.image, class: 'ingredient-thumbs'), ingredient_path(ingredient)
+      %br>
+      = link_to ingredient.name, ingredient_path(ingredient)

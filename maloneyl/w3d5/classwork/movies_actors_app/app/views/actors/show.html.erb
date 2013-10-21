@@ -1,0 +1,21 @@
+<h2><%= @actor.full_name %></h2>
+
+<p>Born: <%= @actor.birthdate.to_formatted_s(:rfc822) %></p>
+
+<% if @actor.movies.present? %>
+  <p>Filmography:
+    <ul>
+    <% @actor.movies.each do |movie| %>
+    <li><strong><%= link_to "#{movie.title}", movie_path %></strong><br />
+      <%= image_tag movie.poster, height: 250 %><br />
+      Released: <%= "#{movie.release_date.to_formatted_s(:rfc822)}" %></li>
+      <% end %>
+    </ul>
+  </p>
+<% end %>
+
+<nav>
+  <%= link_to "Update", edit_actor_path(@actor) %>
+  |
+  <%= link_to "Delete", @actor, :method => :delete, :confirm => "Are you sure you want to remove #{@actor.full_name}?" %>
+</nav>

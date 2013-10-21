@@ -1,0 +1,11 @@
+= form_for(@ingredient, html: {class: 'standard-form'}) do |f|
+  %fieldset
+    %legend Ingredient details
+    .field
+      = f.label :name
+      = f.text_field :name
+    .field
+      = f.label :image, 'Image (URL)'
+      = f.url_field :image
+    .actions
+      = f.submit

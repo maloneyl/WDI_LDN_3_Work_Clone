@@ -1,0 +1,15 @@
+<% @planets.each do |planet| %>
+  <p>
+
+    <% if planet.image.present? %>
+      <%= link_to planet_path(planet) do %>
+        <%= image_tag planet.image, class: 'thumbnail' %><br/>
+      <% end %>
+    <% end %>
+
+    <%= link_to planet.name, planet_path(planet) %>
+    has <%= pluralize(planet.moons, 'moon') %>
+
+  </p>
+  <hr/>
+<% end %>

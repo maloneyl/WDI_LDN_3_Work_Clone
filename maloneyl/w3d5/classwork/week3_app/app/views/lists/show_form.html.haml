@@ -1,0 +1,10 @@
+%form{method: :post, action: "/contacts/assign_list"}
+  %select{name: :contact_id}
+    - @contacts.each do |contact|
+      %option{value: contact.id} #{contact.name}
+
+  %select{name: :list_id}
+    - @lists.each do |list|
+      %option{value: list.id} #{list.name}
+
+  %input{type: :submit}

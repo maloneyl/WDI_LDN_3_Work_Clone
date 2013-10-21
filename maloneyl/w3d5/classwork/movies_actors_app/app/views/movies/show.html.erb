@@ -1,0 +1,19 @@
+<h2><%= @movie.title %></h2>
+
+<%= image_tag @movie.poster, height: 400 %>
+<p>Released: <%= @movie.release_date.to_formatted_s(:rfc822) %></p>
+<p>Director: <%= @movie.director %></p>  
+<p>Rating: <%= @movie.rating %></p>  
+<% if @movie.actors.present? %>
+  <p>Starring:
+    <% @movie.actors.each do |actor| %>
+    <li><%= link_to actor.full_name, actor_path(actor) %></li>
+    <% end %>
+<% end %>
+</p>
+
+<nav>
+  <%= link_to "Update", edit_movie_path(@movie) %>
+  |
+  <%= link_to "Delete", @movie, :method => :delete, :confirm => "Are you sure you want to remove #{@movie.title}?" %>
+</nav>

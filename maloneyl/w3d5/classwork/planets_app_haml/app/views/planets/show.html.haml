@@ -1,0 +1,29 @@
+%h1= @planet.name
+
+- if @planet.image.present?
+  = image_tag @planet.image, class: 'large-image'
+
+%table
+  %tr
+    %th Orbit
+    %td #{@planet.orbit} AU
+  %tr
+    %th Diameter
+    %td= pluralize(@planet.diameter, 'Earth Diameter')
+  %tr
+    %th Mass
+    %td= pluralize(@planet.mass, 'Earth Mass')
+  %tr
+    %th Moons
+    %td= @planet.moons
+  %tr
+    %th Type
+    %td= @planet.planet_type
+  %tr
+    %th Rings
+    %td= @planet.rings
+
+%nav.nav-bottom
+  = link_to 'Destroy this planet', @planet, method: :delete, confirm: "Whoa there! Are you sure you want to destroy #{@planet.name}?"
+  |
+  = link_to 'Edit this planet', edit_planet_path(@planet)

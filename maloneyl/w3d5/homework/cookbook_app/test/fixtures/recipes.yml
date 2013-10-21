@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  dish: MyString
+  ingredients: MyString
+  directions: MyText
+  image: MyText
+
+two:
+  dish: MyString
+  ingredients: MyString
+  directions: MyText
+  image: MyText

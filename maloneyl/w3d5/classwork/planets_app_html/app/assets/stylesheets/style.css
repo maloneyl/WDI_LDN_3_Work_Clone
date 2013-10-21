@@ -1,0 +1,91 @@
+/*
+  NOTE: top nav and table borders need to have color rgb(141,165,181)
+  top nav fill should be same color, but 30% lighter, i.e.,
+  it should have a background-color of rgb(234, 238, 241)
+
+  NOTE: all borders should be '1px solid'
+/*
+
+/* page */
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+#main { padding: 10px }
+
+/* nav */
+
+nav.nav-top {
+  padding: 10px;
+  border-bottom: 1px solid rgb(141,165,181);
+  background-color: rgb(234, 238, 241);
+}
+
+nav.nav-bottom { margin-top: 5px }
+
+/* images */
+
+.large-image {
+  margin: 20px 0;
+  max-height: 200px;
+}
+
+.thumbnail {
+  margin: 10px 0;
+  max-height: 75px;
+}
+
+/* tables */
+
+table, td, th { border: 1px solid rgb(141,165,181) }
+
+td, th { padding: 8px }
+
+th {
+  text-align: left;
+  color: blue;
+}
+
+/* standard form */
+
+.standard-form fieldset { max-width: 600px }
+
+.standard-form legend { font-size: 20px }
+
+.standard-form .field label {
+  text-align: right;
+  width: 250px;
+  float: left;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.standard-form .field label.checkbox-label {
+  width: auto;
+  font-weight: normal;
+}
+
+.standard-form .field input {
+  width: 300px;
+  float: left;
+}
+
+.standard-form .field input[type="number"] {
+  width: 150px;
+}
+
+.standard-form .field input[type="checkbox"] {
+  width: auto;
+}
+
+.standard-form .field input[type="radio"] {
+  width: auto;
+}
+
+.standard-form .actions {
+  margin-top: 10px;
+  float: right;
+  clear: both;
+}

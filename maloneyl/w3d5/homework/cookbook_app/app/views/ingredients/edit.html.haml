@@ -1,0 +1,14 @@
+%h2 Edit Ingredient
+
+= render 'form'
+
+%fieldset
+  %legend Add a recipe
+  = form_for(@ingredient) do |f|
+    = select_tag 'recipe_id', options_from_collection_for_select(@recipes, 'id', 'name')
+    = f.submit 'Add Recipe'
+
+%nav.nav-bottom
+  = link_to 'Back to current ingredient info', @ingredient
+  |
+  = link_to 'View all ingredients', ingredients_path
