@@ -1,6 +1,12 @@
 class RecipesController < ApplicationController
 
-  before_filter :find_record, only: [:show, :edit, :update, :destroy, :flag]
+  load_and_authorize_resource
+  # as long as all the naming are instance variables and normal rails names,
+  # we can now remove @recipes = Recipe.all, @recipe = Recipe.find, etc.
+  # in index, new, show, edit,
+  # we also don't need before_filter :find_record
+
+  # before_filter :find_record, only: [:show, :edit, :update, :destroy, :flag]
 
   # before_filter :authenticate, :except => [:index, :show]
 
@@ -9,11 +15,11 @@ class RecipesController < ApplicationController
   # around_filter :trap_something
 
   def index
-    @recipes = Recipe.all
+    # @recipes = Recipe.all
   end
 
   def new
-    @recipe = Recipe.new
+    # @recipe = Recipe.new
   end
 
   def create
@@ -28,6 +34,7 @@ class RecipesController < ApplicationController
 
   def show
     #@recipe = Recipe.find(params[:id])
+    # authorize! :read, @recipe # '!' means throw an error   
   end
 
   def edit
@@ -63,27 +70,27 @@ class RecipesController < ApplicationController
     render :index
   end
 
-private
+# private
 
-  def find_record
-    @recipe = Recipe.find(params[:id])
-  end
+#   def find_record
+#     @recipe = Recipe.find(params[:id])
+#   end
 
-  def log_something
-    logger.info "\n\n#{@recipes.count} recipes fetched from DB\n\n"
-  end
+#   def log_something
+#     logger.info "\n\n#{@recipes.count} recipes fetched from DB\n\n"
+#   end
 
-  def trap_something
-    #do something before the action
-    logger.info "\n\nABOUT TO PERFORM ACTION\n\n"
-    begin
-      yield #to the action
-    rescue => e
-      #perform a daring rescue
-    ensure
-      #ensure something happens
-      logger.info "\n\nFINISHED ACTION\n\n"
-    end
-  end
+#   def trap_something
+#     #do something before the action
+#     logger.info "\n\nABOUT TO PERFORM ACTION\n\n"
+#     begin
+#       yield #to the action
+#     rescue => e
+#       #perform a daring rescue
+#     ensure
+#       #ensure something happens
+#       logger.info "\n\nFINISHED ACTION\n\n"
+#     end
+#   end
 
 end

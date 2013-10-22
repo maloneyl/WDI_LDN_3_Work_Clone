@@ -9,7 +9,8 @@ gem 'jquery-rails'
 
 gem 'haml-rails'
 
-gem 'bcrypt-ruby', '~> 3.0.0'
+gem 'bcrypt-ruby', '~> 3.0.0' # authentication
+gem 'cancan' # authorization
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

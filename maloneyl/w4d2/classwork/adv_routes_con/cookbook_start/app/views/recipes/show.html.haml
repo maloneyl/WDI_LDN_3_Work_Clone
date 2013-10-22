@@ -1,11 +1,12 @@
-= link_to('New Recipe', new_recipe_path)
-\:: #{link_to('Edit Recipe', edit_recipe_path(@recipe))}
-\:: #{link_to('Add ingredient for recipe', new_recipe_quantity_path(@recipe))}
-\:: #{link_to('Delete Recipe', @recipe, :method => :delete, :confirm => 'Are you sure?')}
-\:: #{link_to('Flag Recipe', flag_recipe_path(@recipe), :method => :put)}
-
+- if can? :create, Recipe
+  = link_to('New Recipe', new_recipe_path)
+- if can? :update, @recipe
+  \:: #{link_to('Edit Recipe', edit_recipe_path(@recipe))}
+  \:: #{link_to('Add ingredient for recipe', new_recipe_quantity_path(@recipe))}
+- if can? :destroy, @recipe
+  \:: #{link_to('Delete Recipe', @recipe, :method => :delete, :confirm => 'Are you sure?')}
 .recipe
-  %h1= @recipe.name
+  %h1 #{@recipe.name} by #{@recipe.user.name}
   = image_tag(@recipe.image, class: "recipe-image")
   .recipe-detail
     .field
@@ -39,5 +40,6 @@
           .field
             .field-label quantity:
             #{@recipe.servingsize} #{quantity.measurement}
-          .field
-            = link_to "delete for this recipe", recipe_quantity_path(@recipe, quantity), method: :delete
+          - if can? :update, @recipe
+            .field
+              = link_to "delete for this recipe", recipe_quantity_path(@recipe, quantity), method: :delete
