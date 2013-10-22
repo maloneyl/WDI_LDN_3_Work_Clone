@@ -27,7 +27,12 @@ class LibrariesController < ApplicationController
 
   def update
     @library = Library.find params[:id]
-    @library.update_attributes params[:library]
+    if params[:bookshelf_id]
+      @library.bookshelves << Bookshelf.find(params[:bookshelf_id])
+      @library.save
+    else
+      @library.update_attributes params[:library]
+    end
     redirect_to @library
   end
 
