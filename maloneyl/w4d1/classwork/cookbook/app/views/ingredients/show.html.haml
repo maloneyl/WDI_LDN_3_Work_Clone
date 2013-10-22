@@ -1,0 +1,8 @@
+%h2= @ingredient.name.capitalize
+
+= image_tag @ingredient.image, height: 300
+
+%br/
+
+= link_to 'Edit', edit_ingredient_path(@ingredient)
+= link_to 'Delete', ingredient_path(@ingredient), method: :delete

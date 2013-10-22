@@ -1,0 +1,30 @@
+!!! 5
+%html
+%head
+  %title Library App
+  = stylesheet_link_tag "application", media: "all"
+  = javascript_include_tag "application"
+  = csrf_meta_tags
+
+%body
+
+  .container
+    %h1 Library App
+    %nav
+      = link_to "View all libraries", libraries_path
+      |
+      = link_to "Add a library", new_library_path
+      |
+      = link_to "View all books", books_path
+      |
+      = link_to "Add a book", new_book_path
+      |
+      = link_to "View all bookshelves", bookshelves_path
+      |
+      = link_to "Add a bookshelf", new_bookshelf_path
+      / |
+      / = link_to "Back to library homepage", root_path
+   
+    %section
+      = yield
+

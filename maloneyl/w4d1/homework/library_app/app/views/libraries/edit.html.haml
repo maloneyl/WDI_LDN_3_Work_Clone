@@ -1,0 +1,9 @@
+%h2 Edit Library
+
+= render 'form'
+
+%legend Add a Bookshelf
+= form_for(@library) do |f|
+  = select_tag 'bookshelf_id', options_from_collection_for_select(Bookshelf.all, 'id', 'category')
+  = f.submit
+

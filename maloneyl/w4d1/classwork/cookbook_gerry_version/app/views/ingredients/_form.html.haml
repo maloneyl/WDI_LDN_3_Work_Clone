@@ -1,0 +1,9 @@
+%ul.errors
+  - @ingredient.errors.full_messages.each do |error|
+    %li= error
+= form_for(@ingredient) do |f|
+  = f.label :name
+  = f.text_field :name
+  = f.label :image
+  = f.text_field :image
+  = f.submit

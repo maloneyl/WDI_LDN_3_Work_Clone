@@ -1,0 +1,15 @@
+%ul.errors
+  - @bookshelf.errors.full_messages.each do |error|
+    %li= error
+
+= form_for(@bookshelf) do |f|
+  %fieldset
+    %legend Bookshelf Details
+    .field
+      = f.label :category
+      = f.text_field :category
+    .field
+      = f.label :library_id
+      = select_tag :library_id, options_from_collection_for_select(Library.all, 'id', 'name')   
+    .actions
+      = f.submit

@@ -1,0 +1,6 @@
+%h2= @ingredient.name
+
+= image_tag @ingredient.image
+
+= link_to "edit", edit_ingredient_path(@ingredient)
+= link_to "destroy", ingredient_path(@ingredient), method: :delete

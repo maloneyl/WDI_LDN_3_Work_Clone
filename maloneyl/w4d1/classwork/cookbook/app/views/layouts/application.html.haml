@@ -1,0 +1,19 @@
+!!!
+%html
+  %head
+    %title Cookbook
+    = stylesheet_link_tag "application", :media => "all"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+
+  %body
+    .container
+      %header
+        %h1= link_to "Cookbook", root_path
+        %ul
+          %li= link_to "Ingredients", ingredients_path
+          %li= link_to "Recipes", recipes_path
+          %li= link_to "New Ingredient", new_ingredient_path
+          %li= link_to "New Recipe", new_recipe_path
+      %section
+        = yield

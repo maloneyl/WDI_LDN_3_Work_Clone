@@ -1,0 +1,12 @@
+%h2= @library.name
+
+- @library.bookshelves.each do |bookshelf|
+  %h4= link_to "#{bookshelf.category}", bookshelf_path(bookshelf)
+  - bookshelf.books.each do |book|
+    = link_to (image_tag book.cover, height: 150), book_path(book)
+
+%p
+
+= link_to 'Edit Library', edit_library_path(@library)
+|
+= link_to 'Delete Library', library_path(@library), method: :delete, confirm: "Are you sure you want to delete #{@library.name}?"

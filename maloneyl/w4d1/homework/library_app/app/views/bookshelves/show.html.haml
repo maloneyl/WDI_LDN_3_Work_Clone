@@ -1,0 +1,14 @@
+%h2= @bookshelf.category
+
+%h3= "Available at: #{@bookshelf.library.name}"
+
+%h3= "Books:"
+- @bookshelf.books.each do |book|
+  %h4= link_to "#{book.title} (by #{book.author})", book_path(book)
+  = image_tag book.cover, width: 200
+
+%p
+
+= link_to 'Edit Bookshelf', edit_bookshelf_path(@bookshelf)
+|
+= link_to 'Delete Bookshelf', bookshelf_path(@bookshelf), method: :delete, confirm: "Are you sure you want to delete #{@bookshelf.category}?"

@@ -1,0 +1,12 @@
+%ul.errors
+  - @ingredient.errors.full_messages.each do |error|
+    %li= error
+
+/ # .errors is available for each ActiveRecord model; do .errors.inspect if you want to see what's returned; .errors.messages to get the actual message
+
+= form_for(@ingredient) do |f|
+  = f.label :name
+  = f.text_field :name
+  = f.label :image
+  = f.text_field :image
+  = f.submit

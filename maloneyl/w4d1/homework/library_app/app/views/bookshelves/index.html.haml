@@ -1,0 +1,4 @@
+%h2 All Bookshelves
+
+- @bookshelves.each do |bookshelf|
+  %h3= link_to "#{bookshelf.category}", bookshelf_path(bookshelf)

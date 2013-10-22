@@ -1,0 +1,20 @@
+= form_for(@recipe) do |f|
+  = f.label :name
+  = f.text_field :name
+  %br/
+  = f.label :course
+  = f.text_field :course
+  %br/
+  = f.label :cooktime
+  = f.number_field :cooktime
+  %br/
+  = f.label :serving_size
+  = f.text_field :serving_size
+  %br/
+  = f.label :instructions
+  = f.text_area :instructions
+  %br/
+  = f.label :image
+  = f.text_field :image
+  %br/
+  = f.submit
