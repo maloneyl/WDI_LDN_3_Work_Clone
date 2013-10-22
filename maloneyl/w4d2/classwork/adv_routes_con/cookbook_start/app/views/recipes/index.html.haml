@@ -1,0 +1,22 @@
+= link_to('New Recipe', new_recipe_path)
+\:: #{link_to('Show Flagged Recipes', flagged_recipes_path)}
+%ol
+  - @recipes.each do |recipe|
+    %li
+      .recipe
+        = link_to(recipe.name, recipe, class: "recipe-name")
+        = link_to(recipe) do
+          = image_tag(recipe.image, class: "recipe-image")
+        .recipe-detail
+          .field
+            .field-label course:
+            = recipe.course
+          .field
+            .field-label cook time:
+            = recipe.cooktime
+          .field
+            .field-label serving size:
+            = recipe.servingsize
+          .field
+            .field-label instructions:
+            = recipe.instructions

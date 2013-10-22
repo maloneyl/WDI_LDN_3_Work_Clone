@@ -1,0 +1,43 @@
+= link_to('New Recipe', new_recipe_path)
+\:: #{link_to('Edit Recipe', edit_recipe_path(@recipe))}
+\:: #{link_to('Add ingredient for recipe', new_recipe_quantity_path(@recipe))}
+\:: #{link_to('Delete Recipe', @recipe, :method => :delete, :confirm => 'Are you sure?')}
+\:: #{link_to('Flag Recipe', flag_recipe_path(@recipe), :method => :put)}
+
+.recipe
+  %h1= @recipe.name
+  = image_tag(@recipe.image, class: "recipe-image")
+  .recipe-detail
+    .field
+      .field-label course:
+      = @recipe.course
+    .field
+      .field-label cook time:
+      = @recipe.cooktime
+    .field
+      .field-label serving size:
+      = @recipe.servingsize
+    .field
+      .field-label instructions:
+      = @recipe.instructions
+
+%h2 Ingredients
+%ul.ingredients
+  - @recipe.quantities.each do |quantity|
+    %li
+      .ingredient
+        %hr
+        %h3= quantity.ingredient.name
+        = image_tag(quantity.ingredient.image, class: "ingredient-image")
+        .ingredient-detail
+          .field
+            .field-label description:
+            = quantity.description
+          .field
+            .field-label price:
+            = number_to_currency quantity.price
+          .field
+            .field-label quantity:
+            #{@recipe.servingsize} #{quantity.measurement}
+          .field
+            = link_to "delete for this recipe", recipe_quantity_path(@recipe, quantity), method: :delete
