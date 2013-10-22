@@ -1,0 +1,15 @@
+%ul.errors
+  - @library.errors.full_messages.each do |error|
+    %li= error
+
+= form_for(@library) do |f|
+  %fieldset
+    %legend Library Details
+    .field
+      = f.label :name
+      = f.text_field :name
+    .field
+      = f.label :address
+      = f.text_field :address
+    .actions
+      = f.submit

@@ -1,0 +1,12 @@
+%h2 Edit Library
+
+= render 'form'
+
+/ REFERENCE FOR LATER:
+/ %fieldset
+/   - if @bookshelf.books.present? == false
+/     %legend Add a Book
+/     = form_for(@bookshelf) do |f|
+/       = select_tag 'book_id', options_from_collection_for_select(Book.all, 'id', 'title')
+/       = f.submit
+
