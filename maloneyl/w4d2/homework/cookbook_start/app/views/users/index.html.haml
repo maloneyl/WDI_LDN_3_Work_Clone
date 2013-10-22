@@ -1,0 +1,11 @@
+- if can? :manage, User
+  \:: #{link_to('Show Only Admins', list_admins_path)}
+
+- if current_user && current_user.role == 'admin'
+  \:: #{link_to('Edit Role for User', edit_role_path)}
+
+%ol
+  - @users.each do |user|
+    %li
+      .user.name
+        = "#{user.name}: #{user.role}"
