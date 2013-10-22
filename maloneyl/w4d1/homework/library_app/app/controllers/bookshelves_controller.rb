@@ -10,7 +10,7 @@ class BookshelvesController < ApplicationController
 
   def create
     @bookshelf = Bookshelf.new params[:bookshelf]
-    @bookshelf.library_id = Library.where(name: 'General Library').first.id 
+    @bookshelf.library_id = params[:library_id].to_i
     if @bookshelf.save
       redirect_to @bookshelf
     else
