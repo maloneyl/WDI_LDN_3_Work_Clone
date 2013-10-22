@@ -1,7 +1,8 @@
 QUESTIONS AND COMMENTS AFTER HOMEWORK
 ======================================
 
-To come.
+- Still getting used to the different associations and what they involve. By the time I got to the bookshelves it occurred to me that we're probably supposed to have multiple libraries with bookshelves and books nested within... Oops.
+
 
 
 HOMEWORK
