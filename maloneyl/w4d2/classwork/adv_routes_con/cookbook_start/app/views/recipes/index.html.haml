@@ -1,0 +1,24 @@
+- if can? :create, Recipe
+  = link_to('New Recipe', new_recipe_path)
+%ol
+  - @recipes.each do |recipe|
+    %li
+      .recipe
+        .recipe-name
+          = link_to(recipe.name, recipe)
+          by #{recipe.user.name}
+        = link_to(recipe) do
+          = image_tag(recipe.image, class: "recipe-image")
+        .recipe-detail
+          .field
+            .field-label course:
+            = recipe.course
+          .field
+            .field-label cook time:
+            = recipe.cooktime
+          .field
+            .field-label serving size:
+            = recipe.servingsize
+          .field
+            .field-label instructions:
+            = recipe.instructions

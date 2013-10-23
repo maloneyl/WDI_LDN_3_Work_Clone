@@ -1,0 +1,11 @@
+= form_for @ingredient do |f|
+  .field
+    = f.label :name
+    %br/
+    = f.text_field :name, :autofocus => true
+  .field
+    = f.label :image
+    %br/
+    = f.url_field :image
+  .actions
+    = f.submit

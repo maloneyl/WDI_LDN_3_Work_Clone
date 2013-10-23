@@ -1,0 +1,20 @@
+/ - if @user.errors.any?
+/   .error-messages
+/     %h2 Form is invalid
+/     %ul
+/       - @user.errors.full_messages.each do |message|
+/         %li= message
+
+%h2 Edit User Role
+
+= form_tag users_path do
+  .field
+    = label_tag :name, 'User Name'
+    = select_tag 'user_id', options_from_collection_for_select(User.all, 'id', 'name')
+    %br/
+  .field
+    = label_tag :role, 'New Role'
+    = text_field_tag :role
+    %br/
+  .actions
+    = submit_tag
