@@ -32,8 +32,12 @@ class IngredientsController < ApplicationController
 
   def update
     # @ingredient = Ingredient.find(params[:id])
-    @ingredient.update_attributes(params[:ingredient])
-    redirect_to(@ingredient)
+    if @ingredient.update_attributes(params[:ingredient])
+      redirect_to @ingredient, notice: 'Ingredient was successfully updated!'
+    else 
+      flash.now[:alert] = 'Ingredient was NOT updated!'
+      render :edit
+    end
   end
 
   def destroy

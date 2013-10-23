@@ -4,6 +4,6 @@
   - @search.each do |search_result|
     %li
       - if search_result.class == Recipe
-        = "#{search_result.name} (recipe)"
+        = link_to "#{search_result.name} (recipe)", recipe_path(search_result.id)
       - elsif search_result.class == Ingredient
-        = "#{search_result.name} (ingredient)"
+        = link_to "#{search_result.name} (ingredient)", ingredient_path(search_result.id)

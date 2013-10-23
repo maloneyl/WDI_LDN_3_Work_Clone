@@ -11,7 +11,7 @@ class UsersController < ApplicationController
   def create
     if @user.save
       session[:user_id] = @user.id
-      redirect_to root_url, notice: "thank you for signing up"
+      redirect_to root_url, notice: "Thanks for signing up!"
     else
       render :new
     end
@@ -27,7 +27,7 @@ class UsersController < ApplicationController
 
   def update
     if removing_last_admin?
-      flash.now[:alert] = "Can't change role of last admin"
+      flash.now[:alert] = "Can't change role of last admin!"
       render :edit
     elsif @user.update_attributes(params[:user])
       redirect_to users_url, notice: 'User was successfully updated!'
