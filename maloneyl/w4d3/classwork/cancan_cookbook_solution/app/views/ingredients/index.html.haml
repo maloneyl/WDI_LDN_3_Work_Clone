@@ -6,4 +6,4 @@
       .ingredient
         = link_to(ingredient.name, ingredient, class: "ingredient-name")
         = link_to(ingredient) do
-          = image_tag(ingredient.image, class: "ingredient-image")
+          = image_tag(ingredient.image_url(:thumb), class: "ingredient-image")

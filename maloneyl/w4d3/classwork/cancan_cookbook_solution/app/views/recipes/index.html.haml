@@ -10,7 +10,7 @@
           = link_to(recipe.name, recipe)
           by #{recipe.user.name}
         = link_to(recipe) do
-          = image_tag(recipe.image, class: "recipe-image")
+          = image_tag(recipe.image_url(:thumb), class: "recipe-image")
         .recipe-detail
           .field
             .field-label course:

@@ -1,7 +1,7 @@
 class IngredientsController < ApplicationController
 
   #before_filter :authenticate, except: [:show, :index]
-  load_and_authorize_resource :ingredient
+  load_and_authorize_resource
 
   def index
     # @ingredients = Ingredient.all
@@ -13,7 +13,13 @@ class IngredientsController < ApplicationController
 
   def create
     # @ingredient = Ingredient.create(params[:ingredient])
-    redirect_to(@ingredient)
+    @ingredient = Ingredient.new(params[:ingredient])
+    if @ingredient.save
+      redirect_to @ingredient, notice: 'Ingredient was successfully created!'
+    else
+      flash[:alert] = 'Ingredient was NOT created!'
+      render :new
+    end
   end
 
   def show

@@ -20,6 +20,8 @@ R20130214Cookbook::Application.routes.draw do
     resources :quantities, only: [:new, :destroy, :create]
   end
 
+  resources :searches, only: [:create]
+
   root to:  "recipes#index"
 
   get "/signup", to: "users#new",         as: "signup"

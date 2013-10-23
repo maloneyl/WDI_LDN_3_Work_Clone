@@ -1,0 +1,9 @@
+%h2 Search results
+
+%ul
+  - @search.each do |search_result|
+    %li
+      - if search_result.class == Recipe
+        = "#{search_result.name} (recipe)"
+      - elsif search_result.class == Ingredient
+        = "#{search_result.name} (ingredient)"

@@ -30,4 +30,9 @@
           = message
 
       %section#main
+        = form_tag searches_path do # searches_path is where it redirects to
+          = label_tag :search
+          = text_field_tag :query
+          = submit_tag "Search"
+          %p
         = yield
