@@ -9,8 +9,8 @@ class Ability
       cannot :flagged, :all
     elsif user.role? :moderator
       can :read, :all
-      can :flag, :all
-      can :flagged, :all
+      can :flag, Recipe
+      can :flagged, Recipe
       can :manage, User
     elsif user.role? :chef
       can :manage, Ingredient
