@@ -1,0 +1,9 @@
+- if can? :create, Ingredient
+  = link_to('New Ingredient', new_ingredient_path)
+- if can? :update, @ingredient
+  \:: #{link_to('Edit Ingredient', edit_ingredient_path(@ingredient))}
+- if can? :destroy, @ingredient
+  \:: #{link_to('Delete Ingredient', @ingredient, :method => :delete, :confirm => 'Are you sure?')}
+
+%h1= @ingredient.name
+= image_tag(@ingredient.image)
