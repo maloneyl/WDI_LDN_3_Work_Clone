@@ -1,0 +1,9 @@
+%h2 Search results
+
+%ul
+  - @search.each do |search_result|
+    %li
+      - if search_result.class == Recipe
+        = link_to "#{search_result.name} (recipe)", recipe_path(search_result.id)
+      - elsif search_result.class == Ingredient
+        = link_to "#{search_result.name} (ingredient)", ingredient_path(search_result.id)

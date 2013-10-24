@@ -1,0 +1,35 @@
+= form_for @recipe do |f|
+
+  - if @recipe.errors.any?
+    .error-messages
+      %h2 Form is invalid
+      %ul
+        - for message in @recipe.errors.full_messages
+          %li= message
+
+  .field
+    = f.label :name
+    %br/
+    = f.text_field :name, :autofocus => true
+  .field
+    = f.label :course
+    %br/
+    = f.text_field :course
+  .field
+    = f.label :cooktime, 'Cooktime (minutes)'
+    %br/
+    = f.number_field :cooktime
+  .field
+    = f.label :servingsize, 'Serves'
+    %br/
+    = f.number_field :servingsize
+  .field
+    = f.label :instructions
+    %br/
+    = f.text_field :instructions
+  .field
+    = f.label :image
+    %br/
+    = f.file_field :image
+  .actions
+    = f.submit

@@ -1,0 +1,21 @@
+%h2 Search results
+
+%ul
+  - @search.each do |search_result|
+    %li
+      - if search_result.class == Post
+        = "#{search_result.title} (post)"
+      - else
+        = "#{search_result.full_name} (author)"
+
+
+/ VERSION FOR ADVANCED SEARCH:
+/ %ul
+/ - @posts.each do |post|
+/   %li
+/     = post.title
+/     / = post.content[0..300] # i.e. display up to 300 characters
+/     = truncate(post.content, length: 300, separator: " ") # truncate does similar as above but truncate gives you "..." too
+
+/ VERSION FOR BASIC SEARCH:
+/ = @posts.inspect

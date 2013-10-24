@@ -1,0 +1,28 @@
+= form_for @painting do |f|
+
+  = f.hidden_field :gallery_id
+
+  - if @painting.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@painting.errors.count, "error")} prohibited this painting from being saved:"
+      %ul
+        - @painting.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :title
+    = f.text_field :title
+  .field
+    = f.label :artist
+    = f.text_field :artist
+  .field
+    = f.label :description
+    = f.text_field :description
+  .field
+    = f.label :price
+    = f.number_field :price
+  .field
+    = f.label :image
+    = f.file_field :image
+  .actions
+    = f.submit 'Save'

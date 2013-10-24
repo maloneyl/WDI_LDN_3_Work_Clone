@@ -1,0 +1,13 @@
+!!!
+%html
+  %head
+    %title GuardianApp
+    = stylesheet_link_tag    "application", :media => "all"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+  %body
+    = form_tag searches_path do # path is where it redirects to
+      = label_tag :search
+      = text_field_tag :query
+      = submit_tag "Search"
+    \#{yield}

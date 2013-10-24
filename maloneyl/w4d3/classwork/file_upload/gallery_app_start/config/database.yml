@@ -1,0 +1,4 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: gallery_app_development
