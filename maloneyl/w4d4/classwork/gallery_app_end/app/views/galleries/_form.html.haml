@@ -1,0 +1,40 @@
+= form_for @gallery do |f|
+  - if @gallery.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@gallery.errors.count, "error")} prohibited this gallery from being saved:"
+      %ul
+        - @gallery.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :name
+    = f.text_field :name
+  .field
+    = f.label :address
+    = f.text_field :address
+
+  Paintings:
+  %br/
+  %br/
+  = f.fields_for :paintings do |sub_form|
+    %fieldset
+      .field
+        = sub_form.label :title
+        = sub_form.text_field :title
+      .field
+        = sub_form.label :artist
+        = sub_form.text_field :artist
+      .field
+        = sub_form.label :description
+        = sub_form.text_field :description
+      .field
+        = sub_form.label :price
+        = sub_form.number_field :price  
+      .field
+        = sub_form.label :image
+        = sub_form.file_field :image
+      .field
+        = sub_form.label :remote_image_url # CarrierWave function
+        = sub_form.text_field :remote_image_url # CarrierWave function
+  .actions
+    = f.submit 'Save'
