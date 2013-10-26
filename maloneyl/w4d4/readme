@@ -1,0 +1,144 @@
+0. 10 LINES OF RUBY
+*******************
+
+
+1. KROAN
+*********
+
+!!!
+[31] pry(main)> (1..5).to_a
+=> [1, 2, 3, 4, 5]
+[32] pry(main)> (1...5).to_a
+=> [1, 2, 3, 4]
+apparently, that's because:
+Ruby creates these sequences using the ''..'' and ''...'' range operators. The two-dot form creates an inclusive range, while the three-dot form creates a range that excludes the specified high value.
+
+why???????
+    array = [:peanut, :butter, :and, :jelly]
+    assert_equal [], array[4,0]
+    assert_equal nil, array[5,0]
+
+splat_operator: *
+    first_name, *last_name = ["John", "Smith", "III"]
+    assert_equal "John", first_name
+    assert_equal ["Smith", "III"], last_name
+
+array assignment with too few variables:
+    first_name, last_name = ["Cher"]
+    assert_equal "Cher", first_name
+    assert_equal nil, last_name
+
+parallel assignment with one variable
+    first_name, = ["John", "Smith"] # note that "," after first_name
+    assert_equal "John", first_name
+
+
+2. BOOTSTRAP
+*************
+
+http://getbootstrap.com/
+
+
+3. NESTED RESOURCES
+********************
+
+➜  gallery_app_end git:(w4d4-maloneyl) ✗ rake db:drop
+➜  gallery_app_end git:(w4d4-maloneyl) ✗ rake db:create
+➜  gallery_app_end git:(w4d4-maloneyl) ✗ rake db:migrate
+==  CreatePaintings: migrating ================================================
+-- create_table(:paintings)
+   -> 0.0192s
+==  CreatePaintings: migrated (0.0194s) =======================================
+
+==  CreateGalleries: migrating ================================================
+-- create_table(:galleries)
+   -> 0.0098s
+==  CreateGalleries: migrated (0.0257s) =======================================
+
+GalleryApp::Application.routes.draw do
+  root :to => "galleries#index"
+
+  resources :galleries do
+    resources :paintings
+  end
+….
+end
+
+➜  gallery_app_end git:(w4d4-maloneyl) ✗ rake routes
+                 root        /                                                   galleries#index
+    gallery_paintings GET    /galleries/:gallery_id/paintings(.:format)          paintings#index
+                      POST   /galleries/:gallery_id/paintings(.:format)          paintings#create
+ new_gallery_painting GET    /galleries/:gallery_id/paintings/new(.:format)      paintings#new
+edit_gallery_painting GET    /galleries/:gallery_id/paintings/:id/edit(.:format) paintings#edit
+     gallery_painting GET    /galleries/:gallery_id/paintings/:id(.:format)      paintings#show
+                      PUT    /galleries/:gallery_id/paintings/:id(.:format)      paintings#update
+                      DELETE /galleries/:gallery_id/paintings/:id(.:format)      paintings#destroy
+            galleries GET    /galleries(.:format)                                galleries#index
+                      POST   /galleries(.:format)                                galleries#create
+          new_gallery GET    /galleries/new(.:format)                            galleries#new
+         edit_gallery GET    /galleries/:id/edit(.:format)                       galleries#edit
+              gallery GET    /galleries/:id(.:format)                            galleries#show
+                      PUT    /galleries/:id(.:format)                            galleries#update
+                      DELETE /galleries/:id(.:format)                            galleries#destroy
+
+paintings are now child of a specific gallery
+you generally don't nest too many levels because the more you nest, the more requests you'll need to make
+
+that means, in our paintings_controller.rb's index method, we can't just have @paintings = Painting.all anymore
+instead, we need to get the parent gallery and then call .paintings on @gallery:
+    @gallery = Gallery.find(params)[:gallery_id]) 
+    @paintings = @gallery.paintings
+# see route
+
+and in the gallery's view's show, we need to update the path, which also involves passing in both gallery and painting:
+  - for painting in @gallery.paintings
+    .painting
+      = link_to gallery_painting_path(@gallery, painting) do
+        = image_tag painting.image_url(:thumb) # if painting.image?
+      .name= link_to painting.title, gallery_painting_path(@gallery, painting)
+      .actions
+        = link_to "edit", edit_gallery_painting_path(@gallery, painting)
+        |
+        = link_to "remove", gallery_painting_path(@gallery, painting), :confirm => 'Are you sure?', :method => :delete
+
+then in galleries_controller:
+  def index
+    @galleries = Gallery.all
+    3.times { @gallery.paintings.build } # this is because we want to create 3 paintings at a time for the gallery
+  ….
+   end
+
+galleries/_form.html.haml, add within the main form (i.e. still within the main form's submit button)
+  Paintings:
+  %br/
+  %br/
+  = f.fields_for :paintings do |sub_form|
+    %fieldset
+      .field
+        = sub_form.label :title
+        = sub_form.text_field :title
+      .field
+        = sub_form.label :artist
+        = sub_form.text_field :artist
+      .field
+        = sub_form.label :description
+        = sub_form.text_field :description
+      .field
+        = sub_form.label :price
+        = sub_form.number_field :price  
+      .field
+        = sub_form.label :image
+        = sub_form.file_field :image
+      .field
+        = sub_form.label :remote_image_url # CarrierWave function
+        = sub_form.text_field :remote_image_url # CarrierWave function
+
+but we still need to get the gallery model to take care of paintings too:
+class Gallery < ActiveRecord::Base
+  attr_accessible :address, :name, :paintings_attributes
+  has_many :paintings
+  accepts_nested_attributes_for :paintings
+end
+
+now we can create a new gallery with its associated paintings uploaded (from local computer or from remote URL)
+

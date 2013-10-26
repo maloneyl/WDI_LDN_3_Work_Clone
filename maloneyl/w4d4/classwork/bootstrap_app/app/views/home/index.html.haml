@@ -1,0 +1,88 @@
+.container
+  .head
+    %h1.visible-lg Twitter Bootstrap BIG
+    %h1.visible-sm Twitter Bootstrap SMALL
+    %ul.nav.nav-pills.navbar-inverse
+      %li.active
+        %a{href: "#"} Project
+      %li
+        %a{href: "#"} Services
+      %li
+        %a{href: "#"} Downloads
+      %li
+        %a{href: "#"} About
+      %li
+        %a{href: "#"} Contact
+    %br
+  .body
+    .banner
+      %h1 Marketing stuff!
+      %p.lead Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet.
+      %p
+        %a.btn.btn-lg.btn-success{href: "#"} Get started today
+    %div.row
+      %div.col-lg-4
+        %h2 Heading
+        %p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
+        %a.btn.btn-primary{href: "#"} View details &raquo;
+      %div.col-lg-4
+        %h2 Heading
+        %p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
+        %a.btn.btn-primary{href: "#"} View details &raquo;
+      %div.col-lg-4
+        %h2 Heading
+        %p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
+        %a.btn.btn-primary{href: "#"} View details &raquo;
+      .clearfix
+      %br
+      %br
+      .users
+        %table.table.table-striped
+          %thead
+            %tr
+              %th #
+              %th First Name
+              %th Last Name
+              %th Username
+          %tbody
+            %tr
+              %td 1
+              %td Pedrito
+              %td Perez
+              %td @pperez
+            %tr
+              %td 2
+              %td.active Juanita
+              %td Rodriguez
+              %td @jrod
+            %tr
+              %td 3
+              %td Manuelito
+              %td Hernandez
+              %td @mher
+      %br
+      %br
+      .sign-up
+        %form.form-horizontal
+          .form-group
+            %label.col-lg-2.control-label{for: :email} Email
+            .col-lg-3
+              %input#email.form-control{placeholder: :Email, type: :email}
+          .form-group
+            %label.col-lg-2.control-label{for: :password} Password
+            .col-lg-3
+              %input#password.form-control{placeholder: :Password, type: :password}
+          .form-group
+            .col-lg-offset-2.col-lg-3
+              .checkbox
+                %input{type: :checkbox} Remember me
+          .form-group
+            .col-lg-offset-2.col-lg-3
+              %button.btn.btn-success{type: :submit} Sign in
+      %br
+      %ol.breadcrumb
+        %li Home
+        %li Twitter
+      %br
+      .footer
+        %p &copy; Company 2013
