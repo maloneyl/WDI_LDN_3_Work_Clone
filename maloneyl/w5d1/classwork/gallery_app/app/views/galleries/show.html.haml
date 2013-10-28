@@ -1,0 +1,18 @@
+%h1= @gallery.name
+#paintings
+  - for painting in @gallery.paintings
+    .painting
+      = link_to painting do
+        = image_tag painting.image_url(:thumb)# if painting.image?
+      .name= link_to painting.title, painting
+      .actions
+        = link_to "edit", edit_painting_path(painting)
+        |
+        = link_to "remove", painting, :confirm => 'Are you sure?', :method => :delete
+  .clear
+%p
+  = link_to "Add a Painting", new_painting_path(:gallery_id => @gallery)
+  |
+  = link_to "Remove Gallery", @gallery, :confirm => 'Are you sure?', :method => :delete
+  |
+  = link_to "View Galleries", galleries_path
