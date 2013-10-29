@@ -1,0 +1,7 @@
+%h1 Editing painting
+
+= render 'form'
+
+= link_to 'Show', gallery_painting_path(@painting.gallery, @painting)
+\|
+= link_to 'Back', gallery_paintings_path(@painting.gallery)

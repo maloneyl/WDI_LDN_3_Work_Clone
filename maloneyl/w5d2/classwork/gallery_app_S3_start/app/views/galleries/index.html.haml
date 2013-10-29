@@ -1,0 +1,6 @@
+%h1 Galleries
+- for gallery in @galleries
+  .gallery
+    %h2= link_to gallery.name, gallery
+    Paintings: #{gallery.paintings.size}
+%p= link_to "New Gallery", new_gallery_path
