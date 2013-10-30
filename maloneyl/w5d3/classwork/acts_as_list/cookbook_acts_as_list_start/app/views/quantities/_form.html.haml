@@ -1,0 +1,31 @@
+= form_for [@recipe,@quantity] do |f|
+
+  - if @quantity.errors.any?
+    .error-messages
+      %h2 Form is invalid
+      %ul
+        - for message in @quantity.errors.full_messages
+          %li= message
+
+  .field
+    = f.label :ingredients, 'Ingredient'
+    %br/
+    = f.select :ingredient_id, options_from_collection_for_select(Ingredient.all, 'id', 'name')
+  .field
+    = f.label :description
+    %br/
+    = f.text_field :description
+  .field
+    = f.label :quantity
+    %br/
+    = f.number_field :quantity
+  .field
+    = f.label :measurement
+    %br/
+    = f.text_field :measurement
+  .field
+    = f.label :price
+    %br/
+    = f.text_field :price
+  .actions
+    = f.submit
