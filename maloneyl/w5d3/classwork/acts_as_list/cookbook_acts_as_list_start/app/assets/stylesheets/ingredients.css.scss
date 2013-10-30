@@ -1,0 +1,31 @@
+.ingredient {
+  .ingredient-name {
+    display: block;
+    margin-bottom: 10px;
+  }
+  .ingredient-image {
+    float: left;
+    margin-right: 10px;
+  }
+  .ingredient-detail {
+    float: left;
+    .field {
+      font-size: 16px;
+      margin-bottom: 5px;
+      .field-label {
+        font-weight: bold;
+        font-family: $plain-font;
+        font-size: 14px;
+        display: inline;
+      }
+    }
+  }
+  @include clearfix;
+}
+
+ul.ingredients {
+  list-style: none;
+  li {
+    margin-bottom: 20px;
+  }
+}
