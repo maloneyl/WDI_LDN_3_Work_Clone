@@ -1,0 +1,19 @@
+%h1= @painting.title
+%p
+  %b Artist:
+  = @painting.artist
+%p
+  %b Description:
+  = @painting.description
+%p
+  %b Price:
+  = @painting.price
+%p
+  %b Gallery:
+  = @painting.gallery.name
+%p
+  = image_tag @painting.image_url# if @painting.image?
+
+= link_to 'Edit', edit_painting_path(@painting)
+\|
+= link_to "Back to Gallery", @painting.gallery
