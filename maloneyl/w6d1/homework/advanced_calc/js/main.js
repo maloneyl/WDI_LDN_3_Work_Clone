@@ -80,9 +80,32 @@ function tripCalc() {
 } // end tripCalc
 
 // update units on webpage labels, not calculation
-function changeBmiUnits() {}
+function changeBmiUnits() {
+  setHtml('bmi-mass-unit', 'lb');
+  setHtml('bmi-height-unit', 'in');
+  // but once we've changed to imperial, can't go back to metric... need to see how
+} // end changeBmiUnits
 
-function bmiCalc() {}
+function bmiCalc() {
+  // 1. get values
+  var weight = getFloat('bmi-mass');
+  var height = getFloat('bmi-height');
+  var units = getValue('bmi-units');
+
+  // 2. determine units and calculate result with unit-appropriate formula
+  switch(units) {
+    case 'metric':
+      var bmi = weight / Math.pow(height, 2);
+      break;
+    case 'imperial':
+      var bmi = weight / Math.pow(height, 2) * 703;
+      break;
+  }
+
+  // 3. display result on webpage
+  setHtml('bmi-answer-alert', "Your BMI is " + bmi.toFixed(2) + ".");
+  unhide('bmi-answer');
+} // end bmiCalc
 
 function mortgageCalc() {
   // 1a. get values
@@ -97,7 +120,7 @@ function mortgageCalc() {
   // reference: Math.pow(4,3) is 4**3
   // monthly payment = p * ( i * (1 + i)**n ) / ( (1 + i)**n - 1 )
   var monthly_payment = principal_amount *
-    ( i * Math.pow((1+i), loan_term) ) / ( Math.pow((1+i), loan_term) - 1 )
+    ( i * Math.pow((1+i), loan_term) ) / ( Math.pow((1+i), loan_term) - 1 );
 
   // 3. display answer on webpage
   // pound sign: \u00a3
