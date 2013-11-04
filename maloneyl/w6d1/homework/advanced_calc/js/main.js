@@ -55,11 +55,53 @@ function basicCalc() {
 
 } // end of basicCalc
 
-function tripCalc() {}
+function tripCalc() {
+
+  // 1a. get values
+  var distance = getFloat('trip-distance');
+  var mpg = getFloat('trip-mpg');
+  var cost_of_gas = getFloat('trip-cost');
+  var speed = getFloat('trip-speed');
+
+  // 1b. get real mpg if too fast
+  if(speed > 60) {
+    too_fast_for_mpg = speed - 60;
+    mpg = mpg - (too_fast_for_mpg * 2);
+  }
+
+  // 2. calculate result
+  how_long = distance / speed;
+  how_much = cost_of_gas / mpg * distance;
+
+  // 3. display answer on webpage
+  setHtml('trip-answer-alert', "Your trip will take " + how_long.toFixed(2) + " hours and cost $" + how_much.toFixed(2) + ".");
+  unhide('trip-answer');
+
+} // end tripCalc
 
 // update units on webpage labels, not calculation
 function changeBmiUnits() {}
 
 function bmiCalc() {}
 
-function mortgageCalc() {}
+function mortgageCalc() {
+  // 1a. get values
+  var principal_amount = getFloat('mortgage-loan');
+  var interest_rate = getFloat('mortgage-apr');
+  var loan_term = getFloat('mortgage-term');
+
+  // 1b. convert interest_rate (APR) into monthly rate
+  var i = interest_rate / 100 / 12;
+
+  // 2. calculate result
+  // reference: Math.pow(4,3) is 4**3
+  // monthly payment = p * ( i * (1 + i)**n ) / ( (1 + i)**n - 1 )
+  var monthly_payment = principal_amount *
+    ( i * Math.pow((1+i), loan_term) ) / ( Math.pow((1+i), loan_term) - 1 )
+
+  // 3. display answer on webpage
+  // pound sign: \u00a3
+  setHtml('mortgage-answer-alert', "Your monthly payment is \u00a3"+ monthly_payment.toFixed(2) + ".");
+  unhide('mortgage-answer');
+
+} // end mortgageCalc
