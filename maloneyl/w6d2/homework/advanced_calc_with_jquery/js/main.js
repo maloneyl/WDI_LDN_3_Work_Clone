@@ -63,7 +63,6 @@ function tripCalc() {
 } // end tripCalc
 
 // update units on webpage labels, not calculation
-
 function changeBmiUnits() {
   $('#bmi-mass-unit').text('lb');
   $('#bmi-height-unit').text('in');
