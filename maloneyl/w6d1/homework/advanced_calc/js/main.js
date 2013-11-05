@@ -70,8 +70,8 @@ function tripCalc() {
   }
 
   // 2. calculate result
-  how_long = distance / speed;
-  how_much = cost_of_gas / mpg * distance;
+  var how_long = distance / speed;
+  var how_much = cost_of_gas / mpg * distance;
 
   // 3. display answer on webpage
   setHtml('trip-answer-alert', "Your trip will take " + how_long.toFixed(2) + " hours and cost $" + how_much.toFixed(2) + ".");
