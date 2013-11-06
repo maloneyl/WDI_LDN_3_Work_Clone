@@ -16,7 +16,11 @@ function Carousel(sel, h, w, options) { // upper camel case because we're treati
 
 		self.transitionDuration = options.transitionDuration || 200; // '|| 200' means use 200 as default if none passed
 
-		self.loopOption = options.loopOption || true; // defaults looping to true
+		self.loopOption = options.loopOption;
+		if(typeof(self.loopOption)==='undefined') self.loopOption = true;
+		// apparently "||" doesn't work if you want to pass a false value
+		// so this doesn't work:
+		// self.loopOption = options.loopOption || true;
 
 		self.$carousel = $(self.sel); // $carousel to remind ourselves this is a jQuery object
 		self.$carousel
@@ -62,6 +66,7 @@ function Carousel(sel, h, w, options) { // upper camel case because we're treati
 			switch(self.loopOption) {
 				case false:
 					self.animateTransition(0);
+					$(".carousel-direction previous").remove();
 					break;
 				case true:
 					self.animateTransition(self.lastImgIndex);
