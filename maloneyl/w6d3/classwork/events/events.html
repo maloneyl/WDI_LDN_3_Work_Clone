@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>jQuery Events</title>
+  <style>
+    #mouseHover{ width: 500px; height: 500px; background-color: red;}
+  </style>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <script>
+    $(function(){  // this serves as an window.onload
+
+      // MOUSE/CURSOR-EVENTS
+      $("#event_click").on("click", function(){
+        console.log("Clicked!");
+      })
+
+      $("#event_dblclick").on("dblclick", function(){
+        console.log("Double-Clicked!");
+      })
+
+      $("#mouseHover").on("mouseover", function(){
+        console.log("Over the div");
+        $(this).on("mousemove", function(e){ // e means the event object to pass to our function, similar to |e| in our ruby blocks; these event objects have a lot of properties, e.g. pageX and pageY for coordinates from top-left
+          console.log(e.pageX, e.pageY);
+          $(this).css("opacity", (e.pageY/500)); // i.e. gets darker as you mouse down
+        });
+      })
+
+      $("#mouseHover").on("mouseout", function(e){
+        console.log("Left the element");
+      })
+
+      $("#event_up_down").on("mousedown", function(){ // i.e. when the thing (button in our case) remains pressed
+        console.log("Mouse down on button");
+      })
+
+      $("#event_up_down").on("mouseup", function(){ // i.e. when the thing (button in our case) is released
+        console.log("Mouse up on button");
+      })
+
+      // WINDOW EVENT
+      $(window).on("resize", function(){
+        console.log("window w: " + $(window).width() + " h: " + $(window).height());
+      })
+
+      // FORM EVENTS
+      $("#form_event").on("submit", function(e){
+        console.log("form submitted"); // when input submit below is clicked, this becomes true and this message will show up
+        return false; // then stop the event from being true
+      })
+
+      $("#text_event").focus(); // cursor goes directly into the text_event input field as soon as page is loaded
+
+      $("#text_event").on("blur", function(){ // cursor leaving text_event input field (by clicking something else)
+        console.log("That default cursor has left the input!");
+      })
+
+      $("#select_event").on("change", function(){
+        console.log("Changed select tag!");
+      })
+
+      $("#radio_event").on("change", function(){
+        console.log("Changed radio tag!");
+      })
+
+      // KEYBOARD EVENTS
+      $("#text_event").on("keydown", function(){
+        console.log("Pressed a key!");
+      })
+
+      $("#text_event").on("keyup", function(){
+        console.log("Released a key!");
+      })
+
+      $("#text_event").on("keypress", function(e){ // note the event object needed
+        console.log("Released this key: " + e.which); // keytracking!
+      })
+
+    });
+  </script>
+</head>
+<body>
+  <button id="event_click">Click</button>
+  <button id="event_dblclick">Double-Click</button>
+  <hr />
+  <div id="mouseHover"></div>
+  <hr />
+  <button id="event_up_down">up/down</button>
+  <hr />
+  <form id="form_event">
+    <select id="select_event">
+      <option>---------</option>
+      <option value="wdi">wdi</option>
+    </select>
+    <input type="radio" id="radio_event">
+    <input id="text_event">
+    <input type="submit">
+  </form>
+
+</body>
+</html>
