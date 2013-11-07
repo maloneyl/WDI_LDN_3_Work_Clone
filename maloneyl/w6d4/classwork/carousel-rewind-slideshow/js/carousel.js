@@ -32,7 +32,7 @@ function Carousel(sel, h, w, options) { // upper camel case because we're treati
 			.addClass("carousel")
 			.height(self.imageHeight) // method equivalent to .css('height', imageHeight)
 			.width(self.imageWidth)
-			.append('<a class="carousel-direction previous"><</a><a class="carousel-direction next">></a>');
+			.append('<a class="carousel-direction previous"><</a><a class="carousel-direction next">></a><a class="carousel-slideshow-control">SLIDESHOW</a>');
 
 		self.$slider = self.$carousel.children(".slider"); // get a set of all sliders we have; direct descendants with the class slider
 		self.$slider
@@ -55,11 +55,60 @@ function Carousel(sel, h, w, options) { // upper camel case because we're treati
 		self.$next.on("click", self.moveToLeft); // slider shifts left to show the next (image to the right of current image)
  		self.$previous.on("click", self.moveToRight);
 
+		self.$slideshowControl = self.$carousel.children(".carousel-slideshow-control");
+		self.$slideshowControl.on("click", self.toggleSlideshow);
+
+		self.$carousel.on("mouseenter", self.slideshowControlFadeIn);
+		self.$carousel.on("mouseleave", self.delayedSlideshowControlFadeOut);
+
  		self.imgIndex = 0;
  		self.lastImgIndex = self.$images.length - 1; // -1 because we're using 0 indexing
 
- 		self.updateNavVisibility(); // need to hide 'previous' upfront
+ 		if (self.slideshow) {
+ 			self.startSlideshow();
+ 		} else {
+ 			self.updateNavVisibility(); // need to hide 'previous' upfront
+ 		}
 
+	}
+
+	self.slideshowControlFadeOut = function() {
+		self.$slideshowControl.stop(true).fadeOut(1000);
+		// fadeOut argument: how long it should take to do the fading (changing opacity)
+		// stop(true) means to stop any ongoing animation to do this immediately
+		// i.e. if we call fadeIn while fadeOut is still happening, fadeOut will be stopped to make room for fadeIn
+	}
+
+	self.slideshowControlFadeIn = function() {
+		window.clearTimeout(self.slideshowControlFadeOutTimer); // i.e. if delayed fade-out is still happening, kill it
+		self.$slideshowControl.stop(true).fadeIn(200);
+	}
+
+	self.delayedSlideshowControlFadeOut = function() {
+		self.slideshowControlFadeOutTimer = setTimeout(self.slideshowControlFadeOut, 200);
+	}
+
+	self.toggleSlideshow = function() {
+		if (self.slideshow) {
+			self.stopSlideshow();
+		} else {
+			self.startSlideshow();
+		}
+	}
+
+	self.startSlideshow = function() {
+		self.slideshow = true; // just in case, and allows us to call it on any carousel from the console
+		self.$slideshowControl.text("PAUSE");
+		self.$next.hide();
+		self.$previous.hide();
+		self.slideshowWaitTimer = setInterval(self.moveToLeft, self.waitTime);
+	}
+
+	self.stopSlideshow = function() {
+		self.slideshow = false;
+		window.clearInterval(self.slideshowWaitTimer);
+		self.$slideshowControl.text("PAUSE");
+		self.updateNavVisibility();
 	}
 
 	// handle 'next' and 'prev' button visibility
@@ -81,13 +130,19 @@ function Carousel(sel, h, w, options) { // upper camel case because we're treati
 		} else {
 			self.$previous.show();
 		}
+
+		// slideshow control
+		if (self.slideshow) {
+			self.$previous.hide();
+			self.$next.hide();
+		}
 	}
 
 	// move the slider left (i.e. subtract from current position) by one image width
 	self.moveToLeft = function() {
 		if (self.imgIndex < self.lastImgIndex) {
 			self.animateTransition(-1)
-		} else if (self.loop) {
+		} else if (self.loop || self.slideshow) { // slideshow should loop, but once stopped, carousel should go back to its loop/no-loop setting
 			self.animateTransition(self.lastImgIndex) // if already at the end, big jump to img0
 		}
 	}
@@ -96,7 +151,7 @@ function Carousel(sel, h, w, options) { // upper camel case because we're treati
 	self.moveToRight = function() {
 		if (self.imgIndex > 0) {
 			self.animateTransition(1)
-		} else if (self.loop) {
+		} else if (self.loop || self.slideshow) { // slideshow should loop, but once stopped, carousel should go back to its loop/no-loop setting
 			self.animateTransition(-self.lastImgIndex) // if already at the beginning, big jump to last img
 		}
 	}
@@ -112,7 +167,8 @@ function Carousel(sel, h, w, options) { // upper camel case because we're treati
 			self.transitionDuration
 		); // number of milliseconds for the animation
 		self.imgIndex -= direction;
-		self.updateNavVisibility();
+		self.updateNavVisibility(); // no buttons needed at all in slideshow mode; button-control needed otherwise
+		// if (!self.slideshow) self.updateNavVisibility();
 	}
 
 	initialize(sel, h, w, options || {}); // 'options || {}' means pass in empty object if there's no options received

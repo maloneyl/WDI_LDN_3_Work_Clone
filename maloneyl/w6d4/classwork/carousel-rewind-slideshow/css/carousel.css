@@ -42,6 +42,26 @@ a.carousel-direction {
 	text-decoration: none;
 }
 
-a.carousel-direction:hover{
+a.carousel-direction, a.carousel-slideshow-control {
+	cursor: pointer;
+}
+
+a.carousel-direction:hover, a.carousel-slideshow-control:hover {
 	opacity: 0.75;
-};
+}
+
+a.carousel-slideshow-control {
+	font-family: Helvetica, Arial, sans-serif;
+	position: absolute;
+	right: 20px;
+	bottom: 20px;
+	padding: 15px;
+	color: #ffffff;
+	font-weight: 50;
+	text-align: center;
+	background: #222222;
+	border: 3px solid #ffffff;
+	opacity: 0.5;
+	-webkit-border-radius: 2px;
+	z-index: 5;
+}
