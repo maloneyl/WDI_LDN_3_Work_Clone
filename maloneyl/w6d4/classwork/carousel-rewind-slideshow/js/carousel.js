@@ -138,19 +138,23 @@ function Carousel(sel, h, w, options) { // upper camel case because we're treati
 
 	// move the slider left (i.e. subtract from current position) by one image width
 	self.moveToLeft = function() {
-		if (self.imgIndex < self.lastImgIndex) {
-			self.animateTransition(-1)
-		} else if (self.loop || self.slideshow) { // slideshow should loop, but once stopped, carousel should go back to its loop/no-loop setting
-			self.animateTransition(self.lastImgIndex) // if already at the end, big jump to img0
+		if (self.$slider.is(':animated') == false) {
+			if (self.imgIndex < self.lastImgIndex) {
+				self.animateTransition(-1)
+			} else if (self.loop || self.slideshow) { // slideshow should loop, but once stopped, carousel should go back to its loop/no-loop setting
+				self.animateTransition(self.lastImgIndex) // if already at the end, big jump to img0
+			}
 		}
 	}
 
 	// slider the slider right (i.e. add to current position) by one image width
 	self.moveToRight = function() {
-		if (self.imgIndex > 0) {
-			self.animateTransition(1)
-		} else if (self.loop || self.slideshow) { // slideshow should loop, but once stopped, carousel should go back to its loop/no-loop setting
-			self.animateTransition(-self.lastImgIndex) // if already at the beginning, big jump to last img
+		if (self.$slider.is(':animated') == false) {
+			if (self.imgIndex > 0) {
+				self.animateTransition(1)
+			} else if (self.loop || self.slideshow) { // slideshow should loop, but once stopped, carousel should go back to its loop/no-loop setting
+				self.animateTransition(-self.lastImgIndex) // if already at the beginning, big jump to last img
+			}
 		}
 	}
 
