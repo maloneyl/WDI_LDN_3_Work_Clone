@@ -115,7 +115,9 @@ function Carousel(sel, h, w, options) { // upper camel case because we're treati
 	self.updateNavVisibility = function() {
 		// 'next' control
 		if (self.imgIndex == self.lastImgIndex) {
-			if (!self.loop) {
+			if (self.loop) {
+				self.$next.show();
+			} else {
 				self.$next.hide();
 			}
 		} else {
@@ -124,17 +126,13 @@ function Carousel(sel, h, w, options) { // upper camel case because we're treati
 
 		// 'previous' control
 		if (self.imgIndex == 0) {
-			if (!self.loop) {
+			if (self.loop) {
+				self.$previous.show();
+			} else {
 				self.$previous.hide();
 			}
 		} else {
 			self.$previous.show();
-		}
-
-		// slideshow control
-		if (self.slideshow) {
-			self.$previous.hide();
-			self.$next.hide();
 		}
 	}
 
@@ -167,8 +165,7 @@ function Carousel(sel, h, w, options) { // upper camel case because we're treati
 			self.transitionDuration
 		); // number of milliseconds for the animation
 		self.imgIndex -= direction;
-		self.updateNavVisibility(); // no buttons needed at all in slideshow mode; button-control needed otherwise
-		// if (!self.slideshow) self.updateNavVisibility();
+		if (!self.slideshow) self.updateNavVisibility();
 	}
 
 	initialize(sel, h, w, options || {}); // 'options || {}' means pass in empty object if there's no options received
