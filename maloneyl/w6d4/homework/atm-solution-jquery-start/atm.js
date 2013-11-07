@@ -43,7 +43,6 @@ $(function() {
 
   function updateDisplay() {
     var $element = $("#checking-balance");
-    console.log($element);
     if (checkingBalance <= 0) {
       $element.addClass('zero');
     } else {
