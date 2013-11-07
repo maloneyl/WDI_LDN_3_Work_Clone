@@ -53,6 +53,11 @@ function Carousel(sel, h, w, options) { // upper camel case because we're treati
  		self.imgIndex = 0;
  		self.lastImgIndex = self.$images.length - 1; // -1 because we're using 0 indexing
 
+ 		// if not looping, need to hide 'previous' upfront (img0) then bring it back later (img1)
+		if (self.imgIndex == 0 && self.loopOption == false) {
+			self.$previous.hide(".carousel-direction previous");
+		}
+
 	}
 
 	// move the slider left (i.e. subtract from current position) by one image width
@@ -66,7 +71,6 @@ function Carousel(sel, h, w, options) { // upper camel case because we're treati
 			switch(self.loopOption) {
 				case false:
 					self.animateTransition(0);
-					$(".carousel-direction previous").remove();
 					break;
 				case true:
 					self.animateTransition(self.lastImgIndex);
@@ -85,6 +89,7 @@ function Carousel(sel, h, w, options) { // upper camel case because we're treati
 		else {
 			switch(self.loopOption) {
 				case false:
+					self.$previous.removeClass(".carousel-direction previous");
 					self.animateTransition(0);
 					break;
 				case true:
@@ -105,6 +110,20 @@ function Carousel(sel, h, w, options) { // upper camel case because we're treati
 			self.transitionDuration
 		);
 		self.imgIndex -= direction;
+		// figure out when to show which 'next'/'previous' buttons
+		if (self.imgIndex == self.lastImgIndex && self.loopOption == false) {
+			self.$next.hide(".carousel-direction next");
+			self.$previous.show(".carousel-direction previous");
+		}
+		if (self.imgIndex == 0 && self.loopOption == false) {
+			self.$previous.hide(".carousel-direction previous");
+			self.$next.show(".carousel-direction next");
+
+		}
+		if (self.imgIndex == 1 && self.loopOption == false) {
+			self.$previous.show(".carousel-direction previous");
+			self.$next.show(".carousel-direction next");
+		}
 	}
 
 	initialize(sel, h, w, options || {}); // 'options || {}' means pass in empty object if there's no options received
