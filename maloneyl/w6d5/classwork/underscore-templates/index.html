@@ -1,0 +1,48 @@
+<!DOCTYPE>
+<html>
+<head>
+  <title>Underscore Templates</title>
+  <script src="./jquery-2.0.3.js"></script>
+  <script src="./underscore.js"></script>
+  <script src="./script.js">
+    // below is now within ./script.js, though we started out in-line here
+    // $(function(){
+    //   template_string = $("#application").html(); // grab html of element id application
+    //   values = {first_name: "Gerry", last_name: "Mathe"};
+    //   rendered = _(template_string).template(values);
+    //   $("#main").html(rendered);
+    // })
+  </script>
+
+  <!-- we'll put templates here -->
+  <!-- everything can be grabbed by ID -->
+  <!-- so we can grab the html below with $("#application").html(); -->
+  <!-- note that we specified type as "text/html" -->
+  <!-- convention is: application = main template -->
+  <script type="text/html" id="application">
+    <h1>TO-DO APP</h1>
+    <%= first_name %>
+    <%= last_name %>
+    // line breaks included
+  </script>
+  <script type="text/html" id="application-homework">
+    // links
+    // frame (initialize with all re-render filtered to-do list when right links' onclick events are triggered)
+    // should include text input to add task (similar to our ATM program) (add to our array of to-do's)
+    // object: container id
+    // filter: set integer: 0 means to-do, 1 means done
+  </script>
+  <script type="text/html" id="index-homework">
+    // filtered to-do list depending what user clicks on (want to see all, done, to-do, add new)
+    // loop through to-do list item like how we looped through students in class example
+  </script>
+
+</head>
+
+<body>
+
+
+
+  <div id="main"></div>
+</body>
+</html>
