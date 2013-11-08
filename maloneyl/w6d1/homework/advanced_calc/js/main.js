@@ -20,7 +20,6 @@ function setHtml(id, html) {
   document.getElementById(id).innerHTML = html
 }
 
-
 // ACTUAL CALCULATOR STUFF BELOW
 
 function basicCalc() {
@@ -128,3 +127,4 @@ function mortgageCalc() {
   unhide('mortgage-answer');
 
 } // end mortgageCalc
+
