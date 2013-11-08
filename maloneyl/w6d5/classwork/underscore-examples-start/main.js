@@ -1,4 +1,4 @@
-// functions we'll use for this lesson
+// functions we'll be using
 
 function drawHeader(name) {
   console.info("\n************** " + name + " **************\n")
