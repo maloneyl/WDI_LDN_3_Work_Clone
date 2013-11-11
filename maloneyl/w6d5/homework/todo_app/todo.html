@@ -25,19 +25,24 @@
     }
   </style>
 
-  <!-- we'll put templates here -->
-  <!-- everything can be grabbed by ID -->
-  <!-- so we can grab the html below with $("#application").html(); -->
-  <!-- note that we specified type as "text/html" -->
-  <!-- convention is: application = main template -->
+<!-- filtered to-do list depending what user clicks on (want to see all, done, to-do, add new) -->
+  <script type="text/html" id="index">
+    <ul>
+      <% _(itemsToShow).each(function(itemToShow){ %>
+        <li>
+          <% if (itemToShow.status == 1) { %>
+            <input id="<%= todos.indexOf(_.findWhere(todos, {description: itemToShow.description})) %>-status-checkbox" type="checkbox" checked>
+          <% } else { %>
+            <input id="<%= todos.indexOf(_.findWhere(todos, {description: itemToShow.description})) %>status-checkbox" type="checkbox">
+          <% } %>
+          <%= itemToShow.description %>
+        </li>
+      <% }) %>
+    </ul>
+    <small><a href="#" id="sort-by-priority">Sort by Priority (High to Low)</a></small>
+  </script>
 
-  <!--   "application" should have: -->
-  <!-- // links
-    // frame (initialize with all re-render filtered to-do list when right links' onclick events are triggered)
-    // should include text input to add task (similar to our ATM program) (add to our array of to-do's)
-    // object: container id
-    // filter: set integer: 0 means to-do, 1 means done -->
-  <script type="text/html" id="application">
+  <script type="text/html" id="add-new-todo">
     <form>
       <label>New Item</label>
       <input id="new-todo-description" type="text" placeholder="describe to-do item" /><br />
@@ -47,16 +52,6 @@
       <input id="new-todo-priority" type="number" /><br />
       <input id="new-todo-submit" type="button" value="Add to List" />
     </form>
-  </script>
-
-<!-- filtered to-do list depending what user clicks on (want to see all, done, to-do, add new)
-loop through to-do list item like how we looped through students in class example -->
-  <script type="text/html" id="index">
-    <ul>
-      <% _(itemsToShow).each(function(itemToShow){ %>
-        <li><%= itemToShow.description %> (<%= itemToShow.status %>)</li>
-      <% }) %>
-    </ul>
   </script>
 
 </head>
@@ -78,6 +73,5 @@ loop through to-do list item like how we looped through students in class exampl
     <div id="tab-new"></div>
   </div>
 
-  <div id="main"></div>
 </body>
 </html>

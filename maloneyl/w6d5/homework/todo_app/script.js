@@ -7,31 +7,35 @@ $(function(){
   window.item3 = new Item("Call Mom", 1);
   window.item4 = new Item("Find ticket to The National gig", 1, {priority: 5})
 
-  window.todos = [item1, item2, item3, item4, item5];
+  window.todos = [item1, item2, item3, item4];
 
   refreshFullList();
 
   function renderAll() {
-    templateString = $("#index").html();
-    values = {itemsToShow: todos};
-    rendered = _(templateString).template(values);
+    var templateString = $("#index").html();
+    var values = {itemsToShow: todos};
+    var rendered = _(templateString).template(values);
     $("#tab-all").html(rendered);
+    $("#sort-by-priority").on("click", sortAllByPriority);
+    $("[id$=status-checkbox]").on("click", updateItemStatus);
   };
 
   function renderDone() {
-    templateString = $("#index").html();
-    doneItems = _(todos).filter( function(t){ return t.status == 1 } );
-    values = {itemsToShow: doneItems};
-    rendered = _(templateString).template(values);
+    var templateString = $("#index").html();
+    var doneItems = _(todos).filter( function(t){ return t.status == 1 } );
+    var values = {itemsToShow: doneItems};
+    var rendered = _(templateString).template(values);
     $("#tab-done").html(rendered);
+    $("[id$=status-checkbox]").on("click", updateItemStatus);
   };
 
   function renderTodo() {
-    templateString = $("#index").html();
-    todoItems = _(todos).filter( function(t){ return t.status == 0 } );
-    values = {itemsToShow: todoItems};
-    rendered = _(templateString).template(values);
+    var templateString = $("#index").html();
+    var todoItems = _(todos).filter( function(t){ return t.status == 0 } );
+    var values = {itemsToShow: todoItems};
+    var rendered = _(templateString).template(values);
     $("#tab-todo").html(rendered);
+    $("[id$=status-checkbox]").on("click", updateItemStatus);
   };
 
   function refreshFullList() {
@@ -42,14 +46,15 @@ $(function(){
   }
 
   function renderAddNew() {
-    templateString = $("#application").html();
-    rendered = _(templateString).template();
+    var templateString = $("#add-new-todo").html();
+    var rendered = _(templateString).template();
     $("#tab-new").html(rendered);
     $("#new-todo-submit").on("click", createItem);
   };
 
-  function setStatus(id) {
-    if ($(id).is(":checked")) {
+  // avoid checkbox default "on"
+  function setStatus(inputId) {
+    if ($(inputId).is(":checked")) {
       return itemStatus = 1;
     } else {
       return itemStatus = 0;
@@ -58,7 +63,7 @@ $(function(){
 
   function createItem() {
     setStatus("#new-todo-status");
-    itemToAdd = new Item(
+    var itemToAdd = new Item(
       $("#new-todo-description").val(),
       itemStatus,
       {priority: $("#new-todo-priority").val()}
@@ -68,10 +73,27 @@ $(function(){
     refreshFullList();
   }
 
+  // works in console...
   function updateItemStatus() {
+    elem = event.target.id;
+    indexInTodos = parseInt(elem);
+    console.log("Triggered updateItemStatus", elem, indexInTodos);
+    if ($("#"+elem).is(":checked")) {
+      return todos[indexInTodos].status = 1;
+    } else {
+      return todos[indexInTodos].status = 0;
+    }
+    refreshFullList();
+  }
 
-  };
+  // 'all' sorted by priority (high first)
+  function sortAllByPriority() {
+    var itemsByPriority = _(todos).sortBy( function(t) { return -t.priority } );
+    var values = {itemsToShow: itemsByPriority};
+    var templateString = $("#index").html();
+    var rendered = _(templateString).template(values);
+    $("#tab-all").html(rendered);
+    renderAll();
+  }
 
 });
-
-
