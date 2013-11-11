@@ -1,0 +1,71 @@
+<!DOCTYPE>
+<html>
+<head>
+  <title>My To-Do App</title>
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body{width:500px; margin:auto;}
+  </style>
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <script src="./script/underscore.js"></script>
+  <script src="./script/todo.js"></script>
+  <script src="./script/script.js"></script>
+</head>
+
+<body>
+  <script type="text/html" id="top_template">
+    <div class="row">
+      <div class="col-md-4">
+        <a href="#" data-type="all" class="list_link">Total: <%= total_count %></a>
+      </div>
+      <div class="col-md-4">
+        <a href="#" data-type="done" class="list_link">Done: <%= done_count %></a>
+      </div>
+      <div class="col-md-4">
+        <a href="#" data-type="todo" class="list_link">To-Do: <%= todo_count %></a>
+      </div>
+    </div>
+  </script>
+
+  <script type="text/html" id="application">
+    <div class="form-group">
+      <div class="col-sm-10">
+        <input class="form-control" id="todo_title_input" placeholder="to-do item title" />
+      </div>
+      <div class="col-sm-2">
+        <button class="btn" id="add_todo">Add</button>
+      </div>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>Key</th>
+          <th>Name</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% _(items).each(function(item, key, list){ %>
+          <tr>
+            <td><%= key %></td>
+            <td><%= item.title %></td>
+            <td>
+              <% if(item.status == 1) %>
+                <input type="checkbox" checked class="status" data-id="<%= item.id %>" />
+              <% else %>
+                <input type="checkbox" class="status" data-id="<%= item.id %>" />
+            </td>
+          </tr>
+        <% }); %>
+      </tbody>
+    </table>
+  </script>
+
+  <h1>To-Do App</h1>
+
+  <div id="top"></div>
+
+  <div id="container"></div>
+</body>
+</html>
