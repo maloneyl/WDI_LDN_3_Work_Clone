@@ -1,0 +1,16 @@
+= form_for @gdp do |f|
+  - if @gdp.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@gdp.errors.count, "error")} prohibited this gdp from being saved:"
+      %ul
+        - @gdp.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :quarter
+    = f.text_field :quarter
+  .field
+    = f.label :qoq_growth
+    = f.text_field :qoq_growth
+  .actions
+    = f.submit 'Save'

@@ -1,0 +1,33 @@
+%h1 UK GDPs
+
+// we're slicing up our data at 100 per chart view (which is 1200pxW acc. to below)
+// so we'll have this select box for people to go to the next 100
+%select#offset_select
+  %option{value: 0} 0-100
+  %option{value: 100} 100-200
+  %option{value: 200} 200-234
+
+%canvas#myChart{width: 1200, height: 300}
+// haml version of what chart.js doc says: <canvas id="myChart" width="400" height="400"></canvas>
+
+%ul#gdp_list
+
+/ %table
+/   %tr
+/     %th Quarter
+/     %th Q-on-Q Growth
+/     %th
+/     %th
+/     %th
+
+/   - @gdps.each do |gdp|
+/     %tr
+/       %td= gdp.quarter
+/       %td= gdp.qoq_growth
+/       %td= link_to 'Show', gdp
+/       %td= link_to 'Edit', edit_gdp_path(gdp)
+/       %td= link_to 'Destroy', gdp, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+/ %br
+
+/ = link_to 'New Gdp', new_gdp_path

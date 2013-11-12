@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Quarter:
+  = @gdp.quarter
+%p
+  %b Qoq growth:
+  = @gdp.qoq_growth
+
+= link_to 'Edit', edit_gdp_path(@gdp)
+\|
+= link_to 'Back', gdps_path
