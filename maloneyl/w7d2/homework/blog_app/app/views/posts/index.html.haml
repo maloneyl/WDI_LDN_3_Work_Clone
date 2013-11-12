@@ -1,0 +1,32 @@
+%h1 All Blog Posts
+
+%table{ border: 1 }
+  %tr
+    %th Title
+    %th Author
+    %th Content
+    %th Comments
+    %th
+    %th
+    %th
+
+  - @posts.each do |post|
+    %tr
+      %td= post.title
+      - begin
+        %td= post.user.name
+      - rescue
+        %td [Deleted User]
+      %td= truncate(post.content, length: 50, separator: ' ')
+      %td= post.comments.count
+      %td= link_to 'Show', post
+      %td
+        - if can? :update, post
+          = link_to 'Edit', edit_post_path(post)
+      %td
+        - if can? :destroy, post
+          = link_to 'Destroy', post, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Post', new_post_path
