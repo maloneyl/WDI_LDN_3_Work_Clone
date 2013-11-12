@@ -1,0 +1,19 @@
+// we're slicing up our data at 100 per chart view (which is 1200pxW acc. to below)
+// so we'll have this select box for people to go to the next 100
+%select#offset_select
+  %option{value: 0} 0-100
+  %option{value: 100} 100-200
+  %option{value: 200} 200-300
+  %option{value: 300} 300-400
+  %option{value: 400} 400-500
+  %option{value: 500} 500-600
+  %option{value: 600} 600-700
+  %option{value: 700} 700-800
+  %option{value: 800} 800-900
+  %option{value: 900} 900-1000
+  %option{value: 1000} 1000-last
+
+%canvas#myChart{width: 1200, height: 300}
+// haml version of what chart.js doc says: <canvas id="myChart" width="400" height="400"></canvas>
+
+%ul#rates_list
