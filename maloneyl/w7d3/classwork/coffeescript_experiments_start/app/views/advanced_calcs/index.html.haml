@@ -1,0 +1,113 @@
+= javascript_include_tag "advanced_calc.js"
+
+.row
+  %h1 Advanced Calc
+  %form.form-horizontal{role: "form"}
+    / BASIC
+    %fieldset
+      %legend
+        %span.glyphicon.glyphicon-plus
+        Basic
+      .form-group
+        %label.col-sm-2.control-label{for: "basic-num-1"} Number 1:
+        .col-sm-2
+          %input#basic-num-1.form-control{step: "any", type: "number"}/
+      .form-group
+        %label.col-sm-2.control-label{for: "basic-operation"} Operation:
+        .col-sm-2
+          %select#basic-operation.form-control
+            %option{value: "+"} plus
+            %option{value: "-"} minus
+            %option{value: "*"} multiplied by
+            %option{value: "/"} divided by
+      .form-group
+        %label.col-sm-2.control-label{for: "basic-num-2"} Number 2:
+        .col-sm-2
+          %input#basic-num-2.form-control{step: "any", type: "number"}/
+      .form-group
+        .col-sm-offset-2.col-sm-2
+          %button#basic-calc.btn.btn-default{type: "button"} Calculate
+      #basic-answer.hide
+        #basic-answer-alert.col-sm-offset-2.col-sm-2.alert.alert-success
+          Answer will be written here
+    / TRIP
+    %fieldset
+      %legend
+        %span.glyphicon.glyphicon-road
+        Trip
+      .form-group
+        %label.col-sm-2.control-label{for: "trip-distance"} Distance (miles):
+        .col-sm-2
+          %input#trip-distance.form-control{step: "any", type: "number"}/
+      .form-group
+        %label.col-sm-2.control-label{for: "trip-mpg"} MPG:
+        .col-sm-2
+          %input#trip-mpg.form-control{step: "any", type: "number"}/
+      .form-group
+        %label.col-sm-2.control-label{for: "trip-cost"} Cost ($/gallon):
+        .col-sm-2
+          %input#trip-cost.form-control{step: "any", type: "number"}/
+      .form-group
+        %label.col-sm-2.control-label{for: "trip-speed"} Speed (MPH):
+        .col-sm-2
+          %input#trip-speed.form-control{step: "any", type: "number"}/
+      .form-group
+        .col-sm-offset-2.col-sm-2
+          %button#trip-calc.btn.btn-default{type: "button"} Calculate
+      #trip-answer.hide
+        #trip-answer-alert.col-sm-offset-2.col-sm-2.alert.alert-success
+          Answer will be written here
+    / BMI
+    %fieldset
+      %legend
+        %span.glyphicon.glyphicon-user
+        BMI
+      .form-group
+        %label.col-sm-2.control-label{for: "bmi-units"} Units:
+        .col-sm-2
+          %select#bmi-units.form-control
+            %option{value: "metric"} metric
+            %option{value: "imperial"} imperial
+      .form-group
+        %label.col-sm-2.control-label{for: "bmi-mass"}
+          Mass (
+          %span#bmi-mass-unit> kg
+          ):
+        .col-sm-2
+          %input#bmi-mass.form-control{step: "any", type: "number"}/
+      .form-group
+        %label.col-sm-2.control-label{for: "bmi-height"}
+          Height (
+          %span#bmi-height-unit> cm
+          ):
+        .col-sm-2
+          %input#bmi-height.form-control{step: "any", type: "number"}/
+      .form-group
+        .col-sm-offset-2.col-sm-2
+          %button#bmi-calc.btn.btn-default{type: "button"} Calculate
+      #bmi-answer.hide
+        #bmi-answer-alert.col-sm-offset-2.col-sm-2.alert.alert-success
+          Answer will be written here
+    / Mortgage
+    %fieldset
+      %legend
+        %span.glyphicon.glyphicon-home
+        Mortgage
+      .form-group
+        %label.col-sm-2.control-label{for: "mortgage-loan"} Loan (£):
+        .col-sm-2
+          %input#mortgage-loan.form-control{step: "any", type: "number"}/
+      .form-group
+        %label.col-sm-2.control-label{for: "mortgage-apr"} APR (%):
+        .col-sm-2
+          %input#mortgage-apr.form-control{step: "any", type: "number"}/
+      .form-group
+        %label.col-sm-2.control-label{for: "mortgage-term"} Term (months):
+        .col-sm-2
+          %input#mortgage-term.form-control{step: "any", type: "number"}/
+      .form-group
+        .col-sm-offset-2.col-sm-2
+          %button#mortgage-calc.btn.btn-default{type: "button"} Calculate
+      #mortgage-answer.hide
+        #mortgage-answer-alert.col-sm-offset-2.col-sm-2.alert.alert-success
+          Answer will be written here
