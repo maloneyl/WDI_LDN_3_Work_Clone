@@ -11,6 +11,8 @@ class User < ActiveRecord::Base
   attr_accessible :name, :email, :password, :password_confirmation, :remember_me
   # attr_accessible :title, :body
 
+  validates :name, presence: true # because this is a custom field we're adding so the validation isn't in place by default through devise
+
   has_many :posts # , dependent: :destroy
   has_many :comments # , dependent: :destroy
 
@@ -20,6 +22,7 @@ class User < ActiveRecord::Base
       # .provider and .uid are just columns in our user table
       user.provider = auth.provider
       user.uid = auth.uid
+      user.name = auth.info.name
       user
 
     # if the user is not already in the db, create this user based on this user's google account info
