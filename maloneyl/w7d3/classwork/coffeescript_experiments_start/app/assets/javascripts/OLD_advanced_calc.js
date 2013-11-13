@@ -89,7 +89,7 @@ $(function(){
         break;
     }
 
-    hide('bmi-answer');
+    hide('#bmi-answer');
   }
 
   function bmiCalc() {
@@ -99,7 +99,7 @@ $(function(){
 
     switch(units){
       case 'metric':
-        var bmi = roundToTwoDp(mass / Math.pow(height, 2));
+        var bmi = roundToTwoDp(mass / Math.pow(height/100, 2));
         break;
       case 'imperial':
         var bmi = roundToTwoDp(mass / Math.pow(height, 2) * 703);
