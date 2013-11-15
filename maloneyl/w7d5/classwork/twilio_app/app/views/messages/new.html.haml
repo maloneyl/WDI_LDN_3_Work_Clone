@@ -1,0 +1,10 @@
+%h2 Send a text to yourself!
+
+// form_tag instead of form_for(something) because there's no model linked
+// form_tag takes a block so don't forget the 'do'
+= form_tag messages_path, method: :post do
+  = label_tag :content
+  = text_field_tag :content
+  = label_tag :number
+  = number_field_tag :number
+  = submit_tag "Send"
