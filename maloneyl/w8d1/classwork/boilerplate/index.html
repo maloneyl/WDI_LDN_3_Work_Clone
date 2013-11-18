@@ -5,10 +5,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>My awesome website!</title>
     <meta name="description" content="My cool website!">
+
+    <!-- tell browser that we've defined our device width and please use our media query: -->
     <meta name="viewport" content="width=device-width">
 
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/main.css">
+
+    <!-- this css file only loads when you print things out so you can have better views -->
+    <link rel="stylesheet" href="css/print.css" media="print">
+
 
     <script src="js/vendor/modernizr.js"></script> <!-- inserts things into DOM depending on capabilities of browser -->
 

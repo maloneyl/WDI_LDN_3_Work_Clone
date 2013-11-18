@@ -34,12 +34,16 @@ a:hover, a:focus {
 /*  width: 940px;*/
   /* 940W is commonly used: small enough for 1024W resolution, divisible by 12 (common grid) and many other numbers */
   max-width: 1000px; /* for fluid layout: just one absolute value for ratios in the rest of the classes */
+  min-width: 600px; /* for fluid layout: just one absolute value for ratios in the rest of the classes */
   margin: 0 auto;
   background: blue;
 }
 
 .navbar {
+/*  width: 300px;*/
+  width: 31.914893617%; /* for fluid layout: relative to parent, i.e. container */
   background: red;
+  float: left;
 /*  padding: 10px;  without our box-sizing property stuff above, this will break our layout if we don't reduce width to 280px */
 /*  padding: 0.625em;  because we have 16px as 1em now, so 10px/16px is 0.625em */
   padding: 0.625rem; /* means to calculate from the one above; not let our em in our font-size change below affect this padding size */
@@ -47,7 +51,10 @@ a:hover, a:focus {
 }
 
 .content {
+/*  width: 640px;*/
+  width: 68.0851064%; /* for fluid layout: relative to parent, i.e. container */
   background: white;
+  float: right;
 /*  padding: 10px;  without our box-sizing property stuff above, this will break our layout if we don't reduce width to 620px */
   padding: 0.625em; /* because we have 16px as 1em now, so 10px/16px is 0.625em */
 }
@@ -78,20 +85,24 @@ a:hover, a:focus {
 * MEDIA QUERIES *
 *****************/
 
-/* http://css-tricks.com/snippets/css/media-queries-for-standard-devices */
+/*http://css-tricks.com/snippets/css/media-queries-for-standard-devices */
 
-@media only screen and (min-width : 700px) {
+@media only screen and (max-width : 700px) {
 
-/* think mobile-first: turn on float and width only if min-width is met */
+ body {
+  background: purple;
+ }
 
-  .navbar {
-    width: 31.914893617%;
-    float: left;
-  }
+ .navbar {
+  float: none; /* turn float off when browser too narrow and not good for multi-column layout */
+  width: auto; /* take as much space as it needs to (100% if display: block (div default); actual width it needs if display: inline-block) */
+ }
 
-  .content {
-    float: right;
-    width: 68.0851064%;
-  }
+ .content {
+  float: none; /* turn float off when browser too narrow and not good for multi-column layout */
+  width: auto; /* take as much space as it needs to (100% if display: block (div default); actual width it needs if display: inline-block) */
+ }
+
+ /* but we'll turn this all the other around to think mobile-first, i.e. not turn on float and width UNLESS a min-width is met */
 
 }
