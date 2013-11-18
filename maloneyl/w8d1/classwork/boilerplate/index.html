@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html class="no-js"> <!--  will have lots of stuff inserted automagically by modernizr.js here -->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>My awesome website!</title>
+    <meta name="description" content="My cool website!">
+    <meta name="viewport" content="width=device-width">
+
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/main.css">
+
+    <script src="js/vendor/modernizr.js"></script> <!-- inserts things into DOM depending on capabilities of browser -->
+
+    <!-- anything IE before IE 9 doesn't support HTML5 -->
+    <!-- so insert below conditional comment that IE will understand -->
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <script>window.html5 || document.write('<script src="js/vendor/html5shiv.js"><\/script>')</script>
+    <![endif]-->
+  </head>
+  <body>
+
+  <section class="container cf">
+    <aside class="navbar">
+      <p>This is my navigation!</p>
+      <a href="http://www.google.com">Google</a>
+
+    </aside> <!-- // .navbar -->
+    <section class="content">
+      <p>This is my content!</p>
+    </section> <!-- // .content -->
+  </section> <!-- // .container -->
+
+  <!-- put script at the bottom to not block http requests -->
+  <script src="js/main.js" async></script>
+  </body>
+</html>

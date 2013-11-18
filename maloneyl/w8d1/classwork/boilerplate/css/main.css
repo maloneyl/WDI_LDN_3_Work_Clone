@@ -1,0 +1,68 @@
+/********
+* BODY *
+********/
+
+/* change behavior of the box model */
+/* box model visualized: http://www.hicksdesign.co.uk/boxmodel/ */
+/* :before and :after are pseudo-elements */
+*, *:before, *:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+  background: orange;
+}
+
+a {
+  color: white;
+}
+
+/* :hover and :focus are pseudo-states */
+/* :focus is when you tab-select; useful for accessibility */
+a:hover, a:focus {
+  color: green;
+}
+
+/*********
+* LAYOUT *
+**********/
+
+.container {
+  width: 940px;
+  /* 940W is commonly used: small enough for 1024W resolution, divisible by 12 (common grid) and many other numbers */
+  margin: 0 auto;
+  background: blue;
+}
+
+.navbar {
+  width: 300px;
+  background: red;
+  float: left;
+  padding: 10px; /* without our box-sizing property stuff above, this will break our layout if we don't reduce width to 280px */
+}
+
+.content {
+  width: 640px;
+  background: white;
+  float: right;
+  padding: 10px; /* without our box-sizing property stuff above, this will break our layout if we don't reduce width to 620px */
+}
+
+
+/*******************
+* HACKS/UTILITIES *
+*******************/
+
+/* cf means clearfix */
+.cf:before, .cf:after {
+  content: " ";
+  display: table;
+}
+
+.cf:after {
+  clear: both;
+}
+
+
