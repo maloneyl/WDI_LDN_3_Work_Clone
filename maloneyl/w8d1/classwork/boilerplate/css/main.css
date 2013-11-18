@@ -13,6 +13,7 @@
 
 body {
   background: orange;
+  font: 100%/1.4 sans-serif; /* 100% means 100% of body font size of that browser, usually 16px; 1.4 is a sensible line-height/leading */
 }
 
 a {
@@ -30,24 +31,30 @@ a:hover, a:focus {
 **********/
 
 .container {
-  width: 940px;
+/*  width: 940px;*/
   /* 940W is commonly used: small enough for 1024W resolution, divisible by 12 (common grid) and many other numbers */
+  max-width: 1000px; /* for fluid layout: just one absolute value for ratios in the rest of the classes */
+  min-width: 600px; /* for fluid layout: just one absolute value for ratios in the rest of the classes */
   margin: 0 auto;
   background: blue;
 }
 
 .navbar {
-  width: 300px;
+/*  width: 300px;*/
+  width: 31.914893617%; /* for fluid layout: relative to parent, i.e. container */
   background: red;
   float: left;
-  padding: 10px; /* without our box-sizing property stuff above, this will break our layout if we don't reduce width to 280px */
+/*  padding: 10px;  without our box-sizing property stuff above, this will break our layout if we don't reduce width to 280px */
+  padding: 0.625em; /* because we have 16px as 1em now, so 10px/16px is 0.625em */
 }
 
 .content {
-  width: 640px;
+/*  width: 640px;*/
+  width: 68.0851064%; /* for fluid layout: relative to parent, i.e. container */
   background: white;
   float: right;
-  padding: 10px; /* without our box-sizing property stuff above, this will break our layout if we don't reduce width to 620px */
+/*  padding: 10px;  without our box-sizing property stuff above, this will break our layout if we don't reduce width to 620px */
+  padding: 0.625em; /* because we have 16px as 1em now, so 10px/16px is 0.625em */
 }
 
 
@@ -65,4 +72,9 @@ a:hover, a:focus {
   clear: both;
 }
 
+.em {
+  width: 1em;
+  height: 1em;
+  background: blue;
+}
 
