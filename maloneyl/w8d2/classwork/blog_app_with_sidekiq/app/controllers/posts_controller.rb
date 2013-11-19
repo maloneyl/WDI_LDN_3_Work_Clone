@@ -47,7 +47,8 @@ class PostsController < ApplicationController
 
         # add some slow work here so we can see why background/asynchronous jobs would be great
         # sleep 10 # built-in ruby method; just pause for however many seconds passed in
-        DemoWorker.perform_async 10, "Just finished some slow processing triggered by PostsController's create method"
+        # DemoWorker.perform_async 10, "Just finished some slow processing triggered by PostsController's create method"
+        AutoTagWorker.perform_async(@post.id)
 
         format.html { redirect_to @post, notice: 'Post was successfully created.' }
         format.json { render json: @post, status: :created, location: @post }
