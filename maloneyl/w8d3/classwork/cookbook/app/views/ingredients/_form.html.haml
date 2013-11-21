@@ -1,0 +1,19 @@
+= form_for @ingredient do |f|
+
+  - if @ingredient.errors.any?
+    .error-messages
+      %h2 Form is invalid
+      %ul
+        - for message in @ingredient.errors.full_messages
+          %li= message
+
+  .field
+    = f.label :name
+    %br/
+    = f.text_field :name, :autofocus => true
+  .field
+    = f.label :image
+    %br/
+    = f.url_field :image
+  .actions
+    = f.submit
