@@ -1,0 +1,49 @@
+<html>
+<head>
+  <title>Simple Ember Blog</title>
+</head>
+<body>
+  <script type="text/x-handlebars" data-template-name="application">
+    <h1>Simple Ember Blog</h1>
+
+    {{#linkTo "posts.index"}}View all posts{{/linkTo}}
+    {{#linkTo "posts.new"}}Create new post{{/linkTo}}
+
+    {{outlet}}
+  </script>
+
+  <script type="text/x-handlebars" data-template-name="posts/index">
+    <h2>Posts</h2>
+    <ul>
+      {{#each controller}}
+        <li>
+          <b>{{title}}</b><br/>
+          {{body}}<br/>
+          <i>Posted:</i> {{posted}}
+        </li>
+      {{/each}}
+    </ul>
+  </script>
+
+  <script type="text/x-handlebars" data-template-name="posts/new">
+    <h2>Add a Post</h2>
+    <form {{action "createPost" on="submit"}}>
+      Title: <br/>
+      {{view Ember.TextField valueBinding="title"}}<br />
+      Body/Content: <br />
+      {{view Ember.TextArea valueBinding="body"}}<br />
+      <button>Create</button>
+    </form>
+  </script>
+
+  <script src="./libs/jquery-1.9.1.js"></script>
+  <script src="./libs/handlebars-1.0.0-rc.4.js"></script>
+  <script src="./libs/ember-1.0.0-rc.6.1.js"></script>
+  <script src="./libs/ember-data-0.13.js"></script>
+
+  <script src="./js/application.js"></script>
+  <script src="./js/router.js"></script>
+  <script src="./js/models/post.js"></script>
+  <script src="./js/controllers/posts_new_controller.js"></script>
+</body>
+</html>
