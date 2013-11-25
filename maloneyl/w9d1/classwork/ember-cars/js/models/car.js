@@ -5,7 +5,9 @@ App.Car = DS.Model.extend({
   modelName: DS.attr("string")
 })
 
-App.Car.FIXTURES = [ // reminder: we defined DS.FixtureAdapter as the adapter
+// reminder: we defined DS.FixtureAdapter as the adapter, hence .FIXTURES here too
+// if below is an empty array, it just means we'll have to create every record in the console
+App.Car.FIXTURES = [
   {id: 1, modelName: "Rolls Phantom"},
   {id: 2, modelName: "Bently Continental"},
   {id: 3, modelName: "Boom"}

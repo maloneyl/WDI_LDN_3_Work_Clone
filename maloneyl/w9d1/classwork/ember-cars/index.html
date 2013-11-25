@@ -6,24 +6,38 @@
   <!-- following naming conventions for data-template-name means getting it automagically loaded -->
   <script type="text/x-handlebars" data-template-name="application">
     <h1>Cars Application</h1>
-    {{controller}}
+
+    {{#linkTo "cars.index"}}View all Cars{{/linkTo}}
+    {{#linkTo "cars.new"}}Create a new Car{{/linkTo}}
+
     {{outlet}}
   </script>
 
   <script type="text/x-handlebars" data-template-name="cars/index">
     <h2>Cars</h2>
+    <p>Printing controller.content will get us this:</p>
     {{controller.content}}
+    <p>"each controller ... modelName":</p>
     <ul>
       {{#each controller}}
         <li>{{modelName}}</li>
       {{/each}}
     </ul>
-    <p>Which can be done in a different way:</p>
+    <p>Same thing, different way: "each car in controller ... car.modelName"</p>
     <ul>
       {{#each car in controller}}
         <li>{{car.modelName}}</li>
       {{/each}}
     </ul>
+  </script>
+
+  <script type="text/x-handlebars" data-template-name="cars/new">
+    <h2>Create new Car</h2>
+    {{controller}}
+    <form {{action "createCar" on="submit"}}>
+      {{view Ember.TextField valueBinding="modelName"}}
+      <button>Create</button>
+    </form>
   </script>
 
   <script src="./libs/jquery-1.9.1.js"></script>
@@ -34,5 +48,6 @@
   <script src="./js/application.js"></script>
   <script src="./js/router.js"></script>
   <script src="./js/models/car.js"></script>
+  <script src="./js/controllers/cars_new_controller.js"></script>
 </body>
 </html>
