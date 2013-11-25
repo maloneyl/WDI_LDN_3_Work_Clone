@@ -81,6 +81,7 @@ App.ContactsController = Ember.ArrayController.extend({
       phone: this.get("phone"),
       category: App.Category.find(this.get("categoryId"))
     })
+    contact.store.commit(); // freeze the current state of the store before more changes (like trying to edit that newly created record)
   },
   // countContacts: function(){
   //   return [this.get("length"), "contacts"].join(" ") // given our template position vis-a-vis the source, this calculation is done before our fixtures is initialized IF we don't pass .property("length") and just do .property()
