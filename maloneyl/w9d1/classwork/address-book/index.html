@@ -23,6 +23,8 @@
     {{view Ember.TextField valueBinding="last"}}<br />
     Phone: <br />
     {{view Ember.TextField valueBinding="phone"}}<br />
+    Category: <br />
+    {{view Ember.Select valueBinding="categoryId" contentBinding="categories" optionLabelPath="content.name" optionValuePath="content.id" prompt="Pick a category"}}<br />
     <button {{action "createContact"}}>Save</button>
   </script>
 
@@ -36,20 +38,32 @@
 
     {{partial "new_contact"}}
 
-    <p>
-      {{countContacts}} {{contactInflection}}
-    </p>
-
-    <h3>Contacts</h3>
+    <h3>{{countContacts}} {{contactInflection}}</h3>
     <table border="1">
       {{#each controller itemController="contact"}}
         <tr>
           {{#if isEditing}}
-            <td>{{view Ember.TextField valueBinding="first"}}</td>
-            <td>{{view Ember.TextField valueBinding="last"}}</td>
-            <td>{{view Ember.TextField valueBinding="phone"}}</td>
-            <td><button {{action "saveContact"}}>Save</button></td>
+            <td>
+              {{view Ember.Select valueBinding="categoryId" selectionBinding="selectedCategory" contentBinding="categories" optionLabelPath="content.name" optionValuePath="content.id" prompt="Pick a category"}}
+            </td>
+            <td>
+              {{view Ember.TextField valueBinding="first"}}
+            </td>
+            <td>
+              {{view Ember.TextField valueBinding="last"}}
+            </td>
+            <td>
+              {{view Ember.TextField valueBinding="phone"}}
+            </td>
+            <td>
+              <button {{action "saveContact"}}>Save</button>
+            </td>
           {{else}}
+          <td>
+            <div {{action "editContact" on="doubleClick"}}>
+              {{category.name}}
+            </div>
+          </td>
           <td>
             <div {{action "editContact" on="doubleClick"}}>
               {{first}}
