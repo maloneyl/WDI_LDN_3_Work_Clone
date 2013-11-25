@@ -2,18 +2,19 @@
 App.Car = DS.Model.extend({
   // define every field of model here
   // JSON object: key and value
-  modelName: DS.attr("string")
+  modelName: DS.attr("string"),
+  brand: DS.belongsTo("App.Brand") // yep, Rails-like associations
 })
 
 // reminder: we defined DS.FixtureAdapter as the adapter, hence .FIXTURES here too
 // if below is an empty array, it just means we'll have to create every record in the console
 App.Car.FIXTURES = [
-  {id: 1, modelName: "Rolls Phantom"},
-  {id: 2, modelName: "Bently Continental"},
+  {id: 1, modelName: "Rolls Phantom", brand: 1}, // "brand: 1" = pass brand ID
+  {id: 2, modelName: "Bently Continental", brand: 2},
   {id: 3, modelName: "Boom"}
 ]
 
-// in the console, we'll can add to the list and do something like:
+// in the console, we can add to the list and do something like:
 // car = App.Car.createRecord({modelName: "Delorean"})
 // > Class {store: Class, currentState: Object, _changesToSync: Object, transaction: Class, _reference: Object…}
 // car.get("modelName")

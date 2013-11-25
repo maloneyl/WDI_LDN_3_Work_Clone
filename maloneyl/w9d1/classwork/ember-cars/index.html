@@ -20,13 +20,13 @@
     <p>"each controller ... modelName":</p>
     <ul>
       {{#each controller}}
-        <li>{{modelName}}</li>
+        <li>{{modelName}} ({{brand.name}})</li>
       {{/each}}
     </ul>
     <p>Same thing, different way: "each car in controller ... car.modelName"</p>
     <ul>
       {{#each car in controller}}
-        <li>{{car.modelName}}</li>
+        <li>{{car.modelName}} ({{car.brand.name}})</li>
       {{/each}}
     </ul>
   </script>
@@ -36,6 +36,7 @@
     {{controller}}
     <form {{action "createCar" on="submit"}}>
       {{view Ember.TextField valueBinding="modelName"}}
+      {{view Ember.Select valueBinding="select_brand" contentBinding="brands" optionLabelPath="content.name" optionValuePath="content.id" prompt="Pick a brand"}}
       <button>Create</button>
     </form>
   </script>
@@ -48,6 +49,7 @@
   <script src="./js/application.js"></script>
   <script src="./js/router.js"></script>
   <script src="./js/models/car.js"></script>
+  <script src="./js/models/brand.js"></script>
   <script src="./js/controllers/cars_new_controller.js"></script>
 </body>
 </html>
