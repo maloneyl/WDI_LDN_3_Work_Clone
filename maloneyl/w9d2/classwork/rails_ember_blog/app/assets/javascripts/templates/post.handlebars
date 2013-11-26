@@ -1,7 +1,10 @@
 <h1>{{title}}</h1>
 <h3>by {{author.name}}</h3>
-<small class="muted">({{format-date date}})</small>
-
+{{#if date_modified}}
+  <small class="muted">(Updated: {{format-date date_modified}} | Created: {{format-date date_posted}})</small>
+{{else}}
+  <small class="muted">({{format-date date_posted}})</small>
+{{/if}}
 <hr />
 
 <div>

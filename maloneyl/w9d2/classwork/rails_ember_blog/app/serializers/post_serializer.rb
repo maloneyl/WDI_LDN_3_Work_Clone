@@ -3,7 +3,7 @@ class PostSerializer < ActiveModel::Serializer
   # specify what to ship in our API/JSON
   # includes the fields in our Post model by default - we can exclude any of those if we want to
   # and we can add more/change names as long as we write our own functions below
-  attributes :id, :url, :title, :body, :date
+  attributes :id, :url, :title, :body, :date_posted, :date_modified
 
   embed :ids, include: true # sideload the users (i.e. send the id in the posts object, then also include the list of users to be referenced)
   has_one :user, key: :author_id # has_one or belongs_to is just has_one in Serializer
@@ -22,9 +22,13 @@ class PostSerializer < ActiveModel::Serializer
   end
 
   # reminder: our Post model in Rails has created_at, vs. Ember's date
-  def date
+  def date_posted
     # object.created_at # that would be a Date object
     object.created_at.getutc.iso8601 # standard format so that other programs can format however they want
+  end
+
+  def date_modified
+    object.updated_at.getutc.iso8601 if object.created_at != object.updated_at
   end
 
 end
