@@ -7,4 +7,12 @@
   <section id="main">
     {{outlet}}
   </section>
+
+  <footer id="footer">
+    <ul id="filters">
+      <li>{{#linkTo "todos"}}All{{/linkTo}}</li>
+      <li>{{#linkTo "todos.active"}}Active{{/linkTo}}</li>
+      <li>{{#linkTo "todos.completed"}}Completed{{/linkTo}}</li>
+    </ul>
+  </footer>
 </section>
