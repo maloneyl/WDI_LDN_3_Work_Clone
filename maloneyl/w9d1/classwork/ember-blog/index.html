@@ -14,15 +14,19 @@
 
   <script type="text/x-handlebars" data-template-name="posts/index">
     <h2>Posts</h2>
+    {{controller}}
     <ul>
-      {{#each controller}}
+      {{#each post in controller}}
         <li>
-          <b>{{title}}</b><br/>
-          {{body}}<br/>
-          <i>Posted:</i> {{posted}}
+          <b>{{post.title}}</b><br/>
+          {{post.body}}<br/>
+          <i>Posted:</i> {{post.posted}}<br/>
+          <i>Category:</i> {{post.category}}<br/>
+          {{#linkTo post post}}Go to Post{{/linkTo}}<br/>
         </li>
       {{/each}}
     </ul>
+    {{outlet}}
   </script>
 
   <script type="text/x-handlebars" data-template-name="posts/new">
@@ -32,8 +36,31 @@
       {{view Ember.TextField valueBinding="title"}}<br />
       Body/Content: <br />
       {{view Ember.TextArea valueBinding="body"}}<br />
+      Category: <br />
+      {{view Ember.Select valueBinding="categoryId" contentBinding="categories" optionLabelPath="content.name" optionValuePath="content.id" prompt="Pick a category"}}<br />
       <button>Create</button>
     </form>
+  </script>
+
+  <script type="text/x-handlebars" data-template-name="post">
+    {{controller}}
+    <h2>{{title}}</h2>
+    <p>
+      <i>Posted:</i> {{posted}}<br />
+      <i>Category:</i> {{category}}
+    </p>
+    <p>{{body}}</p>
+    <p>
+      <i>Comments:</i> {{comments}}
+    </p>
+    {{partial "newComment"}}
+  </script>
+
+  <script type="text/x-handlebars" data-template-name="_newComment">
+    <h4>Add a Comment</h4>
+    Message: <br />
+    {{view Ember.TextField valueBinding="message"}}<br />
+    <button {{action "createComment"}}>Save</button>
   </script>
 
   <script src="./libs/jquery-1.9.1.js"></script>
@@ -44,6 +71,11 @@
   <script src="./js/application.js"></script>
   <script src="./js/router.js"></script>
   <script src="./js/models/post.js"></script>
+  <script src="./js/models/category.js"></script>
+  <script src="./js/models/comment.js"></script>
+  <script src="./js/controllers/posts_index_controller.js"></script>
   <script src="./js/controllers/posts_new_controller.js"></script>
+  <script src="./js/controllers/post_controller.js"></script>
+  // <script src="./js/controllers/comments_new_controller.js"></script>
 </body>
 </html>
