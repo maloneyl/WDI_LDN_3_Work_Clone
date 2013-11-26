@@ -1,7 +1,9 @@
 <ul id="todo-list">
-  {{#each controller}}
+  {{#each controller itemController="todo"}}
     <li>
-      {{name}}
+      {{view EmberTodoApp.CheckboxStatusView checkedBinding="status"}}
+      <label>{{name}}</label>
+      <button {{action "removeTodo"}} class="destroy"></button>
     </li>
   {{/each}}
 </ul>

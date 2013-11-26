@@ -12,4 +12,16 @@ class TasksController < ApplicationController
     render json: {task: task}
   end
 
+  def update
+    task = Task.find params[:id]
+    task.update_attributes params[:task]
+    render json: {task: task}
+  end
+
+  def destroy
+    task = Task.find params[:id]
+    task.delete
+    render nothing: true # Ember expects an empty response
+  end
+
 end
