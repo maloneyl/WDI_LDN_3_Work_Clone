@@ -9,6 +9,9 @@
   </section>
 
   <footer id="footer">
+    <span id="todo-count">
+      <strong>{{remaining}}</strong> {{inflection}} left
+    </span>
     <ul id="filters">
       <li>{{#linkTo "todos"}}All{{/linkTo}}</li>
       <li>{{#linkTo "todos.active"}}Active{{/linkTo}}</li>
