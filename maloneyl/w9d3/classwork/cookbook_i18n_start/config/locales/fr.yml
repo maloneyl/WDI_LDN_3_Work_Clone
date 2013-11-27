@@ -1,0 +1,9 @@
+fr:
+  hello: "Bonjour tout le monde"
+  cookbook: "livre de cuisine"
+  recipes: "recettes"
+  ingredients: "ingrédients"
+  users: "utilisateurs"
+  login: "connexion"
+  logout: "déconnexion"
+  sign_up: "signer"

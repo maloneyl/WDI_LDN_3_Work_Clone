@@ -1,0 +1,33 @@
+!!!
+%html
+  %head
+    %title= t(:cookbook)
+    = stylesheet_link_tag    "application", :media => "all"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+  %body
+    #page
+
+      %nav.navbar
+        %ul.left-nav
+          %li= link_to(t(:recipes), recipes_path)
+          %li= link_to(t(:ingredients), ingredients_path)
+          %li= link_to(t(:users), users_path)
+        %ul.right-nav
+          %li
+            - if current_user
+              logged in as #{current_user.name} ,
+              = link_to t(:logout), destroy_user_session_path, method: :delete
+            -else
+              = link_to t(:login), new_user_session_path
+              or
+              = link_to t(:sign_up), new_user_registration_path
+        .clear
+
+
+      - flash.each do |name, message|
+        %div(class="flash-message flash-#{name}")
+          = message
+
+      %section#main
+        = yield
