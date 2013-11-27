@@ -5,7 +5,8 @@ App.Router.map ->
 
     # get this nested URL: posts/:post_id
     # if the path is not defined, it'll be just: posts
-    @resource 'post', path: '/:post_id' # :post_id is a dynamic segment, which will let us get a params object/"hash" and make the dynamic segment the value (just like in Rails)
+    @resource 'post', path: '/:post_id', -> # :post_id is a dynamic segment, which will let us get a params object/"hash" and make the dynamic segment the value (just like in Rails)
+      @route 'edit'
     @route 'new'
 
   @route 'about' # route is similar to get/put/match, doesn't generate [name].index for you, and cannot be nested

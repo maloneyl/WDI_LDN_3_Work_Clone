@@ -1,3 +1,7 @@
+{{#if canUpdate}}<button>Edit</button>{{/if}} {{#if canDestroy}}<button {{action deletePost}}>Delete</button>{{/if}}
+
+{{controller}}
+
 <h1>{{title}}</h1>
 <h3>by {{author.name}}</h3>
 
