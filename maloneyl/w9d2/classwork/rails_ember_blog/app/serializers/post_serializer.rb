@@ -3,7 +3,7 @@ class PostSerializer < ActiveModel::Serializer
   # specify what to ship in our API/JSON
   # includes the fields in our Post model by default - we can exclude any of those if we want to
   # and we can add more/change names as long as we write our own functions below
-  attributes :id, :url, :title, :body, :date, :last_updated_at
+  attributes :id, :url, :title, :body, :date, :last_updated_at, :can_update, :can_destroy
 
   embed :ids, include: true # sideload the users (i.e. send the id in the posts object, then also include the list of users to be referenced)
   has_one :user, key: :author_id # has_one or belongs_to is just has_one in Serializer
@@ -29,6 +29,14 @@ class PostSerializer < ActiveModel::Serializer
 
   def last_updated_at
     object.updated_at.getutc.iso8601 if object.created_at != object.updated_at
+  end
+
+  def can_update
+    Ability.new(scope).can?(:update, object) # in our ApplicationController, we've defined serialization_scope :current_user
+  end
+
+  def can_destroy
+    Ability.new(scope).can?(:destroy, object)
   end
 
 end

@@ -1,11 +1,13 @@
 class PostsController < ApplicationController
 
+  before_filter :authenticate_user!, except: [:show, :index]
   before_filter :normalize_params, only: [:create, :update] # need this to clean up stuff sent from Ember before creating/saving anything
 
   # GET /posts
   # GET /posts.json
   def index
     @posts = Post.all
+    authorize! :read, Post
 
     respond_to do |format|
       format.html # index.html.erb
@@ -17,6 +19,7 @@ class PostsController < ApplicationController
   # GET /posts/1.json
   def show
     @post = Post.find(params[:id])
+    authorize! :read, @post
 
     respond_to do |format|
       format.html # show.html.erb
@@ -44,6 +47,7 @@ class PostsController < ApplicationController
   # POST /posts.json
   def create
     @post = current_user.posts.build params[:post] # push new post to current user's array of posts
+    authorize! :create, @post
 
     respond_to do |format|
       if @post.save
@@ -60,6 +64,7 @@ class PostsController < ApplicationController
   # PUT /posts/1.json
   def update
     @post = Post.find(params[:id])
+    authorize! :update, @post
 
     respond_to do |format|
       if @post.update_attributes(params[:post])
@@ -76,6 +81,7 @@ class PostsController < ApplicationController
   # DELETE /posts/1.json
   def destroy
     @post = Post.find(params[:id])
+    authorize! :destroy, @post
     @post.destroy
 
     respond_to do |format|
