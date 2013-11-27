@@ -1,0 +1,10 @@
+<h1>Add a Post</h1>
+
+<form {{action "createPost" on="submit"}}>
+  Title: <br/>
+  {{view Ember.TextField valueBinding="title"}}<br />
+  Body/Content: <br />
+  {{view Ember.TextArea valueBinding="body"}}<br />
+  <button>Create</button>
+</form>
+
