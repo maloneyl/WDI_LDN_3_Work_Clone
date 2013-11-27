@@ -3,7 +3,7 @@
 </div>
 
 {{#if isEditing}}
-  <h1>{{view Ember.TextField valueBinding="title"}}</h1>
+  <h1>{{view Ember.TextField valueBinding="title" class="col-md-12"}}</h1>
   <h3>by {{author.name}}</h3>
 
   <small class="muted">(posted: {{format-date date}}{{#if lastUpdatedAt}}, updated: {{format-date lastUpdatedAt}}{{/if}})</small>
@@ -11,7 +11,7 @@
   <hr />
 
   <div>
-    {{view Ember.TextArea valueBinding="body"}}
+    {{view Ember.TextArea valueBinding="body" class="col-md-12" rows="6"}}
   </div>
 
   <div>
