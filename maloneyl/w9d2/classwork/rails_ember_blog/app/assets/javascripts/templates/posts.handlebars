@@ -2,10 +2,12 @@
   <table class="table">
     <thead>
       <tr>
-        <th>{{#link-to 'posts.new'}}Add a Post{{/link-to}}</th>
-      </tr>
-      <tr>
-        <th>Recent Posts</th>
+        <th>
+          Recent Posts
+          {{#if isAuthenticated}}
+            <button class="pull-right" {{action 'new'}}>New</button>
+          {{/if}}
+        </th>
       </tr>
     </thead>
     {{#each model}}

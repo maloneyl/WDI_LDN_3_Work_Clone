@@ -1,4 +1,7 @@
 class PostsController < ApplicationController
+
+  before_filter :normalize_params, only: [:create, :update] # need this to clean up stuff sent from Ember before creating/saving anything
+
   # GET /posts
   # GET /posts.json
   def index
@@ -40,7 +43,7 @@ class PostsController < ApplicationController
   # POST /posts
   # POST /posts.json
   def create
-    @post = Post.new(params[:post])
+    @post = current_user.posts.build params[:post] # push new post to current user's array of posts
 
     respond_to do |format|
       if @post.save
@@ -80,4 +83,12 @@ class PostsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def normalize_params
+    params[:post] = params[:post].slice(:title, :body) # grab only what we want
+
+    # ||= below to leave content as is IF there's content as a key in the API (could be someone else's API where they've named it content)
+    params[:post][:content] ||= params[:post].delete(:body) # before stuff gets deleted, it gets returned first
+  end
+
 end

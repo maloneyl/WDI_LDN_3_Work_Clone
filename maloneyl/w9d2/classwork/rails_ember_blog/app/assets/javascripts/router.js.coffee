@@ -12,7 +12,7 @@ App.Router.map ->
   @route 'login'
   @route 'registration'
 
-# if you nest a route, the child's view will be nested in the parent's view's outlet
+# if you nest a route, you nest a view too: the child's view will be nested in the parent's view's outlet
 # e.g.
 #   routes: posts -> post
 #   views: posts.hbs {{outlet}} -> post.hbs
