@@ -14,6 +14,7 @@ App.PostController = Ember.ObjectController.extend
     savePost: ->
       post = @get('model')
       post.save().then =>
-        @transitionToRoute 'post', post
+        # @transitionToRoute 'post', post
+        post.reload()
       @set('isEditing', false)
 
