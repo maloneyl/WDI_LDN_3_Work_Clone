@@ -1,0 +1,47 @@
+source 'https://rubygems.org' # where rails searches for each gem listed in this gem file
+
+gem 'rails', '3.2.14'
+
+# Bundle edge Rails instead:
+# gem 'rails', :git => 'git://github.com/rails/rails.git'
+
+# gem name is our gem's gemspec file
+# gem path needs to be specified here because our gem is local, not in the source specified above (i.e. rubygems.org)
+gem 'hello_world', path: '/Users/Maloney/Development/WDI_LDN_3_Work/maloneyl/w9d4/classwork/create_a_gem/hello_world'
+
+# SIDE NOTE: How to include a gem hosted on Github
+# gem 'github-gem', git: 'git@github.com:defunkt/github-gem.git' # i.e. SSH key
+# gem 'github-gem', github: 'defunkt/github-gem' # i.e. owner and project name
+
+gem 'sqlite3'
+
+gem 'haml-rails'
+
+# Gems used only for assets and not required
+# in production environments by default.
+group :assets do
+  gem 'sass-rails',   '~> 3.2.3'
+  gem 'coffee-rails', '~> 3.2.1'
+
+  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
+  # gem 'therubyracer', :platforms => :ruby
+
+  gem 'uglifier', '>= 1.0.3'
+end
+
+gem 'jquery-rails'
+
+# To use ActiveModel has_secure_password
+# gem 'bcrypt-ruby', '~> 3.0.0'
+
+# To use Jbuilder templates for JSON
+# gem 'jbuilder'
+
+# Use unicorn as the app server
+# gem 'unicorn'
+
+# Deploy with Capistrano
+# gem 'capistrano'
+
+# To use debugger
+# gem 'debugger'
