@@ -1,0 +1,21 @@
+%h1 Another Movies App
+
+%h4
+  1. List all movies out right now in the UK (according to The Guardian)
+  %br/
+  2. Grab IMDb and RottenTomatoes ratings and average them
+  %br/
+  3. Embed official trailer from YouTube
+  %br/
+
+%table
+  - @current_movies.each do |movie|
+    %tr
+      %td
+        %b= movie[:movie]
+      %td
+        = CurrentMoviesRatings.get_ratings(movie[:movie])
+      %td
+        %iframe{frameborder: "0", height: "300", src: CurrentMoviesRatings.get_trailer(movie[:movie]), width: "400"}
+
+
