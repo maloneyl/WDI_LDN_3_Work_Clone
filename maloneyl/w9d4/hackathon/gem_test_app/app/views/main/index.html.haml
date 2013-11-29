@@ -14,8 +14,8 @@
       %td
         %b= movie[:movie]
       %td
-        = CurrentMoviesRatings.get_ratings(movie[:movie])
+        = CurrentMovies.get_ratings(movie[:movie])
       %td
-        %iframe{frameborder: "0", height: "300", src: CurrentMoviesRatings.get_trailer(movie[:movie]), width: "400"}
+        %iframe{frameborder: "0", height: "300", src: CurrentMovies.get_trailer(movie[:movie]), width: "400"}
 
 

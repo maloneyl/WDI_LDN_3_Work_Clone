@@ -9,7 +9,7 @@ gem 'sqlite3'
 
 gem 'haml-rails'
 
-gem 'current_movies_ratings', path: '/Users/Maloney/Development/WDI_LDN_3_Work/maloneyl/w9d4/hackathon/current_movies_ratings'
+gem 'current_movies', path: '/Users/Maloney/Development/WDI_LDN_3_Work/maloneyl/w9d4/hackathon/current_movies'
 
 gem 'hello_world', path: '/Users/Maloney/Development/WDI_LDN_3_Work/maloneyl/w9d4/classwork/create_a_gem/hello_world'
 
