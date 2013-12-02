@@ -34,7 +34,7 @@ function Carousel(sel, h, w, options) { // upper camel case because we're treati
 			.width(self.imageWidth)
 			.append('<a class="carousel-direction previous"><</a><a class="carousel-direction next">></a><a class="carousel-slideshow-control">SLIDESHOW</a>');
 
-		self.$slider = self.$carousel.children(".slider"); // get a set of all sliders we have; direct descendants with the class slider
+		self.$slider = self.$carousel.children(".slider"); // get a set of all sliders we have; direct descendants with the class slider, could have done "self.$carousel>.carousel-slider" too
 		self.$slider
 			.addClass("carousel-slider")
 			.css("left", 0);
