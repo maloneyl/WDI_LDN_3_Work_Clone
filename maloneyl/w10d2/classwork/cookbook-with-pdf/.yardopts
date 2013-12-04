@@ -1,0 +1,5 @@
+--output-dir       ./public/doc
+--markup           markdown
+--markup-provider  maruku
+--readme           README.md
+--files            lib/**/*.rb, app/**/*.rb
