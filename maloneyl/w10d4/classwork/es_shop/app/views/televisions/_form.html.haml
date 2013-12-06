@@ -1,0 +1,22 @@
+= form_for @television do |f|
+  - if @television.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@television.errors.count, "error")} prohibited this television from being saved:"
+      %ul
+        - @television.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :tech
+    = f.text_field :tech
+  .field
+    = f.label :size
+    = f.text_field :size
+  .field
+    = f.label :format
+    = f.text_field :format
+  .field
+    = f.label :feature
+    = f.text_field :feature
+  .actions
+    = f.submit 'Save'

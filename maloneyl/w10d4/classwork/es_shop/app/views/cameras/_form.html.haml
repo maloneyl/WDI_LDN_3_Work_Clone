@@ -1,0 +1,19 @@
+= form_for @camera do |f|
+  - if @camera.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@camera.errors.count, "error")} prohibited this camera from being saved:"
+      %ul
+        - @camera.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :resolution
+    = f.text_field :resolution
+  .field
+    = f.label :zoom
+    = f.text_field :zoom
+  .field
+    = f.label :weight
+    = f.number_field :weight
+  .actions
+    = f.submit 'Save'

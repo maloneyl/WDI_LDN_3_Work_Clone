@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Tech:
+  = @television.tech
+%p
+  %b Size:
+  = @television.size
+%p
+  %b Format:
+  = @television.format
+%p
+  %b Feature:
+  = @television.feature
+
+= link_to 'Edit', edit_television_path(@television)
+\|
+= link_to 'Back', televisions_path

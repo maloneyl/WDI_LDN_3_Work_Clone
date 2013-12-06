@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Resolution:
+  = @camera.resolution
+%p
+  %b Zoom:
+  = @camera.zoom
+%p
+  %b Weight:
+  = @camera.weight
+
+= link_to 'Edit', edit_camera_path(@camera)
+\|
+= link_to 'Back', cameras_path

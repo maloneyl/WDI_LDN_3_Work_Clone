@@ -1,0 +1,25 @@
+%h1 Listing televisions
+
+%table
+  %tr
+    %th Tech
+    %th Size
+    %th Format
+    %th Feature
+    %th
+    %th
+    %th
+
+  - @televisions.each do |television|
+    %tr
+      %td= television.tech
+      %td= television.size
+      %td= television.format
+      %td= television.feature
+      %td= link_to 'Show', television
+      %td= link_to 'Edit', edit_television_path(television)
+      %td= link_to 'Destroy', television, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Television', new_television_path

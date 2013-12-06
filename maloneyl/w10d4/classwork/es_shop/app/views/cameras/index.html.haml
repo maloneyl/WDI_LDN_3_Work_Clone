@@ -1,0 +1,23 @@
+%h1 Listing cameras
+
+%table
+  %tr
+    %th Resolution
+    %th Zoom
+    %th Weight
+    %th
+    %th
+    %th
+
+  - @cameras.each do |camera|
+    %tr
+      %td= camera.resolution
+      %td= camera.zoom
+      %td= camera.weight
+      %td= link_to 'Show', camera
+      %td= link_to 'Edit', edit_camera_path(camera)
+      %td= link_to 'Destroy', camera, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Camera', new_camera_path
