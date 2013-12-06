@@ -1,0 +1,15 @@
+doctype 5
+html
+  head
+    title Chat App
+    script(src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js")
+    script(src="/socket.io/socket.io.js")
+    script(src="script.js")
+  body
+    h1 Chat application with Node.js
+    input(type="text")#pseudoInput
+    button#pseudoSet Set Pseudo
+    div#chatEntries
+    div#chatControls
+      input(type="text")#messageInput
+      button#submit Send
