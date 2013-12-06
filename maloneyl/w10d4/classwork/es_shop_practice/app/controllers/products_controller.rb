@@ -4,7 +4,7 @@ class ProductsController < ApplicationController
 
   # GET /products
   # GET /products.json
-  def index
+  def index # because there's no /products/index.html, rails will then look into /application and render index.html there
     search    = product_class.s params, load: true
     @products = search.results
     @facets   = @products.facets
@@ -15,7 +15,7 @@ class ProductsController < ApplicationController
   end
 
   def product_class
-    Product
+    Product # product_class returns Product in ProductsController; but CamerasController product_class is made to return Camera, etc. small trick to reuse code
   end
 
   def redirect_to_product_vertical

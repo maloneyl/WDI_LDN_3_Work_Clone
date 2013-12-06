@@ -36,16 +36,18 @@ class Product
     }
   end
 
+  # _type makes elasticsearch assume that you want your search results to be sorted by type
+  # so here we map _type to product_type instead
   def to_indexed_json
     attr = attributes
-    attr["product_type"] = attr.delete("_type")
+    attr["product_type"] = attr.delete("_type") # when you delete an attribute in a hash, that gets returned before it's gone
     attr.to_json
   end
 
   def self.s(params, options={})
 
     # intialize search
-    options.reverse_merge!(type: es_type) unless self == Product
+    options.reverse_merge!(type: es_type) unless self == Product # only merge we're in the inherited models: camera, television or laptop (another trick to not have to write duplicate code in all those models)
     search = Tire::Search::Search.new('products', options)
 
     # set the query
@@ -70,8 +72,8 @@ class Product
     end
 
     # add the facets
-    facets.each do |name, block|
-      search.facet name, &block
+    facets.each do |name, block| # the block here refers to the proc
+      search.facet name, &block # search is a tire search defined above
     end
 
     puts search.to_curl
@@ -88,8 +90,8 @@ private
       details.each do |value, checked|
         values << value if checked == "true"
       end
-      send "add_#{type}_filters", name, values unless values.empty?
-    end.compact
+      send "add_#{type}_filters", name, values unless values.empty? # send is how you run a dynamic method in ruby!
+    end.compact # add_range_filters could return nil
   end
 
   def self.add_terms_filters(name, values)

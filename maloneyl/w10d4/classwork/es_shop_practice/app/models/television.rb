@@ -15,7 +15,7 @@ class Television < Product
   key :feature, Array
 
   def self.facets
-    standard_facets.merge({
+    standard_facets.merge({ # standard_facets is a hash
       :price      => Proc.new { range :price, [
                                 {to:   50_00},
                                 {from: 50_00,  to: 100_00},

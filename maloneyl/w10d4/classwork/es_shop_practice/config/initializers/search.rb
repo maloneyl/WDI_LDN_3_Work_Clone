@@ -1,4 +1,5 @@
 # Doing this at startup is STUPID! This should be a rake task
+# but some hacks are needed because Tire doesn't really support single-table inheritance
 
 Tire.index "products" do
   delete
@@ -8,7 +9,7 @@ Tire.index "products" do
       :analysis => {
         :analyzer => {
           :default_search => {
-            :type => 'snowball'
+            :type => 'snowball' # popular text analyzer
           }
         }
       }
@@ -17,8 +18,8 @@ Tire.index "products" do
 
   common_mapping = {
     :properties => {
-      :id             => {:type => 'string', :index    => :not_analyzed},
-      :name           => {:type => 'string', :analyzer => 'snowball', :boost => 100},
+      :id             => {:type => 'string', :index    => :not_analyzed}, # because ids are string in mongo, don't bother searching these strings
+      :name           => {:type => 'string', :analyzer => 'snowball', :boost => 100}, # boost means occurrence in this field is more significant than others
       :manufacturer   => {:type => 'string', :analyzer => 'snowball', :boost => 50},
       :description    => {:type => 'string', :analyzer => 'snowball'}
     }
@@ -29,7 +30,7 @@ Tire.index "products" do
     product_mappings[product_type] = common_mapping
   end
 
-  create :mappings => product_mappings#, :settings => settings
+  create :mappings => product_mappings, :settings => settings
 
 end
 
